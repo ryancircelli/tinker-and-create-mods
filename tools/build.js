@@ -66,6 +66,7 @@ async function api(endpoint, { cacheKey = null } = {}) {
   }
 
   let lastErr;
+  let rateLimited = 0;
   for (let attempt = 0; attempt < 5; attempt++) {
     try {
       apiCalls++;
@@ -74,6 +75,13 @@ async function api(endpoint, { cacheKey = null } = {}) {
       if (res.status === 404) return null;
 
       if (res.status === 429) {
+        // `continue` here used to skip past lastErr, so exhausting all five
+        // attempts on rate limiting threw `undefined` -- surfacing as
+        // "Build failed: undefined" with no clue that Modrinth was throttling
+        // us. Record it so the final throw can say what actually happened.
+        rateLimited++;
+        lastErr = new Error(
+          `rate limited by Modrinth (HTTP 429) on ${endpoint}; ${rateLimited} attempt(s)`);
         const wait = Number(res.headers.get('x-ratelimit-reset') || 10);
         await sleep(Math.min(wait, 60) * 1000);
         continue;
@@ -92,7 +100,11 @@ async function api(endpoint, { cacheKey = null } = {}) {
       await sleep(500 * 2 ** attempt);
     }
   }
-  throw lastErr;
+  // Never throw a bare `undefined`: the top-level handler prints err.stack, so a
+  // non-Error left the build reporting nothing usable.
+  throw lastErr instanceof Error
+    ? lastErr
+    : new Error(`giving up on ${endpoint} after 5 attempts (last: ${lastErr})`);
 }
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));

@@ -31,6 +31,47 @@ jobs:
         with:
           node-version: '22'
 
+      # Modrinth does not enforce unique version numbers -- two runs both returned
+      # HTTP 200 for 1.7.3 and left two versions with the same number and
+      # different files. Rather than just refusing, take the next free patch
+      # number so a re-run always publishes something coherent. The publish step
+      # keeps a hard guard as a backstop.
+      - name: Claim a free version number
+        env:
+          TOKEN: ${{ secrets.MODRINTH_TOKEN }}
+          PROJECT: ${{ secrets.MODRINTH_PROJECT_ID }}
+        run: |
+          ID=$(curl -sS -H "Authorization: $TOKEN" \
+            "https://api.modrinth.com/v2/project/$PROJECT" \
+            | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{
+                const j=JSON.parse(s); if(!j.id){console.error(s.slice(0,200));process.exit(1);}
+                console.log(j.id);})')
+          # export, not a plain assignment: the node step below reads it from the
+          # environment, and a shell variable would arrive as undefined.
+          export TAKEN=$(curl -sS -H "Authorization: $TOKEN" \
+            "https://api.modrinth.com/v2/project/$ID/version" \
+            | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{
+                console.log(((JSON.parse(s))||[]).map(v=>v.version_number).join(" "));})')
+          echo "already published: ${TAKEN:-<none>}"
+          node -e '
+            const fs=require("fs");
+            const p="tools/mods.json";
+            const d=JSON.parse(fs.readFileSync(p,"utf8"));
+            const taken=new Set((process.env.TAKEN||"").split(" ").filter(Boolean));
+            const start=d.pack.version;
+            if (taken.has(start)) {
+              const m=start.match(/^(\d+)\.(\d+)\.(\d+)$/);
+              if(!m){console.error(`cannot auto-bump non-semver version ${start}`);process.exit(1);}
+              let [,maj,min,pat]=m; pat=Number(pat);
+              while (taken.has(`${maj}.${min}.${pat}`)) pat++;
+              d.pack.version=`${maj}.${min}.${pat}`;
+              fs.writeFileSync(p, JSON.stringify(d,null,2)+"\n");
+              console.log(`auto-bumped ${start} -> ${d.pack.version}`);
+            } else {
+              console.log(`${start} is free; publishing as-is`);
+            }
+          '
+
       - name: Read pack version
         id: pack
         run: |
@@ -66,8 +107,9 @@ jobs:
         env:
           V: ${{ steps.pack.outputs.version }}
 
-      # Fails loudly if the version already exists on Modrinth, rather than
-      # silently doing nothing -- version numbers are immutable there.
+      # Backstop only: "Claim a free version number" should already have moved
+      # off any taken number. If this still fires, the two disagree and that is
+      # worth failing on rather than publishing a second copy.
       - name: Publish to Modrinth
         env:
           TOKEN: ${{ secrets.MODRINTH_TOKEN }}
@@ -147,3 +189,20 @@ jobs:
               --title "Pack ${V}" \
               --notes "Manifest-only modpack; all mods download from CDNs."
           fi
+
+      # Persist an auto-bump so the repository matches what is published. A push
+      # authenticated with GITHUB_TOKEN does not trigger workflows, so this
+      # cannot loop back into another publish.
+      - name: Commit the bumped version
+        run: |
+          if git diff --quiet -- tools/mods.json; then
+            echo "version unchanged; nothing to commit"
+            exit 0
+          fi
+          V="${{ steps.pack.outputs.version }}"
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add tools/mods.json
+          git commit -m "Bump pack version to ${V} (auto)" \
+                     -m "The previous number was already published on Modrinth; claimed the next free patch so this run had a coherent version to publish."
+          git push origin HEAD:master
