@@ -5,7 +5,7 @@
     "item": "minecraft:iron_pickaxe"
   },
   "chapter": "questlog:explore",
-  "sort_order": 2,
+  "sort_order": 3,
   "toast_on_unlock": false,
   "toast_on_complete": true,
   "panel_height": 200,

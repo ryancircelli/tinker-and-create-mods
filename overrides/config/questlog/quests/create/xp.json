@@ -1,0 +1,34 @@
+{
+  "title": "Experience, Bottled",
+  "description": "Create can treat experience as a fluid. An Experience Hatch moves XP between you and a tank, so levels can be stored, piped and spent by machines instead of sitting in your bar.\n\nPair it with a [Grindstone Drain](quest:questlog:create/disenchant) and enchanting stops being something you save up for.",
+  "icon": {
+    "item": "create_enchantment_industry:experience_hatch"
+  },
+  "chapter": "questlog:create",
+  "sort_order": 7,
+  "toast_on_unlock": false,
+  "toast_on_complete": true,
+  "panel_height": 200,
+  "objectives": [
+    {
+      "type": "questlog:item_obtain",
+      "item": "create_enchantment_industry:experience_hatch",
+      "required_amount": 1,
+      "name": "Obtain an Experience Hatch"
+    }
+  ],
+  "rewards": [
+    {
+      "type": "questlog:experience",
+      "experience": 200,
+      "levels": false,
+      "auto_claim": true
+    },
+    {
+      "type": "questlog:item",
+      "item": "minecraft:bucket",
+      "count": 1,
+      "auto_claim": true
+    }
+  ]
+}

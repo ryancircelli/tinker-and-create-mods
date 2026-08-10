@@ -5,7 +5,7 @@
     "item": "minecraft:flint_and_steel"
   },
   "chapter": "questlog:explore",
-  "sort_order": 3,
+  "sort_order": 4,
   "toast_on_unlock": false,
   "toast_on_complete": true,
   "panel_height": 200,

@@ -1,0 +1,34 @@
+{
+  "title": "Picking Up After Yourself",
+  "description": "Create has no vacuum block, and does not need one: a Chute pulls in items that drop into the space above it, which is exactly what a mob or crop farm produces.\n\nPut one under the drop, belt it away, and nothing is left on the floor. A Smart Chute filters what it accepts.",
+  "icon": {
+    "item": "create:chute"
+  },
+  "chapter": "questlog:create",
+  "sort_order": 6,
+  "toast_on_unlock": false,
+  "toast_on_complete": true,
+  "panel_height": 200,
+  "objectives": [
+    {
+      "type": "questlog:item_obtain",
+      "item": "create:chute",
+      "required_amount": 1,
+      "name": "Obtain a Chute"
+    }
+  ],
+  "rewards": [
+    {
+      "type": "questlog:item",
+      "item": "create:andesite_alloy",
+      "count": 8,
+      "auto_claim": true
+    },
+    {
+      "type": "questlog:experience",
+      "experience": 40,
+      "levels": false,
+      "auto_claim": true
+    }
+  ]
+}

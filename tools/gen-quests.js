@@ -152,6 +152,16 @@ quest('main/see', {
   rewards: [item('minecraft:torch', 32), xp(30)],
 });
 
+quest('main/sleep', {
+  chapter: 'main', order: 3,
+  title: 'Skip the Night, Keep Your Spawn',
+  icon: 'comforts:sleeping_bag_red',
+  desc: "A sleeping bag passes the night without moving your spawn point -- so you can sleep out on a mining trip and still respawn at base.\n\n"
+      + 'Any of the sixteen colours works. Cheap, and it removes the usual reason to carry a bed.',
+  objectives: [obtain('#comforts:sleeping_bags', 1, 'Craft a Sleeping Bag')],
+  rewards: [item('minecraft:white_wool', 6), xp(20)],
+});
+
 // The finale gates on the ENTRY quest of every chapter, so nothing can be
 // skipped -- including Time & Growth, which players otherwise never notice.
 quest('main/ready', {
@@ -294,6 +304,38 @@ quest('create/chain', {
   rewards: [item('create:brass_ingot', 16), xp(80)],
 });
 
+quest('create/collect', {
+  chapter: 'create', order: 6,
+  title: 'Picking Up After Yourself',
+  icon: 'create:chute',
+  desc: "Create has no vacuum block, and does not need one: a Chute pulls in items that drop into the space above it, which is exactly what a mob or crop farm produces.\n\n"
+      + 'Put one under the drop, belt it away, and nothing is left on the floor. A Smart Chute filters what it accepts.',
+  objectives: [obtain('create:chute', 1, 'Obtain a Chute')],
+  rewards: [item('create:andesite_alloy', 8), xp(40)],
+});
+
+quest('create/xp', {
+  chapter: 'create', order: 7,
+  title: 'Experience, Bottled',
+  icon: 'create_enchantment_industry:experience_hatch',
+  desc: "Create can treat experience as a fluid. An Experience Hatch moves XP between you and a tank, so levels can be stored, piped and spent by machines instead of sitting in your bar.\n\n"
+      + `Pair it with a ${link('Grindstone Drain', 'create/disenchant')} and enchanting stops being something you save up for.`,
+  objectives: [obtain('create_enchantment_industry:experience_hatch', 1, 'Obtain an Experience Hatch')],
+  rewards: [xp(200), item('minecraft:bucket', 1)],
+});
+
+quest('create/disenchant', {
+  chapter: 'create', order: 8,
+  title: 'Nothing Wasted',
+  icon: 'create_enchantment_industry:grindstone_drain',
+  desc: "A normal grindstone throws away most of the experience it strips off an item. A Grindstone Drain captures it as Liquid Experience instead.\n\n"
+      + 'Feed that back into a Blaze Enchanter and unwanted loot enchantments become the fuel for the ones you want.',
+  objectives: [anyOf('Capture or spend liquid experience',
+    obtain('create_enchantment_industry:grindstone_drain', 1, 'Obtain a Grindstone Drain'),
+    obtain('create_enchantment_industry:blaze_enchanter', 1, 'Obtain a Blaze Enchanter'))],
+  rewards: [xp(5, true), item('minecraft:lapis_lazuli', 32)],
+});
+
 // ---- Carrying Capacity ------------------------------------------------------
 quest('carry/backpack', {
   chapter: 'carry', order: 1, includeInMain: true,
@@ -392,8 +434,25 @@ quest('explore/compass', {
   rewards: [item('minecraft:map', 1), xp(50)],
 });
 
+quest('explore/travel', {
+  chapter: 'explore', order: 2, includeInMain: true,
+  title: 'Getting Around Early',
+  icon: 'hangglider:hang_glider',
+  desc: "Three cheap items make travel bearable long before an elytra, and they stack:\n\n"
+      + "A Hang Glider turns any drop into distance -- jump off a hill and steer.\n"
+      + "Slimeboots cancel fall damage entirely, so height stops being a risk.\n"
+      + "A Slime Sling flings you where you point it, which is also how you gain the height.\n\n"
+      + 'Sling up, glide out, land in the boots. That loop covers a lot of ground for the cost of some slime and cloth.',
+  objectives: [
+    obtain('#hangglider:hang_gliders', 1, 'Craft a Hang Glider'),
+    obtain('tconstruct:slime_boots', 1, 'Craft Slimeboots'),
+    obtain('slime_time:slime_sling', 1, 'Craft a Slime Sling'),
+  ],
+  rewards: [item('minecraft:slime_ball', 16), xp(80)],
+});
+
 quest('explore/structure', {
-  chapter: 'explore', order: 2, after: ['explore/compass'],
+  chapter: 'explore', order: 3, after: ['explore/compass'],
   title: 'Somebody Was Here First',
   icon: 'minecraft:iron_pickaxe',
   desc: 'This pack layers several structure mods over the world. Go find one and loot it -- the gear inside is well ahead of what you can craft.',
@@ -404,7 +463,7 @@ quest('explore/structure', {
 });
 
 quest('explore/nether', {
-  chapter: 'explore', order: 3, after: ['explore/structure'],
+  chapter: 'explore', order: 4, after: ['explore/structure'],
   title: 'Somewhere Warmer',
   icon: 'minecraft:flint_and_steel',
   desc: 'Blaze rods, quartz and netherite all live through the portal. Tinkers alloys in particular want nether resources.',

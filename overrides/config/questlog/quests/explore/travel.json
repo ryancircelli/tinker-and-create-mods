@@ -1,0 +1,47 @@
+{
+  "title": "Getting Around Early",
+  "description": "Three cheap items make travel bearable long before an elytra, and they stack:\n\nA Hang Glider turns any drop into distance -- jump off a hill and steer.\nSlimeboots cancel fall damage entirely, so height stops being a risk.\nA Slime Sling flings you where you point it, which is also how you gain the height.\n\nSling up, glide out, land in the boots. That loop covers a lot of ground for the cost of some slime and cloth.",
+  "icon": {
+    "item": "hangglider:hang_glider"
+  },
+  "chapter": "questlog:explore",
+  "sort_order": 2,
+  "toast_on_unlock": false,
+  "toast_on_complete": true,
+  "panel_height": 200,
+  "include_in_main": true,
+  "objectives": [
+    {
+      "type": "questlog:item_obtain",
+      "item": "#hangglider:hang_gliders",
+      "required_amount": 1,
+      "name": "Craft a Hang Glider"
+    },
+    {
+      "type": "questlog:item_obtain",
+      "item": "tconstruct:slime_boots",
+      "required_amount": 1,
+      "name": "Craft Slimeboots"
+    },
+    {
+      "type": "questlog:item_obtain",
+      "item": "slime_time:slime_sling",
+      "required_amount": 1,
+      "name": "Craft a Slime Sling"
+    }
+  ],
+  "rewards": [
+    {
+      "type": "questlog:item",
+      "item": "minecraft:slime_ball",
+      "count": 16,
+      "auto_claim": true
+    },
+    {
+      "type": "questlog:experience",
+      "experience": 80,
+      "levels": false,
+      "auto_claim": true
+    }
+  ]
+}
