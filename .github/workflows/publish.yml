@@ -18,6 +18,12 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    # The repository default for GITHUB_TOKEN is read-only, so creating the
+    # release failed with "HTTP 403: Resource not accessible by integration" --
+    # and the step's `|| echo` turned that into a success. Grant exactly the one
+    # write scope the release step needs, and nothing else.
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
 
@@ -112,8 +118,14 @@ jobs:
           V: ${{ steps.pack.outputs.version }}
         run: |
           # Fallback channel, and what server/fetch-latest-github.sh reads.
-          gh release create "pack-v${V}" "packs/tinker-and-create-${V}.mrpack" \
-            --repo "${{ github.repository }}" \
-            --title "Pack ${V}" \
-            --notes "Manifest-only modpack; all mods download from CDNs." \
-            || echo "release pack-v${V} already exists — skipping"
+          # Check for an existing release explicitly rather than treating ANY
+          # failure as "already exists" -- that idiom hid a 403 for every run and
+          # reported success while creating nothing.
+          if gh release view "pack-v${V}" --repo "${{ github.repository }}" >/dev/null 2>&1; then
+            echo "release pack-v${V} already exists — skipping"
+          else
+            gh release create "pack-v${V}" "packs/tinker-and-create-${V}.mrpack" \
+              --repo "${{ github.repository }}" \
+              --title "Pack ${V}" \
+              --notes "Manifest-only modpack; all mods download from CDNs."
+          fi
