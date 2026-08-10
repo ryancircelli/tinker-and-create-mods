@@ -1,0 +1,52 @@
+name: Sync Modrinth description
+
+# The project description lives in modrinth-description.md so it is
+# version-controlled and reviewable, rather than being pasted into the web UI
+# where no history exists. This pushes it to the project on demand.
+#
+# Manual only: the description is not something a routine version bump should
+# rewrite, and an accidental overwrite is annoying to reconstruct.
+on:
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions: {}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: PATCH the project body
+        env:
+          TOKEN: ${{ secrets.MODRINTH_TOKEN }}
+          PROJECT: ${{ secrets.MODRINTH_PROJECT_ID }}
+        run: |
+          # MODRINTH_PROJECT_ID may hold a slug; PATCH /v2/project accepts either,
+          # but resolve first so the log records which project was written to.
+          ID=$(curl -sS -H "Authorization: $TOKEN" \
+            "https://api.modrinth.com/v2/project/$PROJECT" \
+            | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{
+                const j=JSON.parse(s);
+                if(!j.id){console.error("could not resolve project:",s.slice(0,200));process.exit(1);}
+                console.log(j.id);
+              })')
+          echo "resolved -> $ID"
+
+          # Strip the HTML comment header: it explains the file to a reader of the
+          # repository and would be noise on the project page.
+          BODY=$(node -e '
+            const fs=require("fs");
+            const md=fs.readFileSync("modrinth-description.md","utf8").replace(/^<!--[\s\S]*?-->\s*/,"");
+            process.stdout.write(JSON.stringify({body: md}));
+          ')
+          CODE=$(curl -sS -o /tmp/resp.json -w '%{http_code}' \
+            -X PATCH "https://api.modrinth.com/v2/project/$ID" \
+            -H "Authorization: $TOKEN" \
+            -H "Content-Type: application/json" \
+            -d "$BODY")
+          echo "HTTP $CODE"; cat /tmp/resp.json; echo
+          # 204 No Content is the success case for this endpoint.
+          case "$CODE" in
+            200|204) echo "description updated" ;;
+            *) echo "::error::Modrinth description update failed"; exit 1 ;;
+          esac

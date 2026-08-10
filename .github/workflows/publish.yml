@@ -91,6 +91,24 @@ jobs:
               })')
           echo "resolved project '$PROJECT' -> $RESOLVED"
           PROJECT="$RESOLVED"
+
+          # Modrinth does NOT enforce unique version numbers -- two runs of this
+          # workflow both returned HTTP 200 for 1.7.3 and produced two versions
+          # with the same number and different files, which is how a client and a
+          # server can end up on different builds of "the same" version. Check
+          # first and stop, rather than silently adding another duplicate.
+          EXISTING=$(curl -sS -H "Authorization: $TOKEN" \
+            "https://api.modrinth.com/v2/project/$PROJECT/version" \
+            | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{
+                const want=process.env.V;
+                const hits=(JSON.parse(s)||[]).filter(v=>v.version_number===want);
+                console.log(hits.map(v=>v.id).join(","));
+              })')
+          if [ -n "$EXISTING" ]; then
+            echo "::error::version $V already exists on Modrinth (version id(s): $EXISTING). Bump pack.version in tools/mods.json, or delete the existing version first."
+            exit 1
+          fi
+
           DATA=$(node -e '
             console.log(JSON.stringify({
               name: `Tinker & Create ${process.env.V}`,
