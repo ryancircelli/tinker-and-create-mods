@@ -71,6 +71,20 @@ jobs:
           LOADER: ${{ steps.pack.outputs.loader }}
         run: |
           PACK="packs/tinker-and-create-${V}.mrpack"
+          # POST /v2/version needs the base62 project ID, not the slug: passing a
+          # slug fails with "Invalid character '-' in base62 encoding". Resolving
+          # it here means MODRINTH_PROJECT_ID may hold either form, and an
+          # unlisted or in-review project still resolves because this request is
+          # authenticated (anonymous lookups of it 404).
+          RESOLVED=$(curl -sS -H "Authorization: $TOKEN" \
+            "https://api.modrinth.com/v2/project/$PROJECT" \
+            | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{
+                const j=JSON.parse(s);
+                if(!j.id){console.error("could not resolve project:",s.slice(0,200));process.exit(1);}
+                console.log(j.id);
+              })')
+          echo "resolved project '$PROJECT' -> $RESOLVED"
+          PROJECT="$RESOLVED"
           DATA=$(node -e '
             console.log(JSON.stringify({
               name: `Tinker & Create ${process.env.V}`,
