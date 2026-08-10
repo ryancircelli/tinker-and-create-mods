@@ -2,7 +2,7 @@
   "pack": {
     "name": "Tinker & Create",
     "summary": "Create + Tinkers for Minecraft 1.21.1 NeoForge",
-    "version": "1.7.4",
+    "version": "1.8.0",
     "minecraft": "1.21.1",
     "loader": "neoforge",
     "loaders": [
@@ -1733,6 +1733,11 @@
       "name": "Questlog",
       "slug": "questlog",
       "category": "Utility"
+    },
+    {
+      "name": "Better Compatibility Checker",
+      "slug": "better-compatibility-checker",
+      "category": "QoL"
     }
   ],
   "//amendments": "Re-admitted on 1.21. The Fabric ban was Moonlight-chain-vs-Hephaestus: Moonlight shifted load ordering so Tinkers modifiers resolved before the dynamic modifier registry was ready. There is no Tinkers on 1.21, so that interaction cannot occur. It appears in 6/34 working reference packs. Watch item: if the join test disconnects, this is the first thing to pull.",

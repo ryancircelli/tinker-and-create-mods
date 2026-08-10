@@ -1,0 +1,15 @@
+#Better Compatibility Checker
+#Replaces NeoForge's wall of "channel failed to connect" errors with a plain
+#statement of which pack version the server runs and which one you have, shown
+#directly in the multiplayer list.
+[general]
+	#Name shown on both sides of the comparison.
+	modpackName = "Tinker & Create"
+	#Stamped by tools/build.js on every build, so it always matches the .mrpack
+	#it ships inside. A hand-maintained value here would drift and then lie.
+	modpackVersion = "0.0.0"
+	#CurseForge-only lookup; this pack is distributed via Modrinth.
+	modpackProjectID = 0
+	#Take the version from the value above rather than from launcher metadata,
+	#which is absent for a Modrinth .mrpack install.
+	useMetadata = false

@@ -687,6 +687,24 @@ function writeMrpack(manifest) {
     fs.existsSync(overridesSrc) && fs.readdirSync(overridesSrc).length > 0;
   if (hasOverrides) {
     fs.cpSync(overridesSrc, path.join(tmp, 'overrides'), { recursive: true });
+
+    // Stamp the pack version into Better Compatibility Checker's config. Its
+    // whole job is to tell a joining player "server has X, you have Y" instead
+    // of NeoForge's wall of "channel failed to connect" errors -- which is
+    // exactly the failure that sent a real player hunting through logs. A
+    // hand-maintained version here would drift from the pack it ships in and
+    // then report confidently wrong numbers, so it is written at build time.
+    const bcc = path.join(tmp, 'overrides/config/bcc-common.toml');
+    if (fs.existsSync(bcc)) {
+      const before = fs.readFileSync(bcc, 'utf8');
+      const after = before.replace(/^(\s*modpackVersion\s*=\s*)"[^"]*"/m, `$1"${pack.version}"`);
+      if (after === before) {
+        console.error('  ! bcc-common.toml has no modpackVersion to stamp');
+        process.exitCode = 1;
+      }
+      fs.writeFileSync(bcc, after);
+      console.log(`  stamped bcc-common.toml modpackVersion = ${pack.version}`);
+    }
   }
 
   execSync(`zip -r -q "${outputPath}" modrinth.index.json overrides`, { cwd: tmp });
