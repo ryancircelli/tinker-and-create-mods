@@ -82,9 +82,20 @@ jobs:
       # Resolves every mod against the Modrinth API and writes the .mrpack.
       # No jars are committed: the three non-Modrinth mods are referenced by
       # GitHub release URL, which is a whitelisted .mrpack download domain.
+      # Every run started from an empty cache and paid the full API cost, which
+      # is what tripped HTTP 429. Keyed on mods.json so a rebuild of unchanged
+      # dependencies restores it wholesale; restore-keys let an edited mods.json
+      # still reuse most of the previous cache rather than starting cold.
+      - name: Cache Modrinth lookups
+        uses: actions/cache@v4
+        with:
+          path: .cache
+          key: modrinth-${{ hashFiles('tools/mods.json') }}
+          restore-keys: modrinth-
+
       - name: Build pack
-        # Authenticated so the ~300 resolution calls are billed to this account
-        # rather than to the shared GitHub runner IP, which hit HTTP 429.
+        # Authenticated so resolution is billed to this account rather than to
+        # the shared GitHub runner IP, which hit HTTP 429.
         env:
           MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
         run: node tools/build.js

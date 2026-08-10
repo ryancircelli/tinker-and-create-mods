@@ -137,6 +137,49 @@ async function getProject(slugOrId) {
   return api(`/project/${encodeURIComponent(slugOrId)}`, { cacheKey: `project-${slugOrId}` });
 }
 
+/**
+ * Warm the project cache in bulk.
+ *
+ * Resolution used to cost two calls per mod -- one for the project, one for its
+ * versions -- which is 680 API calls for this pack and enough to get HTTP 429'd
+ * from a shared CI IP. /v2/projects takes up to 60 ids (slugs work too) in a
+ * single request, so the project half collapses from ~333 calls to ~6.
+ *
+ * It writes straight into the same cache entries getProject() reads, so nothing
+ * downstream changes: a slug that the bulk endpoint omits (renamed, or simply
+ * wrong) just misses the cache and takes the old per-project path, including the
+ * existing search-by-name fallback.
+ *
+ * The versions half stays per-mod: Modrinth has no bulk endpoint that filters
+ * versions by loader AND game version, and fetching every version of every mod
+ * to filter locally would move far more data than it saves.
+ */
+async function prefetchProjects(slugs) {
+  if (process.env.NO_CACHE) return 0;
+  const want = [...new Set(slugs.filter(Boolean))];
+  let warmed = 0;
+  for (let i = 0; i < want.length; i += 60) {
+    const chunk = want.slice(i, i + 60);
+    let projects;
+    try {
+      projects = await api(`/projects?ids=${encodeURIComponent(JSON.stringify(chunk))}`);
+    } catch (e) {
+      // Non-fatal: fall back to per-project lookups for this chunk.
+      console.error(`  bulk project fetch failed (${e.message}); falling back`);
+      continue;
+    }
+    fs.mkdirSync(CACHE_DIR, { recursive: true });
+    for (const p of projects || []) {
+      // Cache under every alias the resolver might ask for.
+      for (const key of new Set([p.slug, p.id])) {
+        if (key) fs.writeFileSync(cachePath(`project-${key}`), JSON.stringify(p));
+      }
+      warmed++;
+    }
+  }
+  return warmed;
+}
+
 const norm = (s) => s.toLowerCase().replace(/[^a-z0-9]/g, '');
 
 /**
@@ -328,6 +371,9 @@ async function main() {
   // banner lied, which is exactly the kind of thing that misleads a later reader.
   console.log(`\nTinker & Create ${pack.version} — Minecraft ${pack.minecraft} / ${pack.loader}`);
   console.log(`Resolving ${DATA.mods.length} mods against Modrinth...\n`);
+
+  const warmed = await prefetchProjects(DATA.mods.map((m) => m.slug));
+  if (warmed) console.log(`  prefetched ${warmed} projects in bulk\n`);
 
   // --- Pass 1: resolve everything the pack explicitly asks for --------------
   const resolved = new Map(); // project id -> {entry, project, version}
