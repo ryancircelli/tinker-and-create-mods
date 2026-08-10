@@ -163,6 +163,11 @@
       "name": "Advancement Plaques",
       "slug": "advancement-plaques",
       "reason": "The pack's guided progression moved from a custom advancement datapack to Questlog, which fires its own toasts. Plaques now only announces OTHER mods' advancements, giving two competing notification channels on screen at once. Better Advancements still provides the readable advancement screen those mods need."
+    },
+    {
+      "name": "InvMove",
+      "slug": "invmove",
+      "reason": "Let players walk around with the inventory and other GUIs open. Removed on request to restore vanilla behaviour, where opening a container roots you in place."
     }
   ],
   "banned": [
@@ -906,11 +911,6 @@
       "name": "Sophisticated Backpacks",
       "slug": "sophisticated-backpacks",
       "category": "Core Tech"
-    },
-    {
-      "name": "InvMove",
-      "slug": "invmove",
-      "category": "QoL"
     },
     {
       "name": "VeinMiner (Vein Mining equiv)",
@@ -1738,6 +1738,16 @@
       "name": "Better Compatibility Checker",
       "slug": "better-compatibility-checker",
       "category": "QoL"
+    },
+    {
+      "name": "Hang Glider",
+      "slug": "hang-glider",
+      "category": "Exploration"
+    },
+    {
+      "name": "Slime Time",
+      "slug": "slime-time",
+      "category": "Equipment"
     }
   ],
   "//amendments": "Re-admitted on 1.21. The Fabric ban was Moonlight-chain-vs-Hephaestus: Moonlight shifted load ordering so Tinkers modifiers resolved before the dynamic modifier registry was ready. There is no Tinkers on 1.21, so that interaction cannot occur. It appears in 6/34 working reference packs. Watch item: if the join test disconnects, this is the first thing to pull.",
