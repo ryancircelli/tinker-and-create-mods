@@ -1,0 +1,105 @@
+name: Build and publish pack
+
+# Publishing is driven by tools/mods.json: bump pack.version, push, and the new
+# version appears on Modrinth. Clients (Modrinth App) and the server
+# (mrpack4server) both pick it up on their next check.
+on:
+  push:
+    # master, not main: the repository's default branch is master, so a trigger
+    # on main would silently never fire and every version bump would look
+    # published while nothing had happened.
+    branches: [master]
+    paths:
+      - 'tools/mods.json'
+      - 'tools/build.js'
+      - '.github/workflows/publish.yml'
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Read pack version
+        id: pack
+        run: |
+          echo "version=$(node -p "require('./tools/mods.json').pack.version")" >> "$GITHUB_OUTPUT"
+          echo "mc=$(node -p "require('./tools/mods.json').pack.minecraft")" >> "$GITHUB_OUTPUT"
+          echo "loader=$(node -p "require('./tools/mods.json').pack.loader")" >> "$GITHUB_OUTPUT"
+
+      # Resolves every mod against the Modrinth API and writes the .mrpack.
+      # No jars are committed: the three non-Modrinth mods are referenced by
+      # GitHub release URL, which is a whitelisted .mrpack download domain.
+      - name: Build pack
+        run: node tools/build.js
+
+      - name: Verify the build
+        run: |
+          PACK="packs/tinker-and-create-${{ steps.pack.outputs.version }}.mrpack"
+          test -f "$PACK" || { echo "::error::$PACK not produced"; exit 1; }
+          # A pack that embeds jars means an external URL silently failed to
+          # resolve and build.js fell back to overrides -- catch that here
+          # rather than shipping a 16 MB pack to every client.
+          if unzip -Z1 "$PACK" | grep -q '^overrides/.*\.jar$'; then
+            echo "::error::pack contains embedded jars; expected all mods to be CDN-referenced"
+            exit 1
+          fi
+          node -e '
+            const {execSync}=require("child_process");
+            const p=`packs/tinker-and-create-${process.env.V}.mrpack`;
+            const idx=JSON.parse(execSync(`unzip -p ${p} modrinth.index.json`,{maxBuffer:1<<26}));
+            const bad=idx.files.filter(f=>!f.downloads?.[0]||!f.hashes?.sha1||!f.hashes?.sha512);
+            if(bad.length){console.error("::error::files missing downloads/hashes:",bad.length);process.exit(1);}
+            console.log(`ok: ${idx.files.length} files, all with downloads + sha1 + sha512`);
+          '
+        env:
+          V: ${{ steps.pack.outputs.version }}
+
+      # Fails loudly if the version already exists on Modrinth, rather than
+      # silently doing nothing -- version numbers are immutable there.
+      - name: Publish to Modrinth
+        env:
+          TOKEN: ${{ secrets.MODRINTH_TOKEN }}
+          PROJECT: ${{ secrets.MODRINTH_PROJECT_ID }}
+          V: ${{ steps.pack.outputs.version }}
+          MC: ${{ steps.pack.outputs.mc }}
+          LOADER: ${{ steps.pack.outputs.loader }}
+        run: |
+          PACK="packs/tinker-and-create-${V}.mrpack"
+          DATA=$(node -e '
+            console.log(JSON.stringify({
+              name: `Tinker & Create ${process.env.V}`,
+              version_number: process.env.V,
+              game_versions: [process.env.MC],
+              version_type: "release",
+              loaders: [process.env.LOADER],
+              featured: true,
+              project_id: process.env.PROJECT,
+              dependencies: [],
+              file_parts: ["file"],
+            }));
+          ')
+          CODE=$(curl -sS -o /tmp/resp.json -w '%{http_code}' \
+            -X POST https://api.modrinth.com/v2/version \
+            -H "Authorization: $TOKEN" \
+            -F "data=$DATA;type=application/json" \
+            -F "file=@$PACK;type=application/zip")
+          echo "HTTP $CODE"; cat /tmp/resp.json; echo
+          [ "$CODE" = "200" ] || [ "$CODE" = "201" ] || { echo "::error::Modrinth publish failed"; exit 1; }
+
+      - name: Attach pack to a GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          V: ${{ steps.pack.outputs.version }}
+        run: |
+          # Fallback channel, and what server/fetch-latest-github.sh reads.
+          gh release create "pack-v${V}" "packs/tinker-and-create-${V}.mrpack" \
+            --repo "${{ github.repository }}" \
+            --title "Pack ${V}" \
+            --notes "Manifest-only modpack; all mods download from CDNs." \
+            || echo "release pack-v${V} already exists — skipping"

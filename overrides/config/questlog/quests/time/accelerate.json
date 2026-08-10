@@ -1,0 +1,34 @@
+{
+  "title": "Fast Forward",
+  "description": "Use the bottle on something that grows. Trees are the obvious first target -- a sapling to full tree in seconds.",
+  "icon": {
+    "item": "minecraft:oak_sapling"
+  },
+  "chapter": "questlog:time",
+  "sort_order": 2,
+  "toast_on_unlock": false,
+  "toast_on_complete": true,
+  "panel_height": 200,
+  "objectives": [
+    {
+      "type": "questlog:item_use",
+      "item": "tiab:time_in_a_bottle",
+      "required_amount": 3,
+      "name": "Use Time in a Bottle 3 times"
+    }
+  ],
+  "rewards": [
+    {
+      "type": "questlog:item",
+      "item": "minecraft:bone_meal",
+      "count": 32,
+      "auto_claim": true
+    },
+    {
+      "type": "questlog:experience",
+      "experience": 40,
+      "levels": false,
+      "auto_claim": true
+    }
+  ]
+}

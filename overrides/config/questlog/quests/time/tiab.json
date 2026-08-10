@@ -1,0 +1,35 @@
+{
+  "title": "Time in a Bottle",
+  "description": "Point it at a sapling, a crop, a furnace or a Create machine and it fast-forwards that block. This pack removes the storage cap, so a bottle can bank as much time as you can give it.\n\nIt is the fastest way past the early-game waiting.",
+  "icon": {
+    "item": "tiab:time_in_a_bottle"
+  },
+  "chapter": "questlog:time",
+  "sort_order": 1,
+  "toast_on_unlock": false,
+  "toast_on_complete": true,
+  "panel_height": 200,
+  "include_in_main": true,
+  "objectives": [
+    {
+      "type": "questlog:item_obtain",
+      "item": "tiab:time_in_a_bottle",
+      "required_amount": 1,
+      "name": "Craft a Time in a Bottle"
+    }
+  ],
+  "rewards": [
+    {
+      "type": "questlog:item",
+      "item": "minecraft:oak_sapling",
+      "count": 8,
+      "auto_claim": true
+    },
+    {
+      "type": "questlog:experience",
+      "experience": 50,
+      "levels": false,
+      "auto_claim": true
+    }
+  ]
+}

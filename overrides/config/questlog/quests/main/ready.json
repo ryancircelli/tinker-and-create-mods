@@ -1,0 +1,72 @@
+{
+  "title": "Properly Equipped",
+  "description": "Complete the opening quest of all five chapters. Once you have touched every system, the pack is yours to play.",
+  "icon": {
+    "item": "create:mechanical_press"
+  },
+  "chapter": "questlog:main",
+  "sort_order": 99,
+  "toast_on_unlock": false,
+  "toast_on_complete": true,
+  "panel_height": 200,
+  "description_completed": "That is the whole tour. Everything from here is your own project.",
+  "objectives": [
+    {
+      "type": "questlog:quest_complete",
+      "quest": "questlog:tinkers/first_tool",
+      "name": "Tinkers: Your First Tool"
+    },
+    {
+      "type": "questlog:quest_complete",
+      "quest": "questlog:create/wheel",
+      "name": "Create: First Rotation"
+    },
+    {
+      "type": "questlog:quest_complete",
+      "quest": "questlog:carry/backpack",
+      "name": "Carrying Capacity: Pockets"
+    },
+    {
+      "type": "questlog:quest_complete",
+      "quest": "questlog:time/tiab",
+      "name": "Time & Growth: Time in a Bottle"
+    },
+    {
+      "type": "questlog:quest_complete",
+      "quest": "questlog:explore/compass",
+      "name": "Exploration: Point Me at It"
+    }
+  ],
+  "rewards": [
+    {
+      "type": "questlog:choice",
+      "pick_count": 1,
+      "choices": [
+        {
+          "type": "questlog:item",
+          "item": "minecraft:diamond",
+          "count": 8,
+          "name": "8 Diamonds"
+        },
+        {
+          "type": "questlog:item",
+          "item": "create:brass_ingot",
+          "count": 16,
+          "name": "16 Brass Ingots"
+        },
+        {
+          "type": "questlog:item",
+          "item": "tconstruct:seared_brick",
+          "count": 32,
+          "name": "32 Seared Bricks"
+        }
+      ]
+    },
+    {
+      "type": "questlog:experience",
+      "experience": 10,
+      "levels": true,
+      "auto_claim": true
+    }
+  ]
+}

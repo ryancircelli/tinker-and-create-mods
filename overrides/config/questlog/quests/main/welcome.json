@@ -1,0 +1,28 @@
+{
+  "title": "Welcome to Tinker & Create",
+  "description": "This pack is about two things: building tools that grow with you, and building machines that do your work for you.\n\nThere is no wrong order. Each chapter below is a short guided line -- follow whichever appeals to you.\n\n[Tinkers: forge a tool that levels up](quest:questlog:tinkers/first_tool)\n[Create: your first automated line](quest:questlog:create/wheel)\n[Carrying Capacity: stop running out of space](quest:questlog:carry/backpack)\n[Time & Growth: skip the waiting](quest:questlog:time/tiab)\n[Exploration: find the good stuff](quest:questlog:explore/compass)\n\nPress ` (grave) or the book button in your inventory to reopen this log at any time.",
+  "icon": {
+    "item": "minecraft:crafting_table"
+  },
+  "chapter": "questlog:main",
+  "sort_order": 0,
+  "toast_on_unlock": true,
+  "toast_on_complete": true,
+  "panel_height": 200,
+  "description_completed": "You know where the log lives. Everything else is optional -- go build something.",
+  "show_popup_on_unlock": true,
+  "objectives": [
+    {
+      "type": "questlog:read",
+      "name": "Read this entry"
+    }
+  ],
+  "rewards": [
+    {
+      "type": "questlog:experience",
+      "experience": 20,
+      "levels": false,
+      "auto_claim": true
+    }
+  ]
+}

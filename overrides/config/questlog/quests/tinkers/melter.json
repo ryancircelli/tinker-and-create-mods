@@ -1,0 +1,34 @@
+{
+  "title": "Getting Molten",
+  "description": "A Seared Melter turns ore and scrap into molten metal. It is the small version of the Smeltery, and it only needs a few Seared Bricks.",
+  "icon": {
+    "item": "tconstruct:seared_melter"
+  },
+  "chapter": "questlog:tinkers",
+  "sort_order": 3,
+  "toast_on_unlock": false,
+  "toast_on_complete": true,
+  "panel_height": 200,
+  "objectives": [
+    {
+      "type": "questlog:item_obtain",
+      "item": "tconstruct:seared_melter",
+      "required_amount": 1,
+      "name": "Obtain a Seared Melter"
+    }
+  ],
+  "rewards": [
+    {
+      "type": "questlog:item",
+      "item": "tconstruct:seared_brick",
+      "count": 16,
+      "auto_claim": true
+    },
+    {
+      "type": "questlog:experience",
+      "experience": 40,
+      "levels": false,
+      "auto_claim": true
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "name": "Carrying Capacity",
+  "translatable": false,
+  "icon": {
+    "item": "sophisticatedbackpacks:backpack"
+  },
+  "order": 4,
+  "default_chapter": false,
+  "hidden": false
+}

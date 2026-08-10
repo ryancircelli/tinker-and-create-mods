@@ -1,0 +1,10 @@
+{
+  "name": "Getting Started",
+  "translatable": false,
+  "icon": {
+    "item": "minecraft:crafting_table"
+  },
+  "order": 1,
+  "default_chapter": true,
+  "hidden": false
+}

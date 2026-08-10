@@ -1,0 +1,10 @@
+{
+  "name": "Time & Growth",
+  "translatable": false,
+  "icon": {
+    "item": "tiab:time_in_a_bottle"
+  },
+  "order": 5,
+  "default_chapter": false,
+  "hidden": false
+}

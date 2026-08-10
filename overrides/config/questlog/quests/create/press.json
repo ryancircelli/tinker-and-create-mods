@@ -1,0 +1,40 @@
+{
+  "title": "Pressing Matters",
+  "description": "A Mechanical Press over a Depot turns ingots into sheets -- the gateway component for most of Create. Feed it with a belt and it never stops.",
+  "icon": {
+    "item": "create:mechanical_press"
+  },
+  "chapter": "questlog:create",
+  "sort_order": 3,
+  "toast_on_unlock": false,
+  "toast_on_complete": true,
+  "panel_height": 200,
+  "objectives": [
+    {
+      "type": "questlog:item_obtain",
+      "item": "create:mechanical_press",
+      "required_amount": 1,
+      "name": "Obtain a Mechanical Press"
+    },
+    {
+      "type": "questlog:item_obtain",
+      "item": "create:belt_connector",
+      "required_amount": 1,
+      "name": "Obtain a Belt Connector"
+    }
+  ],
+  "rewards": [
+    {
+      "type": "questlog:item",
+      "item": "create:andesite_alloy",
+      "count": 16,
+      "auto_claim": true
+    },
+    {
+      "type": "questlog:experience",
+      "experience": 60,
+      "levels": false,
+      "auto_claim": true
+    }
+  ]
+}

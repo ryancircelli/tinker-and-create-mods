@@ -1,0 +1,1769 @@
+{
+  "pack": {
+    "name": "Tinker & Create",
+    "summary": "Create + Tinkers for Minecraft 1.21.1 NeoForge",
+    "version": "1.7.3",
+    "minecraft": "1.21.1",
+    "loader": "neoforge",
+    "loaders": [
+      "neoforge"
+    ],
+    "loaderVersion": "21.1.248"
+  },
+  "//tinkers": "Tinkers' Construct 3.12.2 and Mantle 1.12.1 for 1.21.1 are shipped via overrides/mods/ because neither the port nor Mantle exists on Modrinth for 1.21.1 — a .mrpack can only reference cdn.modrinth.com URLs. Source: zhuchuovo/TinkersConstruct-1.21.1 and zhuchuovo/Mantle-1.21.1, forked to ryancircelli/. Verified booting with Create via tools/isolate.js --jar.",
+  "//loader": "1.21.1 NeoForge has 809 Create modpacks; 1.21.1 Forge has ZERO. NeoForge is the only viable 1.21 target.",
+  "aliases": {},
+  "exclusiveGroups": [
+    {
+      "label": "Recipe viewer",
+      "members": [
+        "emi",
+        "jei",
+        "roughly-enough-items"
+      ],
+      "keep": "emi",
+      "reason": "Two recipe viewers double up keybinds, overlays and memory. The pack is built on EMI (EMI Loot/Ores/Trades/Enchanting all target it)."
+    },
+    {
+      "label": "Death grave handler",
+      "members": [
+        "forgotten-graves",
+        "gravestones",
+        "coffins",
+        "yigd"
+      ],
+      "keep": "forgotten-graves",
+      "reason": "Multiple grave mods race to capture the death drop event; the loser silently voids inventories."
+    },
+    {
+      "label": "Rendering engine",
+      "members": [
+        "sodium",
+        "embeddium"
+      ],
+      "keep": "sodium",
+      "reason": "Sodium is native on 1.21.1 NeoForge; Embeddium is the legacy Forge fork and conflicts with Veil and Iris."
+    },
+    {
+      "label": "Connected textures",
+      "members": [
+        "fusion-connected-textures",
+        "continuity"
+      ],
+      "keep": "fusion-connected-textures",
+      "reason": "Fusion is NeoForge-native; Continuity is Fabric-only and breaks Sodium item rendering through Connector."
+    },
+    {
+      "label": "Runtime chunk loading",
+      "members": [
+        "create-power-loader",
+        "chunk-loaders"
+      ],
+      "keep": "create-power-loader",
+      "reason": "Both force-load chunks. Power Loader is Create-native and costs rotational power."
+    }
+  ],
+  "removed": [
+    {
+      "name": "Chipped",
+      "slug": "chipped",
+      "reason": "Overlaps Rechiseled (both add block variants). Kept Rechiseled because the pack also ships Rechiseled: Create, which bridges it to Create's palettes — Chipped has more raw downloads but no Create integration."
+    },
+    {
+      "name": "Dynamic Lights",
+      "slug": "dynamic-lights",
+      "reason": "Swapped for LambDynamicLights (51M downloads, in 6/34 reference packs, native NeoForge 1.21.1). Same feature, far better maintained — this was a 1.20.1-era mapping choice."
+    },
+    {
+      "name": "Corail Tombstone",
+      "slug": "corail-tombstone",
+      "reason": "Swapped for Corpse (8/34 reference packs). Tombstone is a large magic-flavoured death system; Corpse just leaves a body holding your items, which fits a Create pack better."
+    },
+    {
+      "name": "create-big-cannons",
+      "slug": "create-big-cannons",
+      "reason": "Cannons/artillery — not wanted."
+    },
+    {
+      "name": "create-aeronautics",
+      "slug": "create-aeronautics",
+      "reason": "Flying contraptions — not wanted."
+    },
+    {
+      "name": "hypertube",
+      "slug": "hypertube",
+      "reason": "Hypertube transport — not wanted."
+    },
+    {
+      "name": "create-teleporters",
+      "slug": "create-teleporters",
+      "reason": "Teleportation — not wanted, and it undercuts the rail investment the same way Waystones did."
+    },
+    {
+      "name": "create-propulsion-simulated",
+      "slug": "create-propulsion-simulated",
+      "reason": "Propellers/thrusters for contraptions — same flying-contraption family as Aeronautics."
+    },
+    {
+      "name": "Create Utilities",
+      "slug": "create-utilities",
+      "reason": "Re-checked on request: still has no NeoForge 1.21.1 build. Its newest builds stop at 1.20.1."
+    },
+    {
+      "name": "Create: Radars",
+      "slug": "create-radars",
+      "reason": "Hard-requires createbigcannons >=5.11.2, which was dropped on request. Radars is a targeting addon for the cannons, so it goes with them."
+    },
+    {
+      "name": "Create: Addon Compatibility",
+      "slug": "createaddoncompatibility",
+      "reason": "Ships 8 data/tfmg/ recipes that fail to parse because TFMG is excluded as an electricity mod (8 RecipeManager errors every startup). Its only other content is 3 Copycats item tags that nothing in this pack consumes. Its purpose is bridging addons we deliberately do not have, so it is net negative."
+    },
+    {
+      "name": "Chunk Loaders",
+      "slug": "chunk-loaders",
+      "reason": "Redundant with Create: Power Loader, which does the same job Create-natively (loaders driven by rotational power) and has higher adoption. Same reasoning as keeping Rechiseled over Chipped: in a Create pack, the mod that plugs into Create's progression wins. Chunky stays — it pre-generates terrain, which is a different job from runtime chunk loading."
+    },
+    {
+      "name": "Create: Sophisticated Backpacks",
+      "slug": "create-sophisticated-backpacks",
+      "reason": "No NeoForge 1.21.1 build — the Create/Sophisticated Backpacks bridge stops earlier."
+    },
+    {
+      "name": "Shulker Box Slot",
+      "slug": "shulker-box-slot",
+      "reason": "Redundant — the pack already has Sophisticated Backpacks and Sophisticated Storage for portable storage."
+    },
+    {
+      "name": "Remove Reloading Screen",
+      "slug": "rrls",
+      "reason": "Dropped at user request."
+    },
+    {
+      "name": "AutoModpack",
+      "slug": "automodpack",
+      "reason": "Not needed: every mod now ships via CDN in the manifest (Modrinth + GitHub releases), so there is no private delta for it to sync. Removing it also drops the certificate and download prompts players hit on first join."
+    },
+    {
+      "name": "Create: Dynamic Lights / Sodium Extras",
+      "slug": "create-dynamic-lights",
+      "reason": "Their Sodium Options API dependency conflicts with the pack's Reese's Sodium Options (client crash) and forced Sodium server-side (server crash). Dropped to keep the established config UI."
+    },
+    {
+      "name": "Zume",
+      "slug": "zume",
+      "reason": "Third zoom mod in the pack (with Just Zoom 12/100 and Chloride's zoom) all bound to Z. Kept Just Zoom -- higher adoption and a dedicated zoom rather than a Sodium extension feature."
+    },
+    {
+      "name": "TrashSlot",
+      "slug": "trashslot",
+      "reason": "Adds a trash slot that overlaps other inventory GUI elements and binds T, stealing the chat key. EMI (28/100) already provides item deletion, so it is redundant as well as conflicting."
+    },
+    {
+      "name": "Advancement Plaques",
+      "slug": "advancement-plaques",
+      "reason": "The pack's guided progression moved from a custom advancement datapack to Questlog, which fires its own toasts. Plaques now only announces OTHER mods' advancements, giving two competing notification channels on screen at once. Better Advancements still provides the readable advancement screen those mods need."
+    }
+  ],
+  "banned": [
+    {
+      "slug": "radium",
+      "reason": "Create declares a hard incompatibility with Radium on 1.21.1 ('Mod create is incompatible with radium any'). Declared in mods.toml, not Modrinth metadata, so only a boot catches it."
+    },
+    {
+      "slug": "create-tfmg",
+      "reason": "Heavy industry addon with an electricity layer — excluded with the other electricity mods."
+    },
+    {
+      "slug": "power-grid",
+      "reason": "Electricity distribution for Create — excluded."
+    },
+    {
+      "slug": "createnuclear",
+      "reason": "Nuclear power generation (energy/electricity) — excluded."
+    },
+    {
+      "slug": "create-ultimine",
+      "reason": "Bridge mod requiring FTB Ultimine (ftbultimine >=2101.1.14), which the pack does not ship — VeinMiner already covers vein mining. The FTB dependency is not declared on Modrinth, so only a boot catches it."
+    },
+    {
+      "slug": "embeddium",
+      "reason": "Legacy Forge rendering fork. On 1.21.1 NeoForge both Sodium and Iris ship native builds, and Veil requires Sodium >=0.8.12 explicitly ('Veil supports Sodium 0.8.12-alpha.2+mc1.21.1 and above'). Embeddium conflicts with both Veil and Iris. Replaced by Sodium + Iris."
+    },
+    {
+      "slug": "continuity",
+      "reason": "Fabric-only; runs via Sinytra Connector on NeoForge and crashes on EVERY item render. EmissiveItemQuadTransform.transform throws NPE (SpriteFinder.find null) inside Sodium's FRAPI item path — caught rendering Create's menu button icon. Redundant anyway: Fusion provides connected textures natively on NeoForge with 39 builds. Found by jointest.js screenshot, not by any log check."
+    },
+    {
+      "name": "Hopper Gadgetry",
+      "slug": "hopper-gadgetry",
+      "reason": "Crashes the client on load: 'Missing layer definitions: [hoppergadgetry:grated_hopper_minecart#main, hoppergadgetry:chute_minecart#main]'. It registers minecart entities without registering their client render layers, so any client rendering an overlay dies. Broken regardless of load order."
+    },
+    {
+      "name": "What Are They Up To (Watut)",
+      "slug": "what-are-they-up-to",
+      "reason": "Client crash on shader reload: ChainedJsonException 'Invalid shaders/core/particle.json: File not found'. Its newest build targets 1.21.0 and references a shader removed in 1.21.1, breaking any 1.21.1 client."
+    },
+    {
+      "name": "Krypton (FNP)",
+      "slug": "krypton-fnp",
+      "reason": "Incompatible with e4mc: both mixin ServerLoginPacketListenerImpl for network encryption. krypton_fnp replaces the class, so e4mc's getCipher redirector scans 0 targets and dies with a critical injection failure at client load. e4mc is established in the pack; this was an optional perf add."
+    },
+    {
+      "name": "Structory: Towers",
+      "slug": "structory-towers",
+      "reason": "Ships as a datapack-style jar with no mod entrypoint: NeoForge rejects it with InvalidModFileException 'Missing ModLoader in file (Structory_Towers_26.2_v1.0.17.jar)' and the server refuses to boot. Base Structory is a real mod and stays."
+    },
+    {
+      "name": "Sodium Leaf Culling",
+      "slug": "sodiumleafculling",
+      "reason": "Client crash: MixinPreProcessorException attaching mixins.sodiumleafculling.json:BlockRenderer -> ClassNotFoundException net.caffeinemc.mods.sodium.client.gui.SodiumGameOptions. It targets a Sodium internal that our Sodium build does not expose."
+    }
+  ],
+  "allowAlpha": [
+    "c2me-neoforge",
+    "incendium",
+    "asyncparticles"
+  ],
+  "//envOverrides": "Modrinth side-ness that is wrong in practice. BaguetteLib is flagged client_side=unsupported, so it shipped server-only -- but it registers the baguettelib:example payload as required on both sides, and every client was rejected at login with 'channel missing on the client side'. Caught by jointest.",
+  "envOverrides": {
+    "baguettelib": {
+      "client": "required",
+      "server": "required"
+    },
+    "controlify": {
+      "client": "required",
+      "server": "unsupported"
+    },
+    "sodium": {
+      "client": "required",
+      "server": "unsupported"
+    }
+  },
+  "mods": [
+    {
+      "name": "SuperMartijn642's Core Lib",
+      "slug": "supermartijn642s-core-lib",
+      "category": "Libraries"
+    },
+    {
+      "name": "Fzzy Config",
+      "slug": "fzzy-config",
+      "category": "Libraries"
+    },
+    {
+      "name": "Architectury API",
+      "slug": "architectury-api",
+      "category": "Libraries"
+    },
+    {
+      "name": "Curios API",
+      "slug": "curios",
+      "category": "Libraries"
+    },
+    {
+      "name": "Fusion (Connected Textures)",
+      "slug": "fusion-connected-textures",
+      "category": "Libraries"
+    },
+    {
+      "name": "SuperMartijn642's Config Lib",
+      "slug": "supermartijn642s-config-lib",
+      "category": "Libraries"
+    },
+    {
+      "name": "Balm",
+      "slug": "balm",
+      "category": "Libraries"
+    },
+    {
+      "name": "Searchables",
+      "slug": "searchables",
+      "category": "Libraries"
+    },
+    {
+      "name": "Cloth Config",
+      "slug": "cloth-config",
+      "category": "Libraries"
+    },
+    {
+      "name": "YetAnotherConfigLib",
+      "slug": "yacl",
+      "category": "Libraries"
+    },
+    {
+      "name": "GeckoLib",
+      "slug": "geckolib",
+      "category": "Libraries"
+    },
+    {
+      "name": "Player Animator",
+      "slug": "playeranimator",
+      "category": "Libraries"
+    },
+    {
+      "name": "ShetiPhianCore",
+      "slug": "shetiphiancore",
+      "category": "Libraries"
+    },
+    {
+      "name": "Create",
+      "slug": "create",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Puzzles Lib",
+      "slug": "puzzles-lib",
+      "category": "Libraries"
+    },
+    {
+      "name": "Create: Slice & Dice",
+      "slug": "slice-and-dice",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Sophisticated Core",
+      "slug": "sophisticated-core",
+      "category": "Libraries"
+    },
+    {
+      "name": "Create: Enchantment Industry",
+      "slug": "create-enchantment-industry",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Create: Framed",
+      "slug": "create-framed",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Create Jetpack",
+      "slug": "create-jetpack",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Create Goggles",
+      "slug": "create-goggles",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Create: Copycats+",
+      "slug": "copycats",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Create Deco",
+      "slug": "create-deco",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Rechiseled: Create",
+      "slug": "rechiseled-create",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Create: Cobblestone",
+      "slug": "create-cobblestone",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Create: Interiors",
+      "slug": "interiors",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Delightful Creators",
+      "slug": "delightful-creators",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Numismatics",
+      "slug": "numismatics",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Storage Drawers",
+      "slug": "storagedrawers",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Sophisticated Storage in Motion",
+      "slug": "sophisticated-storage-in-motion",
+      "category": "Core Tech"
+    },
+    {
+      "name": "FerriteCore",
+      "slug": "ferrite-core",
+      "category": "Performance"
+    },
+    {
+      "name": "Sophisticated Storage",
+      "slug": "sophisticated-storage",
+      "category": "Core Tech"
+    },
+    {
+      "name": "EnderChests",
+      "slug": "enderchests",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Entity Culling",
+      "slug": "entityculling",
+      "category": "Performance"
+    },
+    {
+      "name": "ModernFix",
+      "slug": "modernfix",
+      "category": "Performance"
+    },
+    {
+      "name": "ImmediatelyFast",
+      "slug": "immediatelyfast",
+      "category": "Performance"
+    },
+    {
+      "name": "Dynamic FPS",
+      "slug": "dynamic-fps",
+      "category": "Performance"
+    },
+    {
+      "name": "Cull Leaves",
+      "slug": "cull-leaves",
+      "category": "Performance"
+    },
+    {
+      "name": "Model Gap Fix",
+      "slug": "modelfix",
+      "category": "Pretty"
+    },
+    {
+      "name": "Entity Model Features",
+      "slug": "entity-model-features",
+      "category": "Pretty"
+    },
+    {
+      "name": "Entity Texture Features",
+      "slug": "entitytexturefeatures",
+      "category": "Pretty"
+    },
+    {
+      "name": "EMI Loot",
+      "slug": "emi-loot",
+      "category": "QoL"
+    },
+    {
+      "name": "EMI",
+      "slug": "emi",
+      "category": "QoL"
+    },
+    {
+      "name": "EMI Enchanting",
+      "slug": "emi-enchanting",
+      "category": "QoL"
+    },
+    {
+      "name": "EMI Ores",
+      "slug": "emi-ores",
+      "category": "QoL"
+    },
+    {
+      "name": "EMI Professions",
+      "slug": "emi-professions-(emip)",
+      "category": "QoL"
+    },
+    {
+      "name": "Jade",
+      "slug": "jade",
+      "category": "QoL"
+    },
+    {
+      "name": "AppleSkin",
+      "slug": "appleskin",
+      "category": "QoL"
+    },
+    {
+      "name": "Controlling",
+      "slug": "controlling",
+      "category": "QoL"
+    },
+    {
+      "name": "Mouse Tweaks",
+      "slug": "mouse-tweaks",
+      "category": "QoL"
+    },
+    {
+      "name": "Elytra Slot",
+      "slug": "elytra-slot",
+      "category": "QoL"
+    },
+    {
+      "name": "Lootr",
+      "slug": "lootr",
+      "category": "QoL"
+    },
+    {
+      "name": "Chat Heads",
+      "slug": "chat-heads",
+      "category": "QoL"
+    },
+    {
+      "name": "3D Skin Layers",
+      "slug": "3dskinlayers",
+      "category": "QoL"
+    },
+    {
+      "name": "Particle Core",
+      "slug": "particle-core",
+      "category": "QoL"
+    },
+    {
+      "name": "BetterF3",
+      "slug": "betterf3",
+      "category": "QoL"
+    },
+    {
+      "name": "Fog Overrides",
+      "slug": "fogoverrides",
+      "category": "QoL"
+    },
+    {
+      "name": "Not Enough Crashes",
+      "slug": "notenoughcrashes",
+      "category": "QoL"
+    },
+    {
+      "name": "Terralith",
+      "slug": "terralith",
+      "category": "World Gen"
+    },
+    {
+      "name": "Geophilic",
+      "slug": "geophilic",
+      "category": "World Gen"
+    },
+    {
+      "name": "Xaero's World Map",
+      "slug": "xaeros-world-map",
+      "category": "Exploration"
+    },
+    {
+      "name": "Xaero's Minimap",
+      "slug": "xaeros-minimap",
+      "category": "Exploration"
+    },
+    {
+      "name": "Rechiseled",
+      "slug": "rechiseled",
+      "category": "Building"
+    },
+    {
+      "name": "Comforts",
+      "slug": "comforts",
+      "category": "Building"
+    },
+    {
+      "name": "Farmer's Delight",
+      "slug": "farmers-delight",
+      "category": "Building"
+    },
+    {
+      "name": "Nature's Compass",
+      "slug": "natures-compass",
+      "category": "Exploration"
+    },
+    {
+      "name": "AttributeFix",
+      "slug": "attributefix",
+      "category": "Utility"
+    },
+    {
+      "name": "Vanilla Backport",
+      "slug": "vanillabackport",
+      "category": "Utility"
+    },
+    {
+      "name": "Sound Physics Remastered",
+      "slug": "sound-physics-remastered",
+      "category": "Building"
+    },
+    {
+      "name": "Spark",
+      "slug": "spark",
+      "category": "Utility"
+    },
+    {
+      "name": "Simple Voice Chat",
+      "slug": "simple-voice-chat",
+      "category": "Utility"
+    },
+    {
+      "name": "No Chat Reports",
+      "slug": "no-chat-reports",
+      "category": "Server Management"
+    },
+    {
+      "name": "Open Parties and Claims",
+      "slug": "open-parties-and-claims",
+      "category": "Server Management"
+    },
+    {
+      "name": "Carry On",
+      "slug": "carry-on",
+      "category": "Miscellaneous"
+    },
+    {
+      "name": "Chunky",
+      "slug": "chunky",
+      "category": "Server Management"
+    },
+    {
+      "name": "Packet Fixer",
+      "slug": "packet-fixer",
+      "category": "Miscellaneous"
+    },
+    {
+      "name": "Create: Pattern Schematics",
+      "slug": "create-pattern-schematics",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Create: Vibrant Vaults",
+      "slug": "create-vibrant-vaults",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Polymorph",
+      "slug": "polymorph",
+      "category": "QoL"
+    },
+    {
+      "name": "Inventory Essentials",
+      "slug": "inventory-essentials",
+      "category": "QoL"
+    },
+    {
+      "name": "Shulker Box Tooltip",
+      "slug": "shulkerboxtooltip",
+      "category": "QoL"
+    },
+    {
+      "name": "Quick Right-Click",
+      "slug": "quick-right-click",
+      "category": "QoL"
+    },
+    {
+      "name": "Armor Poser",
+      "slug": "armor-poser",
+      "category": "Building"
+    },
+    {
+      "name": "Immersive Paintings",
+      "slug": "immersive-paintings",
+      "category": "Building"
+    },
+    {
+      "name": "Noisium",
+      "slug": "noisium",
+      "category": "Performance"
+    },
+    {
+      "name": "Straw Statues",
+      "slug": "straw-statues",
+      "category": "Building"
+    },
+    {
+      "name": "ServerCore",
+      "slug": "servercore",
+      "category": "Performance"
+    },
+    {
+      "name": "Create Ore Excavation",
+      "slug": "create-ore-excavation",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Create: Threaded Trains",
+      "slug": "create-threaded-trains",
+      "category": "Performance"
+    },
+    {
+      "name": "Create Railways Navigator",
+      "slug": "create-railways-navigator",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Wider Ender Chests",
+      "slug": "wider-ender-chests",
+      "category": "Core Tech"
+    },
+    {
+      "name": "EnderTanks",
+      "slug": "endertanks",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Create Train Utilities",
+      "slug": "create-trainutilities",
+      "category": "Core Tech",
+      "//known-issue": "3.0.3 (newest) references create:conducter as an advancement parent, but Create 6.0.10 renamed it to create:conductor — fixing their old typo. Three advancements fail to load: door_ingrediants, doors, incomplete_prototype_door. Cosmetic only (the advancements just do not appear); the sliding-door content works. No newer build exists. Kept deliberately."
+    },
+    {
+      "name": "Traveler Tool Belt",
+      "slug": "traveler-tool-belt",
+      "category": "Utility"
+    },
+    {
+      "name": "AmbientSounds",
+      "slug": "ambientsounds",
+      "category": "Building"
+    },
+    {
+      "name": "Create Train Lights",
+      "slug": "create-train-lights",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Dramatic Doors",
+      "slug": "dramatic-doors",
+      "category": "Building"
+    },
+    {
+      "name": "Ping Wheel",
+      "slug": "ping-wheel",
+      "category": "QoL"
+    },
+    {
+      "name": "Create: Food",
+      "slug": "create-food",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Handcrafted",
+      "slug": "handcrafted",
+      "category": "Building"
+    },
+    {
+      "name": "Clumps",
+      "slug": "clumps",
+      "category": "Performance"
+    },
+    {
+      "name": "Crate Delight",
+      "slug": "crate-delight",
+      "category": "Building"
+    },
+    {
+      "name": "Not Enough Animations",
+      "slug": "not-enough-animations",
+      "category": "Pretty"
+    },
+    {
+      "name": "Overweight Farming",
+      "slug": "overweight-farming",
+      "category": "Building"
+    },
+    {
+      "name": "RightClickHarvest",
+      "slug": "rightclickharvest",
+      "category": "QoL"
+    },
+    {
+      "name": "Enchantment Descriptions",
+      "slug": "enchantment-descriptions",
+      "category": "QoL"
+    },
+    {
+      "name": "Charm of Undying",
+      "slug": "charm-of-undying",
+      "category": "QoL"
+    },
+    {
+      "name": "BadOptimizations",
+      "slug": "badoptimizations",
+      "category": "Performance"
+    },
+    {
+      "name": "Embeddium Extra (Sodium Extra equiv)",
+      "slug": "rubidium-extra",
+      "category": "Pretty"
+    },
+    {
+      "name": "Just Zoom",
+      "slug": "just-zoom",
+      "category": "Pretty"
+    },
+    {
+      "name": "Create Encased",
+      "slug": "create-encased",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Quark",
+      "slug": "quark",
+      "category": "Building"
+    },
+    {
+      "name": "Create: Central Kitchen",
+      "slug": "create-central-kitchen",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Create: Power Loader",
+      "slug": "create-power-loader",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Create Mechanical Extruder",
+      "slug": "create-mechanical-extruder",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Create Mechanical Spawner",
+      "slug": "create-mechanical-spawner",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Create: Connected",
+      "slug": "create-connected",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Create: Misc and Things",
+      "slug": "create-misc-and-things",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Create: Dreams & Desires",
+      "slug": "create-dreams-and-desires",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Create Stuff 'N Additions",
+      "slug": "create-stuff-additions",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Create: Bells & Whistles",
+      "slug": "bellsandwhistles",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Create: Liquid Fuel",
+      "slug": "create-liquid-fuel",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Create: Oxidized",
+      "slug": "create_oxidized",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Create: Trimmed",
+      "slug": "create-trimmed",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Create: Copper & Zinc",
+      "slug": "create-copper-zinc",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Create: Curios Jetpack & Backtank",
+      "slug": "create-curios-jetpack",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Create: Ender Transmission",
+      "slug": "create-ender-transmission",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Create: More Drill Heads",
+      "slug": "create-more-drill-heads",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Create: Big Contraptions",
+      "slug": "big-contraptions",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Create: Quality of Life",
+      "slug": "create-qol",
+      "category": "QoL"
+    },
+    {
+      "name": "Create Sifting",
+      "slug": "create-sifting",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Create: Enchantable Machinery",
+      "slug": "create-enchantable-machinery",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Sophisticated Backpacks",
+      "slug": "sophisticated-backpacks",
+      "category": "Core Tech"
+    },
+    {
+      "name": "InvMove",
+      "slug": "invmove",
+      "category": "QoL"
+    },
+    {
+      "name": "VeinMiner (Vein Mining equiv)",
+      "slug": "veinminer",
+      "category": "QoL"
+    },
+    {
+      "name": "Distant Horizons",
+      "slug": "distanthorizons",
+      "category": "Performance"
+    },
+    {
+      "name": "Create: Bits 'n' Bobs",
+      "slug": "create-bits-n-bobs",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Create: Structures Arise",
+      "slug": "create-structures-arise",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Create: Let The Adventure Begin",
+      "slug": "create-let-the-adventure-begin",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Create: Tweaked Controllers",
+      "slug": "create-tweaked-controllers",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Create: Compatible Storage",
+      "slug": "create-compatible-storage",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Create: Ultimate Factory",
+      "slug": "create-ultimate-factory",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Create: Factory",
+      "slug": "create-factory",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Create: Blocks & Bogies",
+      "slug": "blocks-bogies",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Create: Trading Floor",
+      "slug": "create-trading-floor",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Create: Bitterballen",
+      "slug": "create-bitterballen",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Sodium",
+      "slug": "sodium",
+      "category": "Performance",
+      "version": "mc1.21.1-0.8.13-beta.2-neoforge",
+      "//version": "Veil requires Sodium >=0.8.12; the newest release channel build is older."
+    },
+    {
+      "name": "Iris Shaders",
+      "slug": "iris",
+      "category": "Pretty"
+    },
+    {
+      "name": "Jade Addons",
+      "slug": "jade-addons-forge",
+      "category": "QoL"
+    },
+    {
+      "name": "Reese's Sodium Options",
+      "slug": "reeses-sodium-options",
+      "category": "Pretty"
+    },
+    {
+      "name": "Sodium Extra",
+      "slug": "sodium-extra",
+      "category": "Pretty"
+    },
+    {
+      "name": "Create: Sound of Steam",
+      "slug": "create-sound-of-steam",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Better Advancements",
+      "slug": "better-advancements",
+      "category": "QoL"
+    },
+    {
+      "name": "Cubes Without Borders",
+      "slug": "cubes-without-borders",
+      "category": "QoL"
+    },
+    {
+      "name": "Cool Rain Reforged",
+      "slug": "cool-rain-reforged",
+      "category": "Pretty"
+    },
+    {
+      "name": "LambDynamicLights",
+      "slug": "lambdynamiclights",
+      "category": "Pretty"
+    },
+    {
+      "name": "Corpse",
+      "slug": "corpse",
+      "category": "Miscellaneous"
+    },
+    {
+      "name": "Alternate Current",
+      "slug": "alternate-current",
+      "category": "Performance"
+    },
+    {
+      "name": "Create: Easy Structures",
+      "slug": "create-easy-structures",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Falling Leaves",
+      "slug": "fallingleavesforge",
+      "category": "Pretty"
+    },
+    {
+      "name": "Yeetus Experimentus",
+      "slug": "yeetus-experimentus",
+      "category": "QoL"
+    },
+    {
+      "name": "Amendments",
+      "slug": "amendments",
+      "category": "Building"
+    },
+    {
+      "name": "Create: Design n' Decor",
+      "slug": "create-design-n-decor",
+      "category": "Core Tech",
+      "//revived": "Revived on 1.21. The 1.20.1 build pinned create=0.5.1-f exactly and hard-failed; 2.2b declares [6.0.4,)."
+    },
+    {
+      "name": "Create: Stam1o Tweaks",
+      "slug": "create-stam1o-tweaks",
+      "category": "Core Tech",
+      "//revived": "Revived on 1.21. Rejected on 1.20.1 as a 2024 build with no create dependency; 1.0.8 declares [6.0.0,)."
+    },
+    {
+      "name": "Create: SchematicChecker",
+      "slug": "createschematicchecker",
+      "category": "QoL",
+      "//revived": "Revived on 1.21. The 1.20.1 build's interceptSlot1 redirector found no target in Create 6.0.8; 2.27.37 declares [6.0.1,)."
+    },
+    {
+      "name": "Easy Villagers",
+      "slug": "easy-villagers",
+      "category": "Utility",
+      "//revived": "Revived on 1.21. Rejected only because no Fabric 1.20.1 build existed; NeoForge 1.21.1 has one."
+    },
+    {
+      "name": "Supplementaries",
+      "slug": "supplementaries",
+      "category": "Building",
+      "//revived": "Revived on 1.21. The Fabric ban was Moonlight-chain-vs-Hephaestus load ordering; there is no Tinkers on 1.21, so that interaction cannot occur. Moonlight is already present via Amendments."
+    },
+    {
+      "name": "Tom's Simple Storage",
+      "slug": "toms-storage",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Create Contraption Terminals",
+      "slug": "create-contraption-terminals",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Create: Dragons Plus",
+      "slug": "create-dragons-plus",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Escalated",
+      "slug": "escalated",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Create: Compressed",
+      "slug": "create-compressed",
+      "category": "Core Tech"
+    },
+    {
+      "name": "EMI: Create Schematics",
+      "slug": "emi-create-schematics",
+      "category": "QoL"
+    },
+    {
+      "name": "EMI Extra Mod Integrations",
+      "slug": "extra-mod-integrations",
+      "category": "QoL"
+    },
+    {
+      "name": "Cut Through",
+      "slug": "cut-through",
+      "category": "QoL"
+    },
+    {
+      "name": "Easy Anvils",
+      "slug": "easy-anvils",
+      "category": "QoL"
+    },
+    {
+      "name": "Easy Magic",
+      "slug": "easy-magic",
+      "category": "QoL"
+    },
+    {
+      "name": "Visual Workbench",
+      "slug": "visual-workbench",
+      "category": "QoL"
+    },
+    {
+      "name": "Smarter Farmers",
+      "slug": "smarter-farmers-farmers-replant",
+      "category": "QoL"
+    },
+    {
+      "name": "Diagonal Fences",
+      "slug": "diagonal-fences",
+      "category": "Building"
+    },
+    {
+      "name": "Macaw's Roofs",
+      "slug": "macaws-roofs",
+      "category": "Building"
+    },
+    {
+      "name": "e4mc",
+      "slug": "e4mc",
+      "category": "Server Management"
+    },
+    {
+      "name": "Extended Wrenches",
+      "slug": "extended-wrenches",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Extra Gauges",
+      "slug": "extra-gauges",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Create: Molten Vents",
+      "slug": "create-molten-vents",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Create: Stone Generators",
+      "slug": "create-stone-generators",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Macaw's Trapdoors",
+      "slug": "macaws-trapdoors",
+      "category": "Building"
+    },
+    {
+      "name": "Macaw's Windows",
+      "slug": "macaws-windows",
+      "category": "Building"
+    },
+    {
+      "name": "Diagonal Windows",
+      "slug": "diagonal-windows",
+      "category": "Building"
+    },
+    {
+      "name": "Diagonal Walls",
+      "slug": "diagonal-walls",
+      "category": "Building"
+    },
+    {
+      "name": "Dynamic Crosshair",
+      "slug": "dynamiccrosshair",
+      "category": "QoL"
+    },
+    {
+      "name": "Explorer's Compass",
+      "slug": "explorers-compass",
+      "category": "Exploration"
+    },
+    {
+      "name": "More Culling",
+      "slug": "moreculling",
+      "category": "Performance"
+    },
+    {
+      "name": "Lawful Mob Despawn",
+      "slug": "lmd",
+      "category": "Performance"
+    },
+    {
+      "name": "AI Improvements",
+      "slug": "ai-improvements",
+      "category": "Performance"
+    },
+    {
+      "name": "Corpse x Curios API Compat",
+      "slug": "corpse-x-curios-api-compat",
+      "category": "QoL"
+    },
+    {
+      "name": "Bountiful Baubles: Reforked",
+      "slug": "bountifulbaublesreforked",
+      "category": "Core Tech"
+    },
+    {
+      "name": "Controlify (Controller support)",
+      "slug": "controlify",
+      "category": "QoL"
+    },
+    {
+      "name": "Saturn",
+      "slug": "saturn",
+      "category": "Performance"
+    },
+    {
+      "name": "Create: Alloyed",
+      "slug": "create-alloyed",
+      "category": "Create"
+    },
+    {
+      "name": "Sophisticated Backpacks in Create",
+      "slug": "sophisticated-backpacks-create-integration",
+      "category": "Create"
+    },
+    {
+      "name": "Create: Garnished",
+      "slug": "create-garnished",
+      "category": "Create"
+    },
+    {
+      "name": "Create: Steam n Rails",
+      "slug": "create-steam-n-rails-1.21.1",
+      "category": "Create"
+    },
+    {
+      "name": "Create: Prismatic Shine",
+      "slug": "create-prismatic-shine",
+      "category": "Create"
+    },
+    {
+      "name": "End's Delight",
+      "slug": "ends-delight",
+      "category": "Food"
+    },
+    {
+      "name": "Ocean's Delight",
+      "slug": "oceans-delight",
+      "category": "Food"
+    },
+    {
+      "name": "Nether's Delight",
+      "slug": "my-nethers-delight",
+      "category": "Food"
+    },
+    {
+      "name": "Expanded Delight",
+      "slug": "expanded-delight",
+      "category": "Food"
+    },
+    {
+      "name": "Farmer's Knives",
+      "slug": "farmers-knives",
+      "category": "Food"
+    },
+    {
+      "name": "More Delight",
+      "slug": "more-delight",
+      "category": "Food"
+    },
+    {
+      "name": "Let's Do: Vinery",
+      "slug": "lets-do-vinery",
+      "category": "Food"
+    },
+    {
+      "name": "Let's Do: HerbalBrews",
+      "slug": "lets-do-herbalbrews",
+      "category": "Food"
+    },
+    {
+      "name": "Let's Do: Farm & Charm",
+      "slug": "lets-do-farm-charm",
+      "category": "Food"
+    },
+    {
+      "name": "Macaw's Fences and Walls",
+      "slug": "macaws-fences-and-walls",
+      "category": "Decoration"
+    },
+    {
+      "name": "Macaw's Bridges",
+      "slug": "macaws-bridges",
+      "category": "Decoration"
+    },
+    {
+      "name": "Macaw's Doors",
+      "slug": "macaws-doors",
+      "category": "Decoration"
+    },
+    {
+      "name": "Macaw's Furniture",
+      "slug": "macaws-furniture",
+      "category": "Decoration"
+    },
+    {
+      "name": "Macaw's Stairs",
+      "slug": "macaws-stairs",
+      "category": "Decoration"
+    },
+    {
+      "name": "Another Furniture",
+      "slug": "another-furniture",
+      "category": "Decoration"
+    },
+    {
+      "name": "Cluttered",
+      "slug": "cluttered",
+      "category": "Decoration"
+    },
+    {
+      "name": "Easy Shulker Boxes",
+      "slug": "easy-shulker-boxes",
+      "category": "QoL"
+    },
+    {
+      "name": "Inventory Profiles Next",
+      "slug": "inventory-profiles-next",
+      "category": "QoL"
+    },
+    {
+      "name": "Cherished Worlds",
+      "slug": "cherished-worlds",
+      "category": "QoL"
+    },
+    {
+      "name": "Guard Villagers",
+      "slug": "guard-villagers",
+      "category": "QoL"
+    },
+    {
+      "name": "Towns and Towers",
+      "slug": "towns-and-towers",
+      "category": "Worldgen"
+    },
+    {
+      "name": "Dungeons and Taverns",
+      "slug": "dungeons-and-taverns",
+      "category": "Worldgen"
+    },
+    {
+      "name": "Deeper and Darker",
+      "slug": "deeperdarker",
+      "category": "Worldgen"
+    },
+    {
+      "name": "L_Ender's Cataclysm",
+      "slug": "l_enders-cataclysm",
+      "category": "Adventure"
+    },
+    {
+      "name": "YUNG's Better Dungeons",
+      "slug": "yungs-better-dungeons",
+      "category": "Worldgen"
+    },
+    {
+      "name": "YUNG's Better Nether Fortresses",
+      "slug": "yungs-better-nether-fortresses",
+      "category": "Worldgen"
+    },
+    {
+      "name": "YUNG's Better Strongholds",
+      "slug": "yungs-better-strongholds",
+      "category": "Worldgen"
+    },
+    {
+      "name": "Legendary Tooltips",
+      "slug": "legendary-tooltips",
+      "category": "QoL"
+    },
+    {
+      "name": "Durability Tooltip",
+      "slug": "durability-tooltip",
+      "category": "QoL"
+    },
+    {
+      "name": "Enchanting Infuser",
+      "slug": "enchanting-infuser",
+      "category": "Equipment"
+    },
+    {
+      "name": "Grind Enchantments",
+      "slug": "grind-enchantments",
+      "category": "Equipment"
+    },
+    {
+      "name": "Baubley Heart Canisters",
+      "slug": "baubley-heart-canisters",
+      "category": "Tinkers"
+    },
+    {
+      "name": "Tinkers' Bounce Pad",
+      "slug": "tinkers-bounce-pad",
+      "category": "Tinkers"
+    },
+    {
+      "name": "Raw Blocks Smeltery & Blasting",
+      "slug": "raw-blocks-smeltery-and-blasting",
+      "category": "Tinkers"
+    },
+    {
+      "name": "Aquaculture 2",
+      "slug": "aquaculture",
+      "category": "Adventure"
+    },
+    {
+      "name": "ScalableLux",
+      "slug": "scalablelux",
+      "category": "Performance"
+    },
+    {
+      "name": "Ksyxis",
+      "slug": "ksyxis",
+      "category": "Performance"
+    },
+    {
+      "name": "Structure Layout Optimizer",
+      "slug": "structure-layout-optimizer",
+      "category": "Performance"
+    },
+    {
+      "name": "Chloride",
+      "slug": "chloride",
+      "category": "Performance"
+    },
+    {
+      "name": "YUNG's Better Mineshafts",
+      "slug": "yungs-better-mineshafts",
+      "category": "Worldgen"
+    },
+    {
+      "name": "YUNG's Better Jungle Temples",
+      "slug": "yungs-better-jungle-temples",
+      "category": "Worldgen"
+    },
+    {
+      "name": "YUNG's Better Witch Huts",
+      "slug": "yungs-better-witch-huts",
+      "category": "Worldgen"
+    },
+    {
+      "name": "YUNG's Better Desert Temples",
+      "slug": "yungs-better-desert-temples",
+      "category": "Worldgen"
+    },
+    {
+      "name": "YUNG's Better Ocean Monuments",
+      "slug": "yungs-better-ocean-monuments",
+      "category": "Worldgen"
+    },
+    {
+      "name": "YUNG's Better End Island",
+      "slug": "yungs-better-end-island",
+      "category": "Worldgen"
+    },
+    {
+      "name": "YUNG's Extras",
+      "slug": "yungs-extras",
+      "category": "Worldgen"
+    },
+    {
+      "name": "YUNG's Bridges",
+      "slug": "yungs-bridges",
+      "category": "Worldgen"
+    },
+    {
+      "name": "C2ME (chunk performance)",
+      "slug": "c2me-neoforge",
+      "category": "Performance"
+    },
+    {
+      "name": "Flerovium",
+      "slug": "flerovium",
+      "category": "Performance"
+    },
+    {
+      "name": "Redirected",
+      "slug": "redirected",
+      "category": "Performance"
+    },
+    {
+      "name": "Ixeris",
+      "slug": "ixeris",
+      "category": "Performance"
+    },
+    {
+      "name": "Fast IP Ping",
+      "slug": "fast-ip-ping",
+      "category": "Performance"
+    },
+    {
+      "name": "Visuality",
+      "slug": "visuality-forge",
+      "category": "Decoration"
+    },
+    {
+      "name": "Particle Rain",
+      "slug": "particle-rain",
+      "category": "Decoration"
+    },
+    {
+      "name": "Exposure (camera)",
+      "slug": "exposure",
+      "category": "Adventure"
+    },
+    {
+      "name": "Item Highlighter",
+      "slug": "item-highlighter",
+      "category": "QoL"
+    },
+    {
+      "name": "Pick Up Notifier",
+      "slug": "pick-up-notifier",
+      "category": "QoL"
+    },
+    {
+      "name": "Double Doors",
+      "slug": "double-doors",
+      "category": "QoL"
+    },
+    {
+      "name": "Better Third Person",
+      "slug": "better-third-person",
+      "category": "QoL"
+    },
+    {
+      "name": "Paxi",
+      "slug": "paxi",
+      "category": "QoL"
+    },
+    {
+      "name": "Crash Assistant",
+      "slug": "crash-assistant",
+      "category": "QoL"
+    },
+    {
+      "name": "Lithium",
+      "slug": "lithium",
+      "category": "Performance"
+    },
+    {
+      "name": "Neruina (tick crash guard)",
+      "slug": "neruina",
+      "category": "QoL"
+    },
+    {
+      "name": "Nether Portal Fix",
+      "slug": "netherportalfix",
+      "category": "QoL"
+    },
+    {
+      "name": "Default Options",
+      "slug": "default-options",
+      "category": "QoL"
+    },
+    {
+      "name": "ZFastNoise",
+      "slug": "zfastnoise",
+      "category": "Performance"
+    },
+    {
+      "name": "Shadowy Path Blocks",
+      "slug": "sodium-shadowy-path-blocks",
+      "category": "Performance"
+    },
+    {
+      "name": "Fast Paintings",
+      "slug": "fast-paintings",
+      "category": "Performance"
+    },
+    {
+      "name": "Immersive Optimization",
+      "slug": "immersive-optimization",
+      "category": "Performance"
+    },
+    {
+      "name": "Chunks Fade In",
+      "slug": "chunks-fade-in",
+      "category": "Performance"
+    },
+    {
+      "name": "Cerulean Advancements",
+      "slug": "cerulean-advancements",
+      "category": "Performance"
+    },
+    {
+      "name": "Not Enough Recipe Book",
+      "slug": "notenoughrecipebook",
+      "category": "Performance"
+    },
+    {
+      "name": "Structory",
+      "slug": "structory",
+      "category": "Worldgen"
+    },
+    {
+      "name": "Explorify",
+      "slug": "explorify",
+      "category": "Worldgen"
+    },
+    {
+      "name": "When Dungeons Arise",
+      "slug": "when-dungeons-arise",
+      "category": "Worldgen"
+    },
+    {
+      "name": "Moog's End Structures",
+      "slug": "mes-moogs-end-structures",
+      "category": "Worldgen"
+    },
+    {
+      "name": "Stoneworks",
+      "slug": "stoneworks",
+      "category": "Decoration"
+    },
+    {
+      "name": "Artifacts",
+      "slug": "artifacts",
+      "category": "Adventure"
+    },
+    {
+      "name": "Trading Post",
+      "slug": "trading-post",
+      "category": "QoL"
+    },
+    {
+      "name": "Traveler's Titles",
+      "slug": "travelers-titles",
+      "category": "QoL"
+    },
+    {
+      "name": "Bad Wither No Cookie",
+      "slug": "bad-wither-no-cookie",
+      "category": "QoL"
+    },
+    {
+      "name": "Incendium",
+      "slug": "incendium",
+      "category": "Worldgen"
+    },
+    {
+      "name": "Async Particles",
+      "slug": "asyncparticles",
+      "category": "Performance"
+    },
+    {
+      "name": "Sophisticated Storage on Contraptions",
+      "slug": "sophisticated-storage-create-integration",
+      "category": "Create"
+    },
+    {
+      "name": "Storage Drawers Create Compat",
+      "slug": "storage-drawers-create-compat",
+      "category": "Create"
+    },
+    {
+      "name": "Create: Additional Logistics",
+      "slug": "create-additional-logistics",
+      "category": "Create"
+    },
+    {
+      "name": "Deployer (Create logistics lib)",
+      "slug": "deployer",
+      "category": "Create"
+    },
+    {
+      "name": "GuideME (in-game guidebook)",
+      "slug": "guideme",
+      "category": "QoL"
+    },
+    {
+      "name": "Naturalist",
+      "slug": "naturalist",
+      "category": "Adventure"
+    },
+    {
+      "name": "Create: Metallurgy",
+      "slug": "create-metallurgy",
+      "category": "Create"
+    },
+    {
+      "name": "Better Smithing Table",
+      "slug": "bettersmithingtable",
+      "category": "QoL"
+    },
+    {
+      "name": "Time in a Bottle",
+      "slug": "time-in-a-bottle-universal",
+      "category": "QoL"
+    },
+    {
+      "name": "Questlog",
+      "slug": "questlog",
+      "category": "Utility"
+    }
+  ],
+  "//amendments": "Re-admitted on 1.21. The Fabric ban was Moonlight-chain-vs-Hephaestus: Moonlight shifted load ordering so Tinkers modifiers resolved before the dynamic modifier registry was ready. There is no Tinkers on 1.21, so that interaction cannot occur. It appears in 6/34 working reference packs. Watch item: if the join test disconnects, this is the first thing to pull.",
+  "//isolation-sweep": "Ran tools/isolate.js --all-rejected on 2026-08-07 across the full reject history (current + archived 1.20.1 configs). Result: 11 have no NeoForge 1.21.1 build at all, 1 fails on a missing dependency that is not on Modrinth (create-ultimine -> ftbultimine), 1 passes and is already shipped (moonlight, via Amendments/Supplementaries). Nothing revivable remains — the reject list is accurate and does not need re-litigating.",
+  "//extra-gauges": "Note: this is `extra-gauges`, NOT `create-extra-gauges` which was rejected earlier as absent from Modrinth. Different project, and this one has 10 NeoForge 1.21.1 builds.",
+  "//levelling": "Tinkers' Levelling Addon 1.5.0 in overrides/mods/ — a private 1.21.1/NeoForge port of Pyre540's MIT mod (upstream stops at 1.20.1 Forge). Port work: ModDevGradle build, Forge->NeoForge package moves, SimpleChannel -> CustomPacketPayload networking rewrite, ToolAction -> ItemAbility, LevelingValue.compute(), EquipmentSlot.Type.HUMANOID_ARMOR, and a local replacement for the removed ItemStack.ATTRIBUTE_MODIFIER_FORMAT. Datagen provider excluded (build-only; JSON already committed).",
+  "//external": "Mods with no Modrinth release for 1.21.1/NeoForge. Hosted as GitHub release assets (a whitelisted .mrpack download domain) so they reach players over a CDN as ordinary files[] entries instead of being embedded in overrides/. Assets are immutable: the manifest pins sha1+sha512, so a new jar build needs a NEW release tag, never a replaced asset.",
+  "external": [
+    {
+      "file": "TinkersConstruct-1.21.1-3.12.2.jar",
+      "url": "https://github.com/ryancircelli/tinker-and-create-mods/releases/download/v1.21.1-1/TinkersConstruct-1.21.1-3.12.2.jar",
+      "env": {
+        "client": "required",
+        "server": "required"
+      }
+    },
+    {
+      "file": "Mantle-1.21.1-1.12.1.jar",
+      "url": "https://github.com/ryancircelli/tinker-and-create-mods/releases/download/v1.21.1-1/Mantle-1.21.1-1.12.1.jar",
+      "env": {
+        "client": "required",
+        "server": "required"
+      }
+    },
+    {
+      "file": "TinkersLevellingAddon-1.21.1-1.5.0.jar",
+      "url": "https://github.com/ryancircelli/tinker-and-create-mods/releases/download/v1.21.1-1/TinkersLevellingAddon-1.21.1-1.5.0.jar",
+      "env": {
+        "client": "required",
+        "server": "required"
+      }
+    }
+  ]
+}

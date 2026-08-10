@@ -1,0 +1,52 @@
+{
+  "title": "It Moves",
+  "description": "Contraptions are the point of Create: a block assembly that moves as one. Build a Mechanical Piston or a Windmill Bearing and watch it go.",
+  "icon": {
+    "item": "create:mechanical_piston"
+  },
+  "chapter": "questlog:create",
+  "sort_order": 4,
+  "toast_on_unlock": false,
+  "toast_on_complete": true,
+  "panel_height": 200,
+  "objectives": [
+    {
+      "type": "questlog:or",
+      "name": "Build something that moves",
+      "objectives": [
+        {
+          "type": "questlog:item_obtain",
+          "item": "create:mechanical_piston",
+          "required_amount": 1,
+          "name": "Obtain a Mechanical Piston"
+        },
+        {
+          "type": "questlog:item_obtain",
+          "item": "create:windmill_bearing",
+          "required_amount": 1,
+          "name": "Obtain a Windmill Bearing"
+        },
+        {
+          "type": "questlog:item_obtain",
+          "item": "create:mechanical_bearing",
+          "required_amount": 1,
+          "name": "Obtain a Mechanical Bearing"
+        }
+      ]
+    }
+  ],
+  "rewards": [
+    {
+      "type": "questlog:experience",
+      "experience": 80,
+      "levels": false,
+      "auto_claim": true
+    },
+    {
+      "type": "questlog:item",
+      "item": "create:brass_ingot",
+      "count": 8,
+      "auto_claim": true
+    }
+  ]
+}

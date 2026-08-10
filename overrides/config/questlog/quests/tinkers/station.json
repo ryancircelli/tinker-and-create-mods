@@ -1,0 +1,34 @@
+{
+  "title": "A Place to Work",
+  "description": "Tinkers' tools are assembled, not crafted. Build a Tinker Station -- it is where every tool in this line gets made and repaired.\n\nPattern: a Crafting Station plus four Blank Patterns.",
+  "icon": {
+    "item": "tconstruct:tinker_station"
+  },
+  "chapter": "questlog:tinkers",
+  "sort_order": 1,
+  "toast_on_unlock": false,
+  "toast_on_complete": true,
+  "panel_height": 200,
+  "objectives": [
+    {
+      "type": "questlog:item_obtain",
+      "item": "tconstruct:tinker_station",
+      "required_amount": 1,
+      "name": "Obtain a Tinker Station"
+    }
+  ],
+  "rewards": [
+    {
+      "type": "questlog:item",
+      "item": "tconstruct:pattern",
+      "count": 4,
+      "auto_claim": true
+    },
+    {
+      "type": "questlog:experience",
+      "experience": 30,
+      "levels": false,
+      "auto_claim": true
+    }
+  ]
+}

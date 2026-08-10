@@ -1,0 +1,40 @@
+{
+  "title": "The Smeltery",
+  "description": "The real thing: a multiblock that doubles your ore output and alloys metals you cannot craft any other way. Build the controller and a tank, then wall it in with Seared Bricks.",
+  "icon": {
+    "item": "tconstruct:smeltery_controller"
+  },
+  "chapter": "questlog:tinkers",
+  "sort_order": 4,
+  "toast_on_unlock": false,
+  "toast_on_complete": true,
+  "panel_height": 200,
+  "objectives": [
+    {
+      "type": "questlog:item_obtain",
+      "item": "tconstruct:smeltery_controller",
+      "required_amount": 1,
+      "name": "Obtain a Smeltery Controller"
+    },
+    {
+      "type": "questlog:item_obtain",
+      "item": "tconstruct:seared_bricks",
+      "required_amount": 16,
+      "name": "Gather 16 Seared Bricks blocks"
+    }
+  ],
+  "rewards": [
+    {
+      "type": "questlog:experience",
+      "experience": 80,
+      "levels": false,
+      "auto_claim": true
+    },
+    {
+      "type": "questlog:item",
+      "item": "minecraft:iron_ingot",
+      "count": 8,
+      "auto_claim": true
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "title": "Point Me at It",
+  "description": "Nature's Compass finds any biome by name. In a pack with this much added worldgen, it turns 'wander until you find it' into 'walk there'.",
+  "icon": {
+    "item": "naturescompass:naturescompass"
+  },
+  "chapter": "questlog:explore",
+  "sort_order": 1,
+  "toast_on_unlock": false,
+  "toast_on_complete": true,
+  "panel_height": 200,
+  "include_in_main": true,
+  "objectives": [
+    {
+      "type": "questlog:item_obtain",
+      "item": "naturescompass:naturescompass",
+      "required_amount": 1,
+      "name": "Craft a Nature’s Compass"
+    }
+  ],
+  "rewards": [
+    {
+      "type": "questlog:item",
+      "item": "minecraft:map",
+      "count": 1,
+      "auto_claim": true
+    },
+    {
+      "type": "questlog:experience",
+      "experience": 50,
+      "levels": false,
+      "auto_claim": true
+    }
+  ]
+}

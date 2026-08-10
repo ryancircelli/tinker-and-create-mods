@@ -1,0 +1,35 @@
+{
+  "title": "Pockets",
+  "description": "A backpack is the single biggest early quality-of-life win in this pack. Craft one and wear it -- it upgrades all the way to Netherite and takes filter and magnet upgrades.\n\nThen: [upgrade it](quest:questlog:carry/upgrade).",
+  "icon": {
+    "item": "sophisticatedbackpacks:backpack"
+  },
+  "chapter": "questlog:carry",
+  "sort_order": 1,
+  "toast_on_unlock": false,
+  "toast_on_complete": true,
+  "panel_height": 200,
+  "include_in_main": true,
+  "objectives": [
+    {
+      "type": "questlog:item_obtain",
+      "item": "sophisticatedbackpacks:backpack",
+      "required_amount": 1,
+      "name": "Craft a Backpack"
+    }
+  ],
+  "rewards": [
+    {
+      "type": "questlog:item",
+      "item": "minecraft:leather",
+      "count": 8,
+      "auto_claim": true
+    },
+    {
+      "type": "questlog:experience",
+      "experience": 30,
+      "levels": false,
+      "auto_claim": true
+    }
+  ]
+}
