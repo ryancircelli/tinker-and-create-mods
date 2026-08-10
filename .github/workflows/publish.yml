@@ -83,6 +83,10 @@ jobs:
       # No jars are committed: the three non-Modrinth mods are referenced by
       # GitHub release URL, which is a whitelisted .mrpack download domain.
       - name: Build pack
+        # Authenticated so the ~300 resolution calls are billed to this account
+        # rather than to the shared GitHub runner IP, which hit HTTP 429.
+        env:
+          MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
         run: node tools/build.js
 
       - name: Verify the build

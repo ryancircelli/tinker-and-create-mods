@@ -70,7 +70,14 @@ async function api(endpoint, { cacheKey = null } = {}) {
   for (let attempt = 0; attempt < 5; attempt++) {
     try {
       apiCalls++;
-      const res = await fetch(API + endpoint, { headers: { 'User-Agent': UA } });
+      // Modrinth rate-limits anonymous traffic by IP. A CI runner shares its IP
+      // with everyone else on GitHub Actions and starts from an empty cache, so
+      // ~300 calls per build reliably tripped HTTP 429. Authenticating moves the
+      // budget to this account. Optional: local runs without a token still work,
+      // they just lean on .cache/ instead.
+      const headers = { 'User-Agent': UA };
+      if (process.env.MODRINTH_TOKEN) headers.Authorization = process.env.MODRINTH_TOKEN;
+      const res = await fetch(API + endpoint, { headers });
 
       if (res.status === 404) return null;
 
