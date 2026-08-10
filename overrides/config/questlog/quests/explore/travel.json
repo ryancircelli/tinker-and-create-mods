@@ -18,10 +18,22 @@
       "name": "Craft a Hang Glider"
     },
     {
-      "type": "questlog:item_obtain",
-      "item": "tconstruct:slime_boots",
-      "required_amount": 1,
-      "name": "Craft Slimeboots"
+      "type": "questlog:or",
+      "name": "Craft Slimeboots",
+      "objectives": [
+        {
+          "type": "questlog:item_obtain",
+          "item": "tconstruct:slime_boots",
+          "required_amount": 1,
+          "name": "Tinkers' Slimeboots"
+        },
+        {
+          "type": "questlog:item_obtain",
+          "item": "slime_time:slime_boots",
+          "required_amount": 1,
+          "name": "Slime Time Slime Boots"
+        }
+      ]
     },
     {
       "type": "questlog:item_obtain",

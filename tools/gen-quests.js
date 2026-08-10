@@ -445,7 +445,12 @@ quest('explore/travel', {
       + 'Sling up, glide out, land in the boots. That loop covers a lot of ground for the cost of some slime and cloth.',
   objectives: [
     obtain('#hangglider:hang_gliders', 1, 'Craft a Hang Glider'),
-    obtain('tconstruct:slime_boots', 1, 'Craft Slimeboots'),
+    // Two mods ship slime boots now (Tinkers' and Slime Time). Either cancels
+    // fall damage, so accept whichever the player actually crafted rather than
+    // failing the quest over which recipe they happened to find.
+    anyOf('Craft Slimeboots',
+      obtain('tconstruct:slime_boots', 1, "Tinkers' Slimeboots"),
+      obtain('slime_time:slime_boots', 1, 'Slime Time Slime Boots')),
     obtain('slime_time:slime_sling', 1, 'Craft a Slime Sling'),
   ],
   rewards: [item('minecraft:slime_ball', 16), xp(80)],
