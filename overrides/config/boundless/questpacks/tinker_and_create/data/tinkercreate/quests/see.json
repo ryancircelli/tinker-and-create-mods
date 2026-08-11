@@ -1,0 +1,40 @@
+{
+  "id": "see",
+  "name": "Have a Look Around",
+  "icon": "minecraft:spyglass",
+  "description": "The world generation here is heavily expanded. Get your bearings before you dig in.",
+  "category": "getting_started",
+  "dependencies": [
+    "first_wood"
+  ],
+  "lockAfterDependency": false,
+  "hiddenUnderDependency": false,
+  "optional": false,
+  "repeatable": false,
+  "autoComplete": false,
+  "completion": {
+    "targets": [
+      {
+        "kind": "item",
+        "id": "minecraft:spyglass",
+        "acceptedIds": [
+          "minecraft:spyglass",
+          "minecraft:raw_copper"
+        ],
+        "count": 1,
+        "hint": "A spyglass, or some copper"
+      }
+    ]
+  },
+  "rewards": {
+    "items": [
+      {
+        "item": "minecraft:torch",
+        "count": 32
+      }
+    ],
+    "commands": [],
+    "expType": "points",
+    "expAmount": 30
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "id": "create_wheel",
+  "name": "First Rotation",
+  "icon": "create:water_wheel",
+  "description": "Every Create machine runs on rotational force. A Water Wheel is the cheapest source and needs no fuel.",
+  "category": "create",
+  "dependencies": [
+    "create_goggles"
+  ],
+  "lockAfterDependency": false,
+  "hiddenUnderDependency": false,
+  "optional": false,
+  "repeatable": false,
+  "autoComplete": false,
+  "completion": {
+    "targets": [
+      {
+        "kind": "item",
+        "id": "create:water_wheel",
+        "count": 1
+      }
+    ]
+  },
+  "rewards": {
+    "items": [
+      {
+        "item": "create:shaft",
+        "count": 16
+      },
+      {
+        "item": "create:cogwheel",
+        "count": 8
+      }
+    ],
+    "commands": [],
+    "expType": "points",
+    "expAmount": 40
+  }
+}

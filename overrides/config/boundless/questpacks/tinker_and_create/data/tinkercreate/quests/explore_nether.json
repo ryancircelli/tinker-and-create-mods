@@ -1,0 +1,35 @@
+{
+  "id": "explore_nether",
+  "name": "Somewhere Warmer",
+  "icon": "minecraft:flint_and_steel",
+  "description": "Blaze rods, quartz and netherite all live through the portal. Tinkers alloys in particular want nether resources.",
+  "category": "explore",
+  "dependencies": [
+    "explore_structure"
+  ],
+  "lockAfterDependency": false,
+  "hiddenUnderDependency": false,
+  "optional": false,
+  "repeatable": false,
+  "autoComplete": false,
+  "completion": {
+    "targets": [
+      {
+        "kind": "advancement",
+        "id": "minecraft:nether/root",
+        "count": 1
+      }
+    ]
+  },
+  "rewards": {
+    "items": [
+      {
+        "item": "minecraft:obsidian",
+        "count": 10
+      }
+    ],
+    "commands": [],
+    "expType": "levels",
+    "expAmount": 5
+  }
+}

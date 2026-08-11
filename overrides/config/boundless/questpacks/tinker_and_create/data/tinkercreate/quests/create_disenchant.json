@@ -1,0 +1,39 @@
+{
+  "id": "create_disenchant",
+  "name": "Nothing Wasted",
+  "icon": "create_enchantment_industry:grindstone_drain",
+  "description": "A normal grindstone throws away the experience it strips off. A Grindstone Drain captures it as Liquid Experience for the Blaze Enchanter.",
+  "category": "create",
+  "dependencies": [
+    "create_xp"
+  ],
+  "lockAfterDependency": false,
+  "hiddenUnderDependency": false,
+  "optional": false,
+  "repeatable": false,
+  "autoComplete": false,
+  "completion": {
+    "targets": [
+      {
+        "kind": "item",
+        "id": "create_enchantment_industry:grindstone_drain",
+        "acceptedIds": [
+          "create_enchantment_industry:grindstone_drain",
+          "create_enchantment_industry:blaze_enchanter"
+        ],
+        "count": 1
+      }
+    ]
+  },
+  "rewards": {
+    "items": [
+      {
+        "item": "minecraft:lapis_lazuli",
+        "count": 32
+      }
+    ],
+    "commands": [],
+    "expType": "levels",
+    "expAmount": 5
+  }
+}

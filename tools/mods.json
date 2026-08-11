@@ -168,6 +168,11 @@
       "name": "InvMove",
       "slug": "invmove",
       "reason": "Let players walk around with the inventory and other GUIs open. Removed on request to restore vanilla behaviour, where opening a container roots you in place."
+    },
+    {
+      "name": "Questlog",
+      "slug": "questlog",
+      "reason": "Replaced by Boundless: Quests. Questlog has no submission objectives (its registry is detection-only) and no JEI integration, both of which were wanted. Boundless has submit targets that consume handed-in items, a JEI plugin, an in-game editor with export, and the same shippable-JSON plus /reload story."
     }
   ],
   "banned": [
@@ -243,6 +248,10 @@
     "sodium": {
       "client": "required",
       "server": "unsupported"
+    },
+    "boundless-quests": {
+      "client": "required",
+      "server": "required"
     }
   },
   "mods": [
@@ -1735,11 +1744,6 @@
       "category": "QoL"
     },
     {
-      "name": "Questlog",
-      "slug": "questlog",
-      "category": "Utility"
-    },
-    {
       "name": "Better Compatibility Checker",
       "slug": "better-compatibility-checker",
       "category": "QoL"
@@ -1753,6 +1757,11 @@
       "name": "Slime Time",
       "slug": "slime-time",
       "category": "Equipment"
+    },
+    {
+      "name": "Boundless: Quests",
+      "slug": "boundless-quests",
+      "category": "QoL"
     }
   ],
   "//amendments": "Re-admitted on 1.21. The Fabric ban was Moonlight-chain-vs-Hephaestus: Moonlight shifted load ordering so Tinkers modifiers resolved before the dynamic modifier registry was ready. There is no Tinkers on 1.21, so that interaction cannot occur. It appears in 6/34 working reference packs. Watch item: if the join test disconnects, this is the first thing to pull.",

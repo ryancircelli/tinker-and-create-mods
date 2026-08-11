@@ -1,0 +1,35 @@
+{
+  "id": "time_cooking",
+  "name": "Something Cooking",
+  "icon": "farmersdelight:cooking_pot",
+  "description": "Farmer's Delight turns that harvest into food worth eating. A Cooking Pot over a campfire is all you need.",
+  "category": "time",
+  "dependencies": [
+    "time_harvest"
+  ],
+  "lockAfterDependency": false,
+  "hiddenUnderDependency": false,
+  "optional": false,
+  "repeatable": false,
+  "autoComplete": false,
+  "completion": {
+    "targets": [
+      {
+        "kind": "item",
+        "id": "farmersdelight:cooking_pot",
+        "count": 1
+      }
+    ]
+  },
+  "rewards": {
+    "items": [
+      {
+        "item": "farmersdelight:iron_knife",
+        "count": 1
+      }
+    ],
+    "commands": [],
+    "expType": "points",
+    "expAmount": 50
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "tinkers_heart",
+  "name": "More To Give",
+  "icon": "bhc:red_heart_canister",
+  "description": "Heart Canisters raise your maximum health permanently. With a Smeltery running you can afford the metal.",
+  "category": "tinkers",
+  "dependencies": [
+    "tinkers_smeltery"
+  ],
+  "lockAfterDependency": false,
+  "hiddenUnderDependency": false,
+  "optional": false,
+  "repeatable": false,
+  "autoComplete": false,
+  "completion": {
+    "targets": [
+      {
+        "kind": "item",
+        "id": "bhc:red_heart_canister",
+        "count": 1
+      }
+    ]
+  },
+  "rewards": {
+    "items": [],
+    "commands": [],
+    "expType": "levels",
+    "expAmount": 5
+  }
+}

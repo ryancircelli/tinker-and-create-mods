@@ -1,0 +1,8 @@
+{
+  "id": "carry",
+  "name": "Carrying Capacity",
+  "icon": "sophisticatedbackpacks:backpack",
+  "order": 5,
+  "excludeFromAll": false,
+  "autoComplete": false
+}

@@ -1,0 +1,40 @@
+{
+  "id": "storage_sophisticated",
+  "name": "Chests That Grow",
+  "icon": "sophisticatedstorage:barrel",
+  "description": "Sophisticated Storage barrels and chests take upgrades: filters, magnets, auto-smelting, compacting. One block that keeps improving.",
+  "category": "storage",
+  "dependencies": [
+    "storage_barrel"
+  ],
+  "lockAfterDependency": false,
+  "hiddenUnderDependency": false,
+  "optional": false,
+  "repeatable": false,
+  "autoComplete": false,
+  "completion": {
+    "targets": [
+      {
+        "kind": "item",
+        "id": "sophisticatedstorage:barrel",
+        "acceptedIds": [
+          "sophisticatedstorage:barrel",
+          "sophisticatedstorage:chest"
+        ],
+        "count": 1,
+        "hint": "A Sophisticated barrel or chest"
+      }
+    ]
+  },
+  "rewards": {
+    "items": [
+      {
+        "item": "minecraft:iron_ingot",
+        "count": 8
+      }
+    ],
+    "commands": [],
+    "expType": "points",
+    "expAmount": 50
+  }
+}

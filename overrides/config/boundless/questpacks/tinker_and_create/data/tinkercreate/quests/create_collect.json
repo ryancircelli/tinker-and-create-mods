@@ -1,0 +1,35 @@
+{
+  "id": "create_collect",
+  "name": "Picking Up After Yourself",
+  "icon": "create:chute",
+  "description": "Create has no vacuum block and does not need one: a Chute pulls in items dropped above it, which is what a mob or crop farm produces.",
+  "category": "create",
+  "dependencies": [
+    "create_wheel"
+  ],
+  "lockAfterDependency": false,
+  "hiddenUnderDependency": false,
+  "optional": false,
+  "repeatable": false,
+  "autoComplete": false,
+  "completion": {
+    "targets": [
+      {
+        "kind": "item",
+        "id": "create:chute",
+        "count": 1
+      }
+    ]
+  },
+  "rewards": {
+    "items": [
+      {
+        "item": "create:andesite_alloy",
+        "count": 8
+      }
+    ],
+    "commands": [],
+    "expType": "points",
+    "expAmount": 40
+  }
+}

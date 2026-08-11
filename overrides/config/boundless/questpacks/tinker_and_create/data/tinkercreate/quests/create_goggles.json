@@ -1,0 +1,33 @@
+{
+  "id": "create_goggles",
+  "name": "Read the Machine",
+  "icon": "create:goggles",
+  "description": "Engineer's Goggles show stress, speed and contents. Almost every Create problem is diagnosed by putting these on.",
+  "category": "create",
+  "dependencies": [],
+  "lockAfterDependency": false,
+  "hiddenUnderDependency": false,
+  "optional": false,
+  "repeatable": false,
+  "autoComplete": false,
+  "completion": {
+    "targets": [
+      {
+        "kind": "item",
+        "id": "create:goggles",
+        "count": 1
+      }
+    ]
+  },
+  "rewards": {
+    "items": [
+      {
+        "item": "create:andesite_alloy",
+        "count": 8
+      }
+    ],
+    "commands": [],
+    "expType": "points",
+    "expAmount": 30
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "storage",
+  "name": "Storage & Logistics",
+  "icon": "create:item_vault",
+  "order": 4,
+  "excludeFromAll": false,
+  "autoComplete": false
+}

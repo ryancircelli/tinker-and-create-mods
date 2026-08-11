@@ -1,0 +1,8 @@
+{
+  "id": "time",
+  "name": "Time & Growth",
+  "icon": "tiab:time_in_a_bottle",
+  "order": 6,
+  "excludeFromAll": false,
+  "autoComplete": false
+}

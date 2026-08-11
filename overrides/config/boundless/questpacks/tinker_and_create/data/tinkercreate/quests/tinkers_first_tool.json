@@ -1,0 +1,35 @@
+{
+  "id": "tinkers_first_tool",
+  "name": "Your First Tool",
+  "icon": "tconstruct:pickaxe",
+  "description": "Assemble a pickaxe. Unlike a vanilla one it keeps its identity -- repairable forever, and upgradeable as you go.",
+  "category": "tinkers",
+  "dependencies": [
+    "tinkers_station"
+  ],
+  "lockAfterDependency": false,
+  "hiddenUnderDependency": false,
+  "optional": false,
+  "repeatable": false,
+  "autoComplete": false,
+  "completion": {
+    "targets": [
+      {
+        "kind": "item",
+        "id": "tconstruct:pickaxe",
+        "count": 1
+      }
+    ]
+  },
+  "rewards": {
+    "items": [
+      {
+        "item": "minecraft:iron_ingot",
+        "count": 4
+      }
+    ],
+    "commands": [],
+    "expType": "points",
+    "expAmount": 50
+  }
+}

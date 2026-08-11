@@ -1,0 +1,35 @@
+{
+  "id": "first_wood",
+  "name": "Punch Some Wood",
+  "icon": "minecraft:oak_log",
+  "description": "Every line in this pack starts with wood. Tinkers needs it for a Crafting Station, Create for shafts and casings.",
+  "category": "getting_started",
+  "dependencies": [
+    "welcome"
+  ],
+  "lockAfterDependency": false,
+  "hiddenUnderDependency": false,
+  "optional": false,
+  "repeatable": false,
+  "autoComplete": false,
+  "completion": {
+    "targets": [
+      {
+        "kind": "item",
+        "id": "#minecraft:logs",
+        "count": 16
+      }
+    ]
+  },
+  "rewards": {
+    "items": [
+      {
+        "item": "minecraft:crafting_table",
+        "count": 1
+      }
+    ],
+    "commands": [],
+    "expType": "points",
+    "expAmount": 20
+  }
+}

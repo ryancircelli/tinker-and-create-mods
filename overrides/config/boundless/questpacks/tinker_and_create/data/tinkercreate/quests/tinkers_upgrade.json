@@ -1,0 +1,40 @@
+{
+  "id": "tinkers_upgrade",
+  "name": "Room to Grow",
+  "icon": "minecraft:nether_star",
+  "description": "Tools here gain XP as you use them and level up on their own, each level granting a modifier slot. Apply Improvable to start that clock.",
+  "category": "tinkers",
+  "dependencies": [
+    "tinkers_first_tool"
+  ],
+  "lockAfterDependency": false,
+  "hiddenUnderDependency": false,
+  "optional": false,
+  "repeatable": false,
+  "autoComplete": false,
+  "completion": {
+    "targets": [
+      {
+        "kind": "item",
+        "id": "minecraft:nether_star",
+        "acceptedIds": [
+          "minecraft:nether_star",
+          "tconstruct:silky_cloth"
+        ],
+        "count": 1,
+        "hint": "Nether Star or Silky Cloth"
+      }
+    ]
+  },
+  "rewards": {
+    "items": [
+      {
+        "item": "tconstruct:pattern",
+        "count": 8
+      }
+    ],
+    "commands": [],
+    "expType": "points",
+    "expAmount": 100
+  }
+}

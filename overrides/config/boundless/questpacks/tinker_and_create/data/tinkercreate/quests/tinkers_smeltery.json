@@ -1,0 +1,40 @@
+{
+  "id": "tinkers_smeltery",
+  "name": "The Smeltery",
+  "icon": "tconstruct:smeltery_controller",
+  "description": "The real thing: doubles ore output and alloys metals you cannot make any other way.",
+  "category": "tinkers",
+  "dependencies": [
+    "tinkers_melter"
+  ],
+  "lockAfterDependency": false,
+  "hiddenUnderDependency": false,
+  "optional": false,
+  "repeatable": false,
+  "autoComplete": false,
+  "completion": {
+    "targets": [
+      {
+        "kind": "item",
+        "id": "tconstruct:smeltery_controller",
+        "count": 1
+      },
+      {
+        "kind": "item",
+        "id": "tconstruct:seared_bricks",
+        "count": 16
+      }
+    ]
+  },
+  "rewards": {
+    "items": [
+      {
+        "item": "minecraft:iron_ingot",
+        "count": 8
+      }
+    ],
+    "commands": [],
+    "expType": "points",
+    "expAmount": 80
+  }
+}

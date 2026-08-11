@@ -1,0 +1,51 @@
+{
+  "id": "explore_travel",
+  "name": "Getting Around Early",
+  "icon": "hangglider:hang_glider",
+  "description": "Three cheap items make travel bearable long before an elytra, and they stack.\n\nSling up, glide out, land in the boots. The gliders here are unbreakable.",
+  "category": "explore",
+  "dependencies": [
+    "explore_compass"
+  ],
+  "lockAfterDependency": false,
+  "hiddenUnderDependency": false,
+  "optional": false,
+  "repeatable": false,
+  "autoComplete": false,
+  "completion": {
+    "targets": [
+      {
+        "kind": "item",
+        "id": "#hangglider:hang_gliders",
+        "count": 1,
+        "hint": "Any hang glider"
+      },
+      {
+        "kind": "item",
+        "id": "tconstruct:slime_boots",
+        "acceptedIds": [
+          "tconstruct:slime_boots",
+          "slime_time:slime_boots"
+        ],
+        "count": 1,
+        "hint": "Either mod’s slime boots"
+      },
+      {
+        "kind": "item",
+        "id": "slime_time:slime_sling",
+        "count": 1
+      }
+    ]
+  },
+  "rewards": {
+    "items": [
+      {
+        "item": "minecraft:slime_ball",
+        "count": 16
+      }
+    ],
+    "commands": [],
+    "expType": "points",
+    "expAmount": 80
+  }
+}

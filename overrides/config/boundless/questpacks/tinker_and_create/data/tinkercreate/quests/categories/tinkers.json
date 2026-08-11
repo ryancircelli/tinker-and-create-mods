@@ -1,0 +1,8 @@
+{
+  "id": "tinkers",
+  "name": "Tinkers' Construct",
+  "icon": "tconstruct:seared_brick",
+  "order": 2,
+  "excludeFromAll": false,
+  "autoComplete": false
+}

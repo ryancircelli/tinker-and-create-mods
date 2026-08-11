@@ -1,0 +1,33 @@
+{
+  "id": "tinkers_station",
+  "name": "A Place to Work",
+  "icon": "tconstruct:tinker_station",
+  "description": "Tinkers' tools are assembled, not crafted. The Tinker Station is where every tool in this line is made, repaired and upgraded.",
+  "category": "tinkers",
+  "dependencies": [],
+  "lockAfterDependency": false,
+  "hiddenUnderDependency": false,
+  "optional": false,
+  "repeatable": false,
+  "autoComplete": false,
+  "completion": {
+    "targets": [
+      {
+        "kind": "item",
+        "id": "tconstruct:tinker_station",
+        "count": 1
+      }
+    ]
+  },
+  "rewards": {
+    "items": [
+      {
+        "item": "tconstruct:pattern",
+        "count": 4
+      }
+    ],
+    "commands": [],
+    "expType": "points",
+    "expAmount": 30
+  }
+}

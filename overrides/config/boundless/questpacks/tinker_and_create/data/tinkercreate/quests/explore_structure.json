@@ -1,0 +1,40 @@
+{
+  "id": "explore_structure",
+  "name": "Somebody Was Here First",
+  "icon": "minecraft:iron_pickaxe",
+  "description": "Several structure mods layer over this world. Loot one -- the gear inside is well ahead of what you can craft.",
+  "category": "explore",
+  "dependencies": [
+    "explore_compass"
+  ],
+  "lockAfterDependency": false,
+  "hiddenUnderDependency": false,
+  "optional": false,
+  "repeatable": false,
+  "autoComplete": false,
+  "completion": {
+    "targets": [
+      {
+        "kind": "item",
+        "id": "minecraft:diamond",
+        "acceptedIds": [
+          "minecraft:diamond",
+          "minecraft:golden_apple"
+        ],
+        "count": 3,
+        "hint": "Loot worth bringing home"
+      }
+    ]
+  },
+  "rewards": {
+    "items": [
+      {
+        "item": "minecraft:iron_ingot",
+        "count": 8
+      }
+    ],
+    "commands": [],
+    "expType": "points",
+    "expAmount": 80
+  }
+}

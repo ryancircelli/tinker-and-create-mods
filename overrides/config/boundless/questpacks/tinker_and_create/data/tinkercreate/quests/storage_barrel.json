@@ -1,0 +1,33 @@
+{
+  "id": "storage_barrel",
+  "name": "Somewhere to Put It",
+  "icon": "minecraft:barrel",
+  "description": "Chests fill up faster than you expect in this pack. A barrel is the cheap first step -- and the rest of this line is about never sorting by hand again.",
+  "category": "storage",
+  "dependencies": [],
+  "lockAfterDependency": false,
+  "hiddenUnderDependency": false,
+  "optional": false,
+  "repeatable": false,
+  "autoComplete": false,
+  "completion": {
+    "targets": [
+      {
+        "kind": "item",
+        "id": "minecraft:barrel",
+        "count": 2
+      }
+    ]
+  },
+  "rewards": {
+    "items": [
+      {
+        "item": "minecraft:oak_planks",
+        "count": 32
+      }
+    ],
+    "commands": [],
+    "expType": "points",
+    "expAmount": 20
+  }
+}

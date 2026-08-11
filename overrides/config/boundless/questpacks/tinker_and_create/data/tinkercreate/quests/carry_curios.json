@@ -1,0 +1,36 @@
+{
+  "id": "carry_curios",
+  "name": "Accessory Slots",
+  "icon": "minecraft:amethyst_shard",
+  "description": "This pack adds accessory slots -- belts, rings, charms. Open your inventory and look for the extra slots on the left.",
+  "category": "carry",
+  "dependencies": [
+    "carry_backpack"
+  ],
+  "lockAfterDependency": false,
+  "hiddenUnderDependency": false,
+  "optional": false,
+  "repeatable": false,
+  "autoComplete": false,
+  "completion": {
+    "targets": [
+      {
+        "kind": "item",
+        "id": "travelertoolbelt:belt",
+        "acceptedIds": [
+          "travelertoolbelt:belt",
+          "bhc:red_heart_canister",
+          "minecraft:elytra"
+        ],
+        "count": 1,
+        "hint": "Any accessory"
+      }
+    ]
+  },
+  "rewards": {
+    "items": [],
+    "commands": [],
+    "expType": "points",
+    "expAmount": 50
+  }
+}

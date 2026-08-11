@@ -1,0 +1,35 @@
+{
+  "id": "tinkers_melter",
+  "name": "Getting Molten",
+  "icon": "tconstruct:seared_melter",
+  "description": "A Seared Melter turns ore and scrap into molten metal -- the small version of the Smeltery.",
+  "category": "tinkers",
+  "dependencies": [
+    "tinkers_first_tool"
+  ],
+  "lockAfterDependency": false,
+  "hiddenUnderDependency": false,
+  "optional": false,
+  "repeatable": false,
+  "autoComplete": false,
+  "completion": {
+    "targets": [
+      {
+        "kind": "item",
+        "id": "tconstruct:seared_melter",
+        "count": 1
+      }
+    ]
+  },
+  "rewards": {
+    "items": [
+      {
+        "item": "tconstruct:seared_brick",
+        "count": 16
+      }
+    ],
+    "commands": [],
+    "expType": "points",
+    "expAmount": 40
+  }
+}

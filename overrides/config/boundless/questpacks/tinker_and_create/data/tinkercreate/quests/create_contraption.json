@@ -1,0 +1,41 @@
+{
+  "id": "create_contraption",
+  "name": "It Moves",
+  "icon": "create:mechanical_piston",
+  "description": "Contraptions are the point of Create: a block assembly that moves as one.",
+  "category": "create",
+  "dependencies": [
+    "create_press"
+  ],
+  "lockAfterDependency": false,
+  "hiddenUnderDependency": false,
+  "optional": false,
+  "repeatable": false,
+  "autoComplete": false,
+  "completion": {
+    "targets": [
+      {
+        "kind": "item",
+        "id": "create:mechanical_piston",
+        "acceptedIds": [
+          "create:mechanical_piston",
+          "create:windmill_bearing",
+          "create:mechanical_bearing"
+        ],
+        "count": 1,
+        "hint": "Any bearing or piston"
+      }
+    ]
+  },
+  "rewards": {
+    "items": [
+      {
+        "item": "create:brass_ingot",
+        "count": 8
+      }
+    ],
+    "commands": [],
+    "expType": "points",
+    "expAmount": 80
+  }
+}

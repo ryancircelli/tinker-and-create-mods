@@ -1,0 +1,40 @@
+{
+  "id": "create_press",
+  "name": "Pressing Matters",
+  "icon": "create:mechanical_press",
+  "description": "A Mechanical Press over a Depot turns ingots into sheets -- the gateway component for most of Create.",
+  "category": "create",
+  "dependencies": [
+    "create_wheel"
+  ],
+  "lockAfterDependency": false,
+  "hiddenUnderDependency": false,
+  "optional": false,
+  "repeatable": false,
+  "autoComplete": false,
+  "completion": {
+    "targets": [
+      {
+        "kind": "item",
+        "id": "create:mechanical_press",
+        "count": 1
+      },
+      {
+        "kind": "item",
+        "id": "create:belt_connector",
+        "count": 1
+      }
+    ]
+  },
+  "rewards": {
+    "items": [
+      {
+        "item": "create:andesite_alloy",
+        "count": 16
+      }
+    ],
+    "commands": [],
+    "expType": "points",
+    "expAmount": 60
+  }
+}

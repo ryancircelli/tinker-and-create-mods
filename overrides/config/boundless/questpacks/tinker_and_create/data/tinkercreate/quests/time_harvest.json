@@ -1,0 +1,35 @@
+{
+  "id": "time_harvest",
+  "name": "Bring in the Crop",
+  "icon": "minecraft:wheat",
+  "description": "With growth accelerated, farming stops being a waiting game.",
+  "category": "time",
+  "dependencies": [
+    "time_tiab"
+  ],
+  "lockAfterDependency": false,
+  "hiddenUnderDependency": false,
+  "optional": false,
+  "repeatable": false,
+  "autoComplete": false,
+  "completion": {
+    "targets": [
+      {
+        "kind": "item",
+        "id": "minecraft:wheat",
+        "count": 64
+      }
+    ]
+  },
+  "rewards": {
+    "items": [
+      {
+        "item": "minecraft:hay_block",
+        "count": 8
+      }
+    ],
+    "commands": [],
+    "expType": "points",
+    "expAmount": 40
+  }
+}

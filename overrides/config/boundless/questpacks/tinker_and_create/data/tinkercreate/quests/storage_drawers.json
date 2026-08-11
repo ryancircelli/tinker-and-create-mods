@@ -1,0 +1,35 @@
+{
+  "id": "storage_drawers",
+  "name": "A Wall of Drawers",
+  "icon": "storagedrawers:acacia_full_drawers_1",
+  "description": "Drawers hold enormous stacks of a single item and show you what is inside at a glance. Build a wall of them beside your machines.",
+  "category": "storage",
+  "dependencies": [
+    "storage_barrel"
+  ],
+  "lockAfterDependency": false,
+  "hiddenUnderDependency": false,
+  "optional": false,
+  "repeatable": false,
+  "autoComplete": false,
+  "completion": {
+    "targets": [
+      {
+        "kind": "item",
+        "id": "storagedrawers:acacia_full_drawers_1",
+        "count": 4
+      }
+    ]
+  },
+  "rewards": {
+    "items": [
+      {
+        "item": "minecraft:oak_planks",
+        "count": 32
+      }
+    ],
+    "commands": [],
+    "expType": "points",
+    "expAmount": 40
+  }
+}

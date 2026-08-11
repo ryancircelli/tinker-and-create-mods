@@ -1,5 +1,19 @@
 #!/usr/bin/env node
 /**
+ * SUPERSEDED -- do not run. Kept as the record of the Questlog implementation.
+ *
+ * The pack moved to Boundless: Quests (tools/gen-quests-boundless.js), which has
+ * the two things this could not do: `submit` objectives that consume handed-in
+ * items, and a JEI integration. Running this would write config/questlog/ back
+ * into overrides for a mod the pack no longer ships.
+ *
+ * The Questlog schema notes below are still accurate and were hard-won -- the
+ * published docs disagree with the jar on two fields.
+ */
+console.error('gen-quests.js is superseded by gen-quests-boundless.js; refusing to run.');
+process.exit(1);
+
+/**
  * Generate the Questlog quest tree for the pack.
  *
  *   node tools/gen-quests.js

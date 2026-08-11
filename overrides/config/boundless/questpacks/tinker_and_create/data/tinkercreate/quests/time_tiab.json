@@ -1,0 +1,33 @@
+{
+  "id": "time_tiab",
+  "name": "Time in a Bottle",
+  "icon": "tiab:time_in_a_bottle",
+  "description": "Point it at a sapling, a crop, a furnace or a Create machine and it fast-forwards that block. This pack removes the storage cap.",
+  "category": "time",
+  "dependencies": [],
+  "lockAfterDependency": false,
+  "hiddenUnderDependency": false,
+  "optional": false,
+  "repeatable": false,
+  "autoComplete": false,
+  "completion": {
+    "targets": [
+      {
+        "kind": "item",
+        "id": "tiab:time_in_a_bottle",
+        "count": 1
+      }
+    ]
+  },
+  "rewards": {
+    "items": [
+      {
+        "item": "minecraft:oak_sapling",
+        "count": 8
+      }
+    ],
+    "commands": [],
+    "expType": "points",
+    "expAmount": 50
+  }
+}

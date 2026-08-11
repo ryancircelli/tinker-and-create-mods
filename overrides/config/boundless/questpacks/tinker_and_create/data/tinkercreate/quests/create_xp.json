@@ -1,0 +1,35 @@
+{
+  "id": "create_xp",
+  "name": "Experience, Bottled",
+  "icon": "create_enchantment_industry:experience_hatch",
+  "description": "Create can treat experience as a fluid. An Experience Hatch moves XP between you and a tank, so levels can be piped and spent by machines.",
+  "category": "create",
+  "dependencies": [
+    "create_press"
+  ],
+  "lockAfterDependency": false,
+  "hiddenUnderDependency": false,
+  "optional": false,
+  "repeatable": false,
+  "autoComplete": false,
+  "completion": {
+    "targets": [
+      {
+        "kind": "item",
+        "id": "create_enchantment_industry:experience_hatch",
+        "count": 1
+      }
+    ]
+  },
+  "rewards": {
+    "items": [
+      {
+        "item": "minecraft:bucket",
+        "count": 1
+      }
+    ],
+    "commands": [],
+    "expType": "points",
+    "expAmount": 200
+  }
+}

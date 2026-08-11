@@ -1,0 +1,41 @@
+{
+  "id": "storage_network",
+  "name": "One Screen for Everything",
+  "icon": "toms_storage:storage_terminal",
+  "description": "Tom's Simple Storage links every attached container into one searchable terminal. Put an Inventory Connector against your storage wall, hang a terminal on it, and stop opening chests.",
+  "category": "storage",
+  "dependencies": [
+    "storage_vault",
+    "storage_sophisticated"
+  ],
+  "lockAfterDependency": false,
+  "hiddenUnderDependency": false,
+  "optional": false,
+  "repeatable": false,
+  "autoComplete": false,
+  "completion": {
+    "targets": [
+      {
+        "kind": "item",
+        "id": "toms_storage:inventory_connector",
+        "count": 1
+      },
+      {
+        "kind": "item",
+        "id": "toms_storage:storage_terminal",
+        "count": 1
+      }
+    ]
+  },
+  "rewards": {
+    "items": [
+      {
+        "item": "minecraft:ender_pearl",
+        "count": 4
+      }
+    ],
+    "commands": [],
+    "expType": "points",
+    "expAmount": 100
+  }
+}

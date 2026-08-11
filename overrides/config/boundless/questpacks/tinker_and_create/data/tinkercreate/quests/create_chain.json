@@ -1,0 +1,35 @@
+{
+  "id": "create_chain",
+  "name": "Across the Base",
+  "icon": "create:chain_conveyor",
+  "description": "Chain Conveyors move items between distant machines. This pack extends their reach to 128 blocks, so they can span a base.",
+  "category": "create",
+  "dependencies": [
+    "create_contraption"
+  ],
+  "lockAfterDependency": false,
+  "hiddenUnderDependency": false,
+  "optional": false,
+  "repeatable": false,
+  "autoComplete": false,
+  "completion": {
+    "targets": [
+      {
+        "kind": "item",
+        "id": "create:chain_conveyor",
+        "count": 2
+      }
+    ]
+  },
+  "rewards": {
+    "items": [
+      {
+        "item": "create:brass_ingot",
+        "count": 16
+      }
+    ],
+    "commands": [],
+    "expType": "points",
+    "expAmount": 80
+  }
+}

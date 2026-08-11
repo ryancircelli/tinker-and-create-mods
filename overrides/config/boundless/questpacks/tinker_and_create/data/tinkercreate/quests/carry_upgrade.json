@@ -1,0 +1,35 @@
+{
+  "id": "carry_upgrade",
+  "name": "Bigger Pockets",
+  "icon": "sophisticatedbackpacks:copper_backpack",
+  "description": "Copper is the first tier. Each tier adds rows and upgrade slots, and upgrading keeps the contents.",
+  "category": "carry",
+  "dependencies": [
+    "carry_backpack"
+  ],
+  "lockAfterDependency": false,
+  "hiddenUnderDependency": false,
+  "optional": false,
+  "repeatable": false,
+  "autoComplete": false,
+  "completion": {
+    "targets": [
+      {
+        "kind": "item",
+        "id": "sophisticatedbackpacks:copper_backpack",
+        "count": 1
+      }
+    ]
+  },
+  "rewards": {
+    "items": [
+      {
+        "item": "minecraft:copper_ingot",
+        "count": 16
+      }
+    ],
+    "commands": [],
+    "expType": "points",
+    "expAmount": 40
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "explore",
+  "name": "Exploration",
+  "icon": "minecraft:filled_map",
+  "order": 7,
+  "excludeFromAll": false,
+  "autoComplete": false
+}

@@ -1,0 +1,35 @@
+{
+  "id": "storage_vault",
+  "name": "Bulk, the Create Way",
+  "icon": "create:item_vault",
+  "description": "An Item Vault is a multiblock bin that speaks Create natively -- belts, chutes and funnels all feed it directly, so it is the buffer your machines fill.",
+  "category": "storage",
+  "dependencies": [
+    "storage_drawers"
+  ],
+  "lockAfterDependency": false,
+  "hiddenUnderDependency": false,
+  "optional": false,
+  "repeatable": false,
+  "autoComplete": false,
+  "completion": {
+    "targets": [
+      {
+        "kind": "item",
+        "id": "create:item_vault",
+        "count": 4
+      }
+    ]
+  },
+  "rewards": {
+    "items": [
+      {
+        "item": "create:andesite_alloy",
+        "count": 16
+      }
+    ],
+    "commands": [],
+    "expType": "points",
+    "expAmount": 60
+  }
+}

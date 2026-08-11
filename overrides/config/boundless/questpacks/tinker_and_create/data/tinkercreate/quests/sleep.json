@@ -1,0 +1,35 @@
+{
+  "id": "sleep",
+  "name": "Skip the Night, Keep Your Spawn",
+  "icon": "comforts:sleeping_bag_red",
+  "description": "A sleeping bag passes the night without moving your spawn point, so you can sleep on a mining trip and still respawn at base.",
+  "category": "getting_started",
+  "dependencies": [
+    "first_wood"
+  ],
+  "lockAfterDependency": false,
+  "hiddenUnderDependency": false,
+  "optional": false,
+  "repeatable": false,
+  "autoComplete": false,
+  "completion": {
+    "targets": [
+      {
+        "kind": "item",
+        "id": "#comforts:sleeping_bags",
+        "count": 1
+      }
+    ]
+  },
+  "rewards": {
+    "items": [
+      {
+        "item": "minecraft:white_wool",
+        "count": 6
+      }
+    ],
+    "commands": [],
+    "expType": "points",
+    "expAmount": 20
+  }
+}

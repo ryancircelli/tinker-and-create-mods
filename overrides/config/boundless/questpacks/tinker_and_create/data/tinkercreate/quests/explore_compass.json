@@ -1,0 +1,33 @@
+{
+  "id": "explore_compass",
+  "name": "Point Me at It",
+  "icon": "naturescompass:naturescompass",
+  "description": "Nature's Compass finds any biome by name. With this much added worldgen it turns wandering into walking.",
+  "category": "explore",
+  "dependencies": [],
+  "lockAfterDependency": false,
+  "hiddenUnderDependency": false,
+  "optional": false,
+  "repeatable": false,
+  "autoComplete": false,
+  "completion": {
+    "targets": [
+      {
+        "kind": "item",
+        "id": "naturescompass:naturescompass",
+        "count": 1
+      }
+    ]
+  },
+  "rewards": {
+    "items": [
+      {
+        "item": "minecraft:map",
+        "count": 1
+      }
+    ],
+    "commands": [],
+    "expType": "points",
+    "expAmount": 50
+  }
+}

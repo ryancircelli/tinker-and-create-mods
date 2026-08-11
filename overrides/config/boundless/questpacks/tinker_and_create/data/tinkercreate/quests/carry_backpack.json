@@ -1,0 +1,33 @@
+{
+  "id": "carry_backpack",
+  "name": "Pockets",
+  "icon": "sophisticatedbackpacks:backpack",
+  "description": "The single biggest early quality-of-life win here. Upgrades all the way to Netherite, and takes filter and magnet upgrades.",
+  "category": "carry",
+  "dependencies": [],
+  "lockAfterDependency": false,
+  "hiddenUnderDependency": false,
+  "optional": false,
+  "repeatable": false,
+  "autoComplete": false,
+  "completion": {
+    "targets": [
+      {
+        "kind": "item",
+        "id": "sophisticatedbackpacks:backpack",
+        "count": 1
+      }
+    ]
+  },
+  "rewards": {
+    "items": [
+      {
+        "item": "minecraft:leather",
+        "count": 8
+      }
+    ],
+    "commands": [],
+    "expType": "points",
+    "expAmount": 30
+  }
+}

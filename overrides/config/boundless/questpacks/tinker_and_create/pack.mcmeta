@@ -1,0 +1,10 @@
+{
+  "pack": {
+    "pack_format": 48,
+    "description": "Tinker & Create — guided progression"
+  },
+  "boundless": {
+    "enabled": true,
+    "icon": "minecraft:crafting_table"
+  }
+}
