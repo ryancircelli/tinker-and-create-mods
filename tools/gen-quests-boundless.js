@@ -89,6 +89,19 @@ const give = (item, count = 1) => ({ item, count });
  * in Create's lang file -- 167 scenes exist, and goggles and item_vault are not
  * among them, so those quests get no button rather than a broken one.
  */
+
+/**
+ * Boundless descriptions render no click events -- verified against every screen
+ * and text class in the jar -- so a literal hyperlink is not available. Ponder's
+ * own shortcut is better anyway: hovering an item and pressing W opens its scene,
+ * from the inventory or EMI, as many times as you like. The command reward below
+ * stays as a one-shot bonus on completion; this line is the repeatable route.
+ *
+ * W is also walk-forward, but Ponder's binding only applies while hovering an
+ * item in a GUI, so the two never actually collide.
+ */
+const PONDER_HINT = '\n\nHover this item in your inventory or EMI and press W to watch it animated.';
+
 const ponder = (scene, title) => ({
   command: `/ponder scene ${scene}`,
   title: title || 'Watch how it works',
@@ -193,31 +206,31 @@ quest('create_goggles', {
 });
 quest('create_wheel', {
   category: 'create', name: 'First Rotation', icon: 'create:water_wheel', after: ['create_goggles'],
-  desc: 'Every Create machine runs on rotational force. A Water Wheel is the cheapest source and needs no fuel.',
+  desc: 'Every Create machine runs on rotational force. A Water Wheel is the cheapest source and needs no fuel.' + PONDER_HINT,
   targets: [collect('create:water_wheel')],
   rewards: { items: [give('create:shaft', 16), give('create:cogwheel', 8)], exp: 40 , commands: [ponder('create:water_wheel', 'Watch: Water Wheel')]},
 });
 quest('create_press', {
   category: 'create', name: 'Pressing Matters', icon: 'create:mechanical_press', after: ['create_wheel'],
-  desc: 'A Mechanical Press over a Depot turns ingots into sheets -- the gateway component for most of Create.',
+  desc: 'A Mechanical Press over a Depot turns ingots into sheets -- the gateway component for most of Create.' + PONDER_HINT,
   targets: [collect('create:mechanical_press'), collect('create:belt_connector')],
   rewards: { items: [give('create:andesite_alloy', 16)], exp: 60 , commands: [ponder('create:mechanical_press', 'Watch: Mechanical Press')]},
 });
 quest('create_contraption', {
   category: 'create', name: 'It Moves', icon: 'create:mechanical_piston', after: ['create_press'],
-  desc: 'Contraptions are the point of Create: a block assembly that moves as one.',
+  desc: 'Contraptions are the point of Create: a block assembly that moves as one.' + PONDER_HINT,
   targets: [anyOf(['create:mechanical_piston', 'create:windmill_bearing', 'create:mechanical_bearing'], 1, 'Any bearing or piston')],
   rewards: { items: [give('create:brass_ingot', 8)], exp: 80 , commands: [ponder('create:mechanical_piston', 'Watch: Mechanical Piston')]},
 });
 quest('create_chain', {
   category: 'create', name: 'Across the Base', icon: 'create:chain_conveyor', after: ['create_contraption'],
-  desc: 'Chain Conveyors move items between distant machines. This pack extends their reach to 128 blocks, so they can span a base.',
+  desc: 'Chain Conveyors move items between distant machines. This pack extends their reach to 128 blocks, so they can span a base.' + PONDER_HINT,
   targets: [collect('create:chain_conveyor', 2)],
   rewards: { items: [give('create:brass_ingot', 16)], exp: 80 , commands: [ponder('create:chain_conveyor', 'Watch: Chain Conveyor')]},
 });
 quest('create_collect', {
   category: 'create', name: 'Picking Up After Yourself', icon: 'create:chute', after: ['create_wheel'],
-  desc: 'Create has no vacuum block and does not need one: a Chute pulls in items dropped above it, which is what a mob or crop farm produces.',
+  desc: 'Create has no vacuum block and does not need one: a Chute pulls in items dropped above it, which is what a mob or crop farm produces.' + PONDER_HINT,
   targets: [collect('create:chute')],
   rewards: { items: [give('create:andesite_alloy', 8)], exp: 40 , commands: [ponder('create:chute', 'Watch: Chute')]},
 });

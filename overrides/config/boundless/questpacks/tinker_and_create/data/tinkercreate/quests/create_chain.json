@@ -2,7 +2,7 @@
   "id": "create_chain",
   "name": "Across the Base",
   "icon": "create:chain_conveyor",
-  "description": "Chain Conveyors move items between distant machines. This pack extends their reach to 128 blocks, so they can span a base.",
+  "description": "Chain Conveyors move items between distant machines. This pack extends their reach to 128 blocks, so they can span a base.\n\nHover this item in your inventory or EMI and press W to watch it animated.",
   "category": "create",
   "dependencies": [
     "create_contraption"

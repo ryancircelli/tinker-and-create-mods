@@ -2,7 +2,7 @@
   "id": "create_contraption",
   "name": "It Moves",
   "icon": "create:mechanical_piston",
-  "description": "Contraptions are the point of Create: a block assembly that moves as one.",
+  "description": "Contraptions are the point of Create: a block assembly that moves as one.\n\nHover this item in your inventory or EMI and press W to watch it animated.",
   "category": "create",
   "dependencies": [
     "create_press"
