@@ -1,0 +1,28 @@
+{
+  "id": "guide_mechanical_mixer",
+  "name": "Mechanical Mixer",
+  "icon": "create:mechanical_mixer",
+  "description": "Opens Create's animated explanation of the Mechanical Mixer.\n\nClaim it as often as you like -- this quest is repeatable, so the button never greys out.",
+  "category": "guides",
+  "dependencies": [],
+  "lockAfterDependency": false,
+  "hiddenUnderDependency": false,
+  "optional": true,
+  "repeatable": true,
+  "autoComplete": false,
+  "completion": {
+    "targets": []
+  },
+  "rewards": {
+    "items": [],
+    "commands": [
+      {
+        "command": "/ponder scene create:mechanical_mixer",
+        "title": "Watch: Mechanical Mixer",
+        "icon": "create:mechanical_mixer"
+      }
+    ],
+    "expType": "points",
+    "expAmount": 0
+  }
+}

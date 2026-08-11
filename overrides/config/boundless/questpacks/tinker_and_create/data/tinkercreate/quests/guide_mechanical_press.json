@@ -1,0 +1,28 @@
+{
+  "id": "guide_mechanical_press",
+  "name": "Mechanical Press",
+  "icon": "create:mechanical_press",
+  "description": "Opens Create's animated explanation of the Mechanical Press.\n\nClaim it as often as you like -- this quest is repeatable, so the button never greys out.",
+  "category": "guides",
+  "dependencies": [],
+  "lockAfterDependency": false,
+  "hiddenUnderDependency": false,
+  "optional": true,
+  "repeatable": true,
+  "autoComplete": false,
+  "completion": {
+    "targets": []
+  },
+  "rewards": {
+    "items": [],
+    "commands": [
+      {
+        "command": "/ponder scene create:mechanical_press",
+        "title": "Watch: Mechanical Press",
+        "icon": "create:mechanical_press"
+      }
+    ],
+    "expType": "points",
+    "expAmount": 0
+  }
+}

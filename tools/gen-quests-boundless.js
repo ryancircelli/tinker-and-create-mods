@@ -47,7 +47,7 @@ function category(id, { name, icon, order }) {
  */
 function quest(id, {
   category: cat, name, icon, desc, after = [], targets = [], rewards = {},
-  optional = false, autoComplete = false,
+  optional = false, autoComplete = false, repeatable = false,
 }) {
   const body = {
     id, name, icon, description: desc,
@@ -55,7 +55,7 @@ function quest(id, {
     dependencies: after,
     lockAfterDependency: false,
     hiddenUnderDependency: false,
-    optional, repeatable: false, autoComplete,
+    optional, repeatable, autoComplete,
     completion: { targets },
     rewards: {
       items: rewards.items || [],
@@ -118,6 +118,31 @@ category('storage',         { name: 'Storage & Logistics',  icon: 'create:item_v
 category('carry',           { name: 'Carrying Capacity',    icon: 'sophisticatedbackpacks:backpack', order: 5 });
 category('time',            { name: 'Time & Growth',        icon: 'tiab:time_in_a_bottle',           order: 6 });
 category('explore',         { name: 'Exploration',          icon: 'minecraft:filled_map',            order: 7 });
+category('guides',          { name: 'Ponder Guides',       icon: 'minecraft:clock',                 order: 8 });
+
+
+/**
+ * A clickable, reusable Ponder button in the quest UI.
+ *
+ * Boundless renders no click events in description text, so the only clickable
+ * thing available is a reward button -- and a reward normally fires once. Marking
+ * the quest repeatable makes it re-claimable (QuestTracker exposes
+ * canRestartRepeatable/restartRepeatable), which turns the button into something
+ * you can press as often as you like.
+ *
+ * These carry no objectives and no item rewards on purpose: they are not
+ * progression, just a menu of animations. optional keeps them out of the
+ * completion count.
+ */
+function guide(scene, name) {
+  quest(`guide_${scene.split(':')[1]}`, {
+    category: 'guides', name, icon: scene,
+    desc: `Opens Create's animated explanation of the ${name}.\n\nClaim it as often as you like -- this quest is repeatable, so the button never greys out.`,
+    targets: [],
+    rewards: { commands: [ponder(scene, `Watch: ${name}`)] },
+    optional: true, repeatable: true,
+  });
+}
 
 // ---- Getting Started ---------------------------------------------------------
 const BOOK_CMD = '/give @s written_book[written_book_content={title:"Tinker & Create",author:"Pack Guide",pages:['
@@ -355,6 +380,18 @@ quest('explore_nether', {
   targets: [advance('minecraft:nether/root')],
   rewards: { items: [give('minecraft:obsidian', 10)], expType: 'levels', exp: 5 },
 });
+
+// ---- Ponder Guides -----------------------------------------------------------
+guide('create:water_wheel',       'Water Wheel');
+guide('create:mechanical_press',  'Mechanical Press');
+guide('create:mechanical_mixer',  'Mechanical Mixer');
+guide('create:belt_connector',    'Belts');
+guide('create:chute',             'Chute');
+guide('create:smart_chute',       'Smart Chute');
+guide('create:chain_conveyor',    'Chain Conveyor');
+guide('create:mechanical_piston', 'Mechanical Piston');
+guide('create:mechanical_bearing','Mechanical Bearing');
+guide('create:deployer',          'Deployer');
 
 // ---- write --------------------------------------------------------------------
 fs.rmSync(ROOT, { recursive: true, force: true });

@@ -1,0 +1,28 @@
+{
+  "id": "guide_water_wheel",
+  "name": "Water Wheel",
+  "icon": "create:water_wheel",
+  "description": "Opens Create's animated explanation of the Water Wheel.\n\nClaim it as often as you like -- this quest is repeatable, so the button never greys out.",
+  "category": "guides",
+  "dependencies": [],
+  "lockAfterDependency": false,
+  "hiddenUnderDependency": false,
+  "optional": true,
+  "repeatable": true,
+  "autoComplete": false,
+  "completion": {
+    "targets": []
+  },
+  "rewards": {
+    "items": [],
+    "commands": [
+      {
+        "command": "/ponder scene create:water_wheel",
+        "title": "Watch: Water Wheel",
+        "icon": "create:water_wheel"
+      }
+    ],
+    "expType": "points",
+    "expAmount": 0
+  }
+}

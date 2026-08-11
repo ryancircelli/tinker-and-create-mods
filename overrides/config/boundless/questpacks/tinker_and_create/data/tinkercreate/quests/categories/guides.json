@@ -1,0 +1,8 @@
+{
+  "id": "guides",
+  "name": "Ponder Guides",
+  "icon": "minecraft:clock",
+  "order": 8,
+  "excludeFromAll": false,
+  "autoComplete": false
+}

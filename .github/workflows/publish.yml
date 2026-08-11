@@ -12,6 +12,11 @@ on:
     paths:
       - 'tools/mods.json'
       - 'tools/build.js'
+      # overrides/ IS pack content -- configs, the quest pack, Paxi data packs.
+      # Leaving it out meant a change to any of them pushed without publishing,
+      # and only shipped later if it happened to coincide with a mods.json edit.
+      # Two commits reached master this way and never reached players.
+      - 'overrides/**'
       - '.github/workflows/publish.yml'
   workflow_dispatch:
 

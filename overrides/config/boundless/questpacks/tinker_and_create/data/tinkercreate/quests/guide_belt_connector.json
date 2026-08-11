@@ -1,0 +1,28 @@
+{
+  "id": "guide_belt_connector",
+  "name": "Belts",
+  "icon": "create:belt_connector",
+  "description": "Opens Create's animated explanation of the Belts.\n\nClaim it as often as you like -- this quest is repeatable, so the button never greys out.",
+  "category": "guides",
+  "dependencies": [],
+  "lockAfterDependency": false,
+  "hiddenUnderDependency": false,
+  "optional": true,
+  "repeatable": true,
+  "autoComplete": false,
+  "completion": {
+    "targets": []
+  },
+  "rewards": {
+    "items": [],
+    "commands": [
+      {
+        "command": "/ponder scene create:belt_connector",
+        "title": "Watch: Belts",
+        "icon": "create:belt_connector"
+      }
+    ],
+    "expType": "points",
+    "expAmount": 0
+  }
+}
