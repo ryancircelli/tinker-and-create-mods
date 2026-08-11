@@ -437,8 +437,20 @@ fs.writeFileSync(path.join(ROOT, 'pack.mcmeta'), JSON.stringify({
 for (const c of categories) {
   fs.writeFileSync(path.join(DATA, 'categories', c.id + '.json'), JSON.stringify(c.body, null, 2) + '\n');
 }
+// Filenames carry a zero-padded index because that is what orders the list in
+// game: QuestListWidget sorts by Quest::sourceSortKey, which is the lowercased
+// source path. Without a prefix the book showed quests alphabetically -- "Have
+// a Look Around" above "Punch Some Wood" -- which reads as random to a player
+// following the chain. The quest id inside the file is unchanged, so
+// dependencies keep resolving; only the display order moves.
+//
+// Declaration order in this file IS the intended play order, so the counter
+// just follows it. Two digits is enough for 44 quests; widen the padding if
+// that ever passes 99, since "100-x" sorts before "99-x" as text.
+let order = 0;
 for (const q of quests) {
-  fs.writeFileSync(path.join(DATA, q.id + '.json'), JSON.stringify(q.body, null, 2) + '\n');
+  const prefix = String(++order).padStart(2, '0');
+  fs.writeFileSync(path.join(DATA, `${prefix}-${q.id}.json`), JSON.stringify(q.body, null, 2) + '\n');
 }
 
 console.log(`  ${categories.length} categories, ${quests.length} quests`);
