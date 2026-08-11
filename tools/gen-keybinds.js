@@ -88,7 +88,26 @@ for (const b of binds) {
 }
 
 let unbound = 0, moved = 0;
-const DEAD = /trashslot|zume/i;   // mods removed from the pack
+const DEAD = /zume|exposure|dramaticdoors/i;   // mods removed from the pack
+
+// In the pack, but deliberately given NO key at all. TrashSlot is wanted only
+// for its inventory slot -- it ships four binds (toggle, toggle_lock, delete,
+// delete_all) and its toggle defaults to T, which is chat. Rather than let the
+// clash resolver fight over T every time the capture is refreshed, pin all four
+// to unknown. The slot itself works by dragging items into it, no key needed.
+const FORCE_UNBIND = /^key_key\.trashslot\./i;
+
+// Emitted as unknown even when absent from the capture. Default Options only
+// applies the keys listed in keybindings.txt; anything missing keeps the mod's
+// own default. TrashSlot was added after this capture was taken, so without
+// these four explicit lines its toggle would silently default back to T and
+// steal chat again -- the exact reason it was dropped the first time.
+const ALWAYS_UNBIND = [
+  'key_key.trashslot.toggle',
+  'key_key.trashslot.toggle_lock',
+  'key_key.trashslot.delete',
+  'key_key.trashslot.delete_all',
+];
 const out = [];
 for (const b of binds) {
   let value = b.value;
@@ -102,7 +121,15 @@ for (const b of binds) {
     }
   }
   if (DEAD.test(b.name)) continue;
+  if (FORCE_UNBIND.test(b.name)) { value = 'key.keyboard.unknown'; unbound++; }
   out.push(`${b.name}:${value}`);
+}
+
+for (const name of ALWAYS_UNBIND) {
+  if (!out.some((l) => l.startsWith(name + ':'))) {
+    out.push(`${name}:key.keyboard.unknown`);
+    unbound++;
+  }
 }
 
 const dest = path.resolve(__dirname, '..', 'overrides/config/defaultoptions/keybindings.txt');

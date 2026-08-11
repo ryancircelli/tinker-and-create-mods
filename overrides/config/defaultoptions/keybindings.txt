@@ -38,7 +38,6 @@ key_iris.keybind.reload:key.keyboard.unknown
 key_iris.keybind.toggleShaders:key.keyboard.k
 key_iris.keybind.shaderPackSelection:key.keyboard.o
 key_iris.keybind.wireframe:key.keyboard.unknown
-key_key.exposure.camera_controls:key.keyboard.unknown
 key_supplementaries.keybind.quiver:key.keyboard.unknown
 key_quark.keybind.autorun:key.keyboard.unknown
 key_quark.keybind.back:key.mouse.4
@@ -212,3 +211,7 @@ key_key.pipeorgans.midi_config:key.keyboard.semicolon
 key_gui.xaero_pac_key_open_menu:key.keyboard.apostrophe
 key_key.createrailwaysnavigator.route_overlay_options:key.keyboard.unknown
 key_key.entityculling.toggle:key.keyboard.unknown
+key_key.trashslot.toggle:key.keyboard.unknown
+key_key.trashslot.toggle_lock:key.keyboard.unknown
+key_key.trashslot.delete:key.keyboard.unknown
+key_key.trashslot.delete_all:key.keyboard.unknown

@@ -2,7 +2,7 @@
   "pack": {
     "name": "Tinker & Create",
     "summary": "Create + Tinkers for Minecraft 1.21.1 NeoForge",
-    "version": "1.8.9",
+    "version": "1.8.10",
     "minecraft": "1.21.1",
     "loader": "neoforge",
     "loaders": [
@@ -155,9 +155,14 @@
       "reason": "Third zoom mod in the pack (with Just Zoom 12/100 and Chloride's zoom) all bound to Z. Kept Just Zoom -- higher adoption and a dedicated zoom rather than a Sodium extension feature."
     },
     {
-      "name": "TrashSlot",
-      "slug": "trashslot",
-      "reason": "Adds a trash slot that overlaps other inventory GUI elements and binds T, stealing the chat key. EMI (28/100) already provides item deletion, so it is redundant as well as conflicting."
+      "name": "Dramatic Doors",
+      "slug": "dramatic-doors",
+      "reason": "Removed on request after measuring atlas cost across all 340 mods: 5,917 block/item textures and 12.8 MB, the second largest contributor in the pack behind Tinkers' Construct and more than Create itself (1,090). It generates 3-tall variants for EVERY door from every mod, and the pack ships Macaw's Doors, Handcrafted and Another Furniture, so the cost is combinatorial. That feeds directly into the texture-atlas stitch that OOM'd the client at 3G. Door variety is unaffected -- Macaw's Doors and Handcrafted remain."
+    },
+    {
+      "name": "Exposure (camera)",
+      "slug": "exposure",
+      "reason": "Removed on request. A photography mod (cameras, film, darkroom) -- a creator toy rather than something the Tinkers/Create progression uses. 212 textures and 2.1 MB. Nothing in the pack depends on it: checked every shipped jar's neoforge.mods.toml for a dependency on modId 'exposure' and only the mod itself declares it."
     },
     {
       "name": "Advancement Plaques",
@@ -737,9 +742,9 @@
       "category": "Core Tech"
     },
     {
-      "name": "Dramatic Doors",
-      "slug": "dramatic-doors",
-      "category": "Building"
+      "name": "TrashSlot",
+      "slug": "trashslot",
+      "category": "QoL"
     },
     {
       "name": "Ping Wheel",
@@ -1552,11 +1557,6 @@
       "name": "Particle Rain",
       "slug": "particle-rain",
       "category": "Decoration"
-    },
-    {
-      "name": "Exposure (camera)",
-      "slug": "exposure",
-      "category": "Adventure"
     },
     {
       "name": "Item Highlighter",
