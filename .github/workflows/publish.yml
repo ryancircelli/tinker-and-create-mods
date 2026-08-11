@@ -1,7 +1,12 @@
 name: Build and publish pack
 
-# Publishing is driven by tools/mods.json: bump pack.version, push, and the new
-# version appears on Modrinth. Clients (Modrinth App) and the server
+# Publishing happens on MERGE to master, never on a proposal. A pull request is
+# checked by pr.yml (build, verify, docs, duplicate-version warning) and only
+# once it lands here does anything reach players. master is protected and
+# requires a pull request, so a push to it is by definition a merge.
+#
+# Driven by tools/mods.json: bump pack.version in the pull request, merge, and
+# the new version appears on Modrinth. Clients (Modrinth App) and the server
 # (mrpack4server) both pick it up on their next check.
 on:
   push:
@@ -223,21 +228,47 @@ jobs:
       - name: Regenerate docs from the published artifact
         run: node tools/gen-docs.js
 
-      # Persist the auto-bump and the regenerated docs so the repository matches
-      # what is published. A push authenticated with GITHUB_TOKEN does not
-      # trigger workflows, so this cannot loop back into another publish.
-      - name: Commit the bumped version and docs
+      # The published record of exactly which jar versions went out, attached to
+      # the release rather than committed. master requires a pull request, so
+      # Actions cannot push to it -- and should not: the repository's history
+      # should be things people decided, not a bot's echo of them.
+      #
+      # This file is the one piece of documentation that genuinely cannot be
+      # derived from the repository, because it records what the resolver chose
+      # at build time. Attaching it to the release ties it to the artifact it
+      # describes, permanently and unambiguously.
+      - name: Attach the jar manifest to the release
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-          PATHS="tools/mods.json docs/usage README.md modrinth-description.md"
-          if git diff --quiet -- $PATHS; then
-            echo "version and docs unchanged; nothing to commit"
+          V="${{ steps.pack.outputs.version }}"
+          if [ -f docs/usage/shipped-jars.md ]; then
+            cp docs/usage/shipped-jars.md "shipped-jars-${V}.md"
+            gh release upload "v${V}" "shipped-jars-${V}.md" \
+              --repo "${{ github.repository }}" --clobber
+            echo "attached shipped-jars-${V}.md to release v${V}"
+          fi
+
+      # Persist an auto-bump so the repository matches what was published.
+      #
+      # Non-fatal by design: master requires a pull request, so this push is
+      # expected to be rejected, and the run must not fail for it -- the pack is
+      # already on Modrinth by this point and failing here would imply otherwise.
+      # The bump only fires as a backstop when the version in the pull request
+      # was already published, which the PR check warns about beforehand.
+      - name: Commit the bumped version, if the branch allows it
+        continue-on-error: true
+        run: |
+          if git diff --quiet -- tools/mods.json; then
+            echo "version unchanged; nothing to commit"
             exit 0
           fi
           V="${{ steps.pack.outputs.version }}"
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add $PATHS
-          git commit -m "Publish ${V}: sync version and generated docs (auto)" \
-                     -m "Docs are regenerated from the artifact this run published, so the jar list and badges describe what players actually receive." \
-                     -m "If the version moved, the previous number was already published on Modrinth and the next free patch was claimed so this run had a coherent version."
-          git push origin HEAD:master
+          git add tools/mods.json
+          git commit -m "Bump pack version to ${V} (auto)"
+          if ! git push origin HEAD:master; then
+            echo "::warning::Could not push the version bump (master is protected). Published as ${V}; bump tools/mods.json in your next pull request to match."
+          fi

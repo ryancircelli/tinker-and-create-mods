@@ -1,0 +1,88 @@
+name: PR checks
+
+# The gate. Everything that can be checked without publishing runs here, so a
+# pull request is either mergeable or tells you exactly what to fix.
+#
+# Nothing in this workflow writes: no pushes, no Modrinth calls, no releases. A
+# pull request may come from a fork and cannot be trusted with write access, and
+# publishing is the merge's job, not the proposal's.
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Restore resolver cache
+        uses: actions/cache@v4
+        with:
+          path: .cache
+          key: modrinth-cache-${{ hashFiles('tools/mods.json') }}
+          restore-keys: modrinth-cache-
+
+      # Proves every declared mod still resolves for this Minecraft version and
+      # loader. Catches the most common broken change by far: a mod added by
+      # slug that has no NeoForge 1.21.1 build at all.
+      - name: Build the pack
+        env:
+          MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
+        run: node tools/build.js
+
+      # Manifest shape, then every download URL. A .mrpack that resolves but
+      # points at a dead URL installs as a pack with missing mods.
+      - name: Verify the built pack
+        run: node tools/verify.js packs/*.mrpack
+
+      # Only the parts derived purely from files in the repository are compared.
+      # shipped-jars.md records resolved versions and changes whenever any of
+      # ~340 mods releases upstream, so comparing it would fail for reasons
+      # outside this repository -- it did, on supplementaries 3.8.8 vs 3.8.9.
+      - name: Regenerate docs
+        run: node tools/gen-docs.js
+
+      - name: Fail if generated docs are out of date
+        run: |
+          PATHS="docs/usage/mods.md docs/usage/quest-book.md docs/usage/keybinds.md README.md modrinth-description.md"
+          if ! git diff --quiet -- $PATHS; then
+            echo "::error::Generated docs are out of date. Run 'node tools/gen-docs.js' and commit the result."
+            echo
+            echo "Files that differ:"
+            git diff --name-only -- $PATHS | sed 's/^/  /'
+            echo
+            echo "If you edited one of these by hand, edit its source instead:"
+            echo "  docs/usage/mods.md        <- tools/mods.json"
+            echo "  docs/usage/quest-book.md  <- tools/gen-quests-boundless.js"
+            echo "  docs/usage/keybinds.md    <- tools/gen-keybinds.js"
+            echo
+            git --no-pager diff -- $PATHS
+            exit 1
+          fi
+          echo "Docs match the pack."
+
+      # A version that already exists on Modrinth cannot be published. Catching
+      # it here means the merge does not fail halfway through publishing.
+      - name: Warn if the version is already published
+        env:
+          MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
+        run: |
+          V=$(node -e 'console.log(require("./tools/mods.json").pack.version)')
+          EXISTS=$(curl -sS -H "User-Agent: tinker-and-create/pr-check" \
+            ${MODRINTH_TOKEN:+-H "Authorization: $MODRINTH_TOKEN"} \
+            "https://api.modrinth.com/v2/project/LmXb0Vdc/version" \
+            | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{
+                try{const v=JSON.parse(s);console.log(v.some(x=>x.version_number===process.argv[1])?"yes":"no")}
+                catch(e){console.log("unknown")}})' "$V")
+          echo "pack version $V already published: $EXISTS"
+          if [ "$EXISTS" = "yes" ]; then
+            echo "::warning::Version $V is already on Modrinth. Bump pack.version in tools/mods.json, or the publish will claim the next free patch number instead."
+          fi
