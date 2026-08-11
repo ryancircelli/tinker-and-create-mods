@@ -28,7 +28,13 @@
         "count": 8
       }
     ],
-    "commands": [],
+    "commands": [
+      {
+        "command": "/ponder scene create:chute",
+        "title": "Watch: Chute",
+        "icon": "create:chute"
+      }
+    ],
     "expType": "points",
     "expAmount": 40
   }

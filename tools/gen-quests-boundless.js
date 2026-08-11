@@ -75,6 +75,26 @@ const kill    = (id, count = 1) => ({ kind: 'entity', id, count });
 const advance = (id) => ({ kind: 'advancement', id, count: 1 });
 
 const give = (item, count = 1) => ({ item, count });
+
+/**
+ * A "watch how it works" button on a quest.
+ *
+ * Ponder is Create's animated in-game guide, and `/ponder scene <id>` opens a
+ * specific scene. It is a server command that pushes the scene to the player, so
+ * a Boundless CommandReward can trigger it -- verified against the live server:
+ * the console rejects it with "A player is required to run this command here",
+ * which is precisely the context a reward runs in.
+ *
+ * Scene ids are not item ids. These were taken from create.ponder.<id>.header
+ * in Create's lang file -- 167 scenes exist, and goggles and item_vault are not
+ * among them, so those quests get no button rather than a broken one.
+ */
+const ponder = (scene, title) => ({
+  command: `/ponder scene ${scene}`,
+  title: title || 'Watch how it works',
+  icon: scene,
+});
+
 const cmd  = (command, title, icon) => ({ command, title, icon });
 
 // ---- categories --------------------------------------------------------------
@@ -175,31 +195,31 @@ quest('create_wheel', {
   category: 'create', name: 'First Rotation', icon: 'create:water_wheel', after: ['create_goggles'],
   desc: 'Every Create machine runs on rotational force. A Water Wheel is the cheapest source and needs no fuel.',
   targets: [collect('create:water_wheel')],
-  rewards: { items: [give('create:shaft', 16), give('create:cogwheel', 8)], exp: 40 },
+  rewards: { items: [give('create:shaft', 16), give('create:cogwheel', 8)], exp: 40 , commands: [ponder('create:water_wheel', 'Watch: Water Wheel')]},
 });
 quest('create_press', {
   category: 'create', name: 'Pressing Matters', icon: 'create:mechanical_press', after: ['create_wheel'],
   desc: 'A Mechanical Press over a Depot turns ingots into sheets -- the gateway component for most of Create.',
   targets: [collect('create:mechanical_press'), collect('create:belt_connector')],
-  rewards: { items: [give('create:andesite_alloy', 16)], exp: 60 },
+  rewards: { items: [give('create:andesite_alloy', 16)], exp: 60 , commands: [ponder('create:mechanical_press', 'Watch: Mechanical Press')]},
 });
 quest('create_contraption', {
   category: 'create', name: 'It Moves', icon: 'create:mechanical_piston', after: ['create_press'],
   desc: 'Contraptions are the point of Create: a block assembly that moves as one.',
   targets: [anyOf(['create:mechanical_piston', 'create:windmill_bearing', 'create:mechanical_bearing'], 1, 'Any bearing or piston')],
-  rewards: { items: [give('create:brass_ingot', 8)], exp: 80 },
+  rewards: { items: [give('create:brass_ingot', 8)], exp: 80 , commands: [ponder('create:mechanical_piston', 'Watch: Mechanical Piston')]},
 });
 quest('create_chain', {
   category: 'create', name: 'Across the Base', icon: 'create:chain_conveyor', after: ['create_contraption'],
   desc: 'Chain Conveyors move items between distant machines. This pack extends their reach to 128 blocks, so they can span a base.',
   targets: [collect('create:chain_conveyor', 2)],
-  rewards: { items: [give('create:brass_ingot', 16)], exp: 80 },
+  rewards: { items: [give('create:brass_ingot', 16)], exp: 80 , commands: [ponder('create:chain_conveyor', 'Watch: Chain Conveyor')]},
 });
 quest('create_collect', {
   category: 'create', name: 'Picking Up After Yourself', icon: 'create:chute', after: ['create_wheel'],
   desc: 'Create has no vacuum block and does not need one: a Chute pulls in items dropped above it, which is what a mob or crop farm produces.',
   targets: [collect('create:chute')],
-  rewards: { items: [give('create:andesite_alloy', 8)], exp: 40 },
+  rewards: { items: [give('create:andesite_alloy', 8)], exp: 40 , commands: [ponder('create:chute', 'Watch: Chute')]},
 });
 quest('create_xp', {
   category: 'create', name: 'Experience, Bottled', icon: 'create_enchantment_industry:experience_hatch', after: ['create_press'],

@@ -1762,6 +1762,21 @@
       "name": "Boundless: Quests",
       "slug": "boundless-quests",
       "category": "QoL"
+    },
+    {
+      "name": "Flywheel Vanillin",
+      "slug": "flw-vanillin",
+      "category": "Performance"
+    },
+    {
+      "name": "Iris Flywheel Compat",
+      "slug": "iris-flw-compat",
+      "category": "Performance"
+    },
+    {
+      "name": "Colorwheel",
+      "slug": "colorwheel",
+      "category": "Performance"
     }
   ],
   "//amendments": "Re-admitted on 1.21. The Fabric ban was Moonlight-chain-vs-Hephaestus: Moonlight shifted load ordering so Tinkers modifiers resolved before the dynamic modifier registry was ready. There is no Tinkers on 1.21, so that interaction cannot occur. It appears in 6/34 working reference packs. Watch item: if the join test disconnects, this is the first thing to pull.",

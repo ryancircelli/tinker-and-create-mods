@@ -32,7 +32,13 @@
         "count": 8
       }
     ],
-    "commands": [],
+    "commands": [
+      {
+        "command": "/ponder scene create:water_wheel",
+        "title": "Watch: Water Wheel",
+        "icon": "create:water_wheel"
+      }
+    ],
     "expType": "points",
     "expAmount": 40
   }

@@ -33,7 +33,13 @@
         "count": 16
       }
     ],
-    "commands": [],
+    "commands": [
+      {
+        "command": "/ponder scene create:mechanical_press",
+        "title": "Watch: Mechanical Press",
+        "icon": "create:mechanical_press"
+      }
+    ],
     "expType": "points",
     "expAmount": 60
   }

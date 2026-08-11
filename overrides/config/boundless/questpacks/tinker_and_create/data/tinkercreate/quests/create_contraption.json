@@ -34,7 +34,13 @@
         "count": 8
       }
     ],
-    "commands": [],
+    "commands": [
+      {
+        "command": "/ponder scene create:mechanical_piston",
+        "title": "Watch: Mechanical Piston",
+        "icon": "create:mechanical_piston"
+      }
+    ],
     "expType": "points",
     "expAmount": 80
   }
