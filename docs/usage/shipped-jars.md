@@ -2,7 +2,7 @@
 
 # Shipped jars
 
-Every jar in **1.8.10**, with the version each was resolved to at build time.
+Every jar in **1.8.11**, with the version each was resolved to at build time.
 
 This file is refreshed when the pack is built, so it tracks releases upstream. It is deliberately excluded from the docs-are-current check — the resolver takes the newest compatible build of each mod, so this changes on its own whenever any of them publishes, with nothing here having changed.
 
@@ -306,7 +306,7 @@ This file is refreshed when the pack is built, so it tracks releases upstream. I
 | `struts-1.3.0.jar` | required | required |
 | `supermartijn642configlib-1.1.8-neoforge-mc1.21.jar` | required | required |
 | `supermartijn642corelib-1.1.24-neoforge-mc1.21.jar` | required | required |
-| `supplementaries-1.21.1-3.8.8-neoforge.jar` | required | required |
+| `supplementaries-1.21.1-3.8.9-neoforge.jar` | required | required |
 | `t_and_t-neoforge-fabric-1.13.9+1.21.1.jar` | required | required |
 | `Terralith_1.21.1_v2.6.2_Neoforge.jar` | required | required |
 | `tiab-neoforge-6.5.4.jar` | required | required |

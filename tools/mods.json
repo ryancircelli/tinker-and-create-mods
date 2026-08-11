@@ -2,7 +2,7 @@
   "pack": {
     "name": "Tinker & Create",
     "summary": "Create + Tinkers for Minecraft 1.21.1 NeoForge",
-    "version": "1.8.10",
+    "version": "1.8.11",
     "minecraft": "1.21.1",
     "loader": "neoforge",
     "loaders": [
