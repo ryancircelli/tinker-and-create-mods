@@ -9,7 +9,7 @@
  *
  * Descriptions come from Modrinth; verdicts come from recorded failures, not memory.
  *
- *   node tools/catalogue.js > CATALOGUE.md
+ *   node tools/catalogue.js > docs/dev/catalogue.md
  */
 
 const fs = require('fs');

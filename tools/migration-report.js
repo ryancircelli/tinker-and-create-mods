@@ -87,7 +87,7 @@ L.push('');
 for (const g of gained) L.push(`- **${g.name}** (\`${g.slug}\`) — ${g.category}`);
 L.push('');
 
-fs.writeFileSync(require('path').join(__dirname, '..', 'MIGRATION.md'), L.join('\n'));
+fs.writeFileSync(require('path').join(__dirname, '..', 'docs', 'dev', 'migration.md'), L.join('\n'));
 console.log(`kept ${kept.length} | swapped ${swapped.length} | lost ${lost.length} | na ${na.length} | gained ${gained.length}`);
 console.log('\nLOSSES:');
 for (const m of lost) console.log('  ' + m.category.padEnd(20) + m.name);

@@ -1,0 +1,23 @@
+# Generated files. Marking them linguist-generated collapses them by default in
+# pull request diffs and labels them "generated" in the GitHub UI, so a reviewer
+# is not asked to read 50 KB of derived markdown -- and so anyone hand-editing
+# one gets an immediate visual cue that they are in the wrong file.
+#
+# This is signposting, not enforcement. The actual guard is the docs workflow,
+# which regenerates these and fails if the result differs from what was
+# committed: a hand edit is overwritten by the regeneration and shows up as a
+# diff. Edit the source instead -- tools/mods.json, the quest generator, or the
+# keybind generator.
+docs/usage/mods.md        linguist-generated=true
+docs/usage/quest-book.md  linguist-generated=true
+docs/usage/keybinds.md    linguist-generated=true
+
+# Not generated, but large and mechanical enough that reviewing it line by line
+# is noise.
+docs/dev/catalogue.md     linguist-generated=true
+
+# The shipped keybind file is emitted by tools/gen-keybinds.js.
+overrides/config/defaultoptions/keybindings.txt linguist-generated=true
+
+# The Boundless quest pack is emitted by tools/gen-quests-boundless.js.
+overrides/config/boundless/questpacks/** linguist-generated=true

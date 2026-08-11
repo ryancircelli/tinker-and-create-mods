@@ -10,8 +10,8 @@
 
 [![Minecraft](https://img.shields.io/badge/Minecraft-1.21.1-brightgreen)](https://modrinth.com/modpack/tinker-create)
 [![NeoForge](https://img.shields.io/badge/NeoForge-21.1.248-orange)](https://neoforged.net/)
-[![mods](https://img.shields.io/badge/mods-333-blue)](https://github.com/ryancircelli/tinker-and-create-mods/blob/master/MODS.md)
-[![quests](https://img.shields.io/badge/quests-27-purple)](https://modrinth.com/mod/questlog)
+[![mods](https://img.shields.io/badge/mods-339-blue)](https://github.com/ryancircelli/tinker-and-create-mods/blob/master/docs/usage/mods.md)
+[![quests](https://img.shields.io/badge/quests-44-purple)](https://github.com/ryancircelli/tinker-and-create-mods/blob/master/docs/usage/quest-book.md)
 [![downloads](https://img.shields.io/modrinth/dt/LmXb0Vdc?label=downloads)](https://modrinth.com/modpack/tinker-create)
 [![source](https://img.shields.io/badge/source-GitHub-181717?logo=github)](https://github.com/ryancircelli/tinker-and-create-mods)
 
@@ -28,15 +28,17 @@ picked to support those two, not to pad a mod count.
 
 ## Where you start
 
-The pack opens with a guided walkthrough: **27 quests across 6 chapters**, in a
-readable book rather than a spreadsheet. Press `` ` `` or the button in your
-inventory.
+The pack opens with a guided walkthrough: **44 quests across 8 categories**, in a
+readable book rather than a spreadsheet. Open it from the button in your
+inventory, above the offhand slot, or press `]`.
 
-Every quest is visible from the beginning. Chapters are a suggested order, not a
-lock — start with whichever appeals to you and skip what doesn't.
+Nothing is locked behind another category — start with whichever appeals to you
+and skip what doesn't. Rewards are never auto-claimed: a quest completes, you get
+a toast, and you claim it when you want to.
 
 - **Tinkers' Construct** — Tinker Station, your first tool, a melter, then the Smeltery
 - **Create** — goggles, a water wheel, a press, contraptions, chain conveyors across the base
+- **Storage** — barrels, drawer walls, vaults, networked and Ender storage
 - **Carrying Capacity** — backpacks, upgrades, drawer walls, Ender storage
 - **Time & Growth** — Time in a Bottle, accelerated farming, real cooking
 - **Exploration** — Nature's Compass, structures worth looting, the Nether

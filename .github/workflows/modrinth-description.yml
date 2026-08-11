@@ -4,9 +4,23 @@ name: Sync Modrinth description
 # version-controlled and reviewable, rather than being pasted into the web UI
 # where no history exists. This pushes it to the project on demand.
 #
-# Manual only: the description is not something a routine version bump should
-# rewrite, and an accidental overwrite is annoying to reconstruct.
+# Runs when the description file itself changes on master, and on demand.
+#
+# It was manual-only on the theory that an accidental overwrite is annoying to
+# reconstruct. In practice the opposite happened: the file was edited, nobody
+# remembered to dispatch the workflow, and the live store page went on
+# advertising "27 quests across 6 chapters" built on Questlog -- a mod the pack
+# no longer contains -- long after that stopped being true. The page is the
+# first thing a player reads, so stale is worse than overwritten, and the file
+# is version-controlled either way.
+#
+# Scoped to this one path, so a routine version bump still cannot rewrite it.
 on:
+  push:
+    branches: [master]
+    paths:
+      - 'modrinth-description.md'
+      - '.github/workflows/modrinth-description.yml'
   workflow_dispatch:
 
 jobs:

@@ -4,7 +4,7 @@
 [![release](https://img.shields.io/github/v/release/ryancircelli/tinker-and-create-mods?label=pack)](https://github.com/ryancircelli/tinker-and-create-mods/releases/latest)
 [![Minecraft](https://img.shields.io/badge/Minecraft-1.21.1-brightgreen)](https://modrinth.com/modpack/tinker-create)
 [![NeoForge](https://img.shields.io/badge/NeoForge-21.1.248-orange)](https://neoforged.net/)
-[![mods](https://img.shields.io/badge/mods-333-blue)](MODS.md)
+[![mods](https://img.shields.io/badge/mods-339-blue)](docs/usage/mods.md)
 [![Modrinth](https://img.shields.io/modrinth/dt/LmXb0Vdc?label=modrinth%20downloads)](https://modrinth.com/modpack/tinker-create)
 [![Modrinth version](https://img.shields.io/modrinth/v/LmXb0Vdc?label=modrinth)](https://modrinth.com/modpack/tinker-create/versions)
 
@@ -33,23 +33,28 @@ hashes — so your launcher fetches each mod from its own CDN.
 
 ## Progression
 
-The pack ships a guided walkthrough as **27 quests across 6 chapters**, built on
-[Questlog](https://modrinth.com/mod/questlog). Open it with `` ` `` or the book
-button in your inventory.
+The pack ships a guided walkthrough as **44 quests across 8 categories**, built on
+[Boundless](https://modrinth.com/mod/boundless-quests). Open it from the button in
+your inventory, above the offhand slot, or press `]`.
 
-Every quest is visible from the start. Questlog hides quests whose requirements
-are unmet and has no greyed-out state, so gating them into chains would have
-shown one quest at a time and hidden the roadmap — the opposite of a walkthrough.
-Chapters are a suggested order, not a lock.
+Nothing is locked behind another category, so follow whichever appeals to you.
+Rewards are never auto-claimed: a quest completes, you get a toast, and you claim
+it when you want to.
 
-| Chapter | Where it takes you |
+| Category | Where it takes you |
 | --- | --- |
-| Getting Started | The hub, with links into each line below |
+| Getting Started | First wood, first night, and the lay of the land |
 | Tinkers' Construct | Tinker Station → first tool → melter → Smeltery |
 | Create | Goggles → water wheel → press → contraptions → chain conveyors |
-| Carrying Capacity | Backpacks → upgrades → drawers → Ender storage |
+| Storage | Barrels → drawers → vaults → networked and Ender storage |
+| Carrying Capacity | Backpacks → upgrades → Curios slots |
 | Time & Growth | Time in a Bottle → accelerated farming → cooking |
 | Exploration | Nature's Compass → structures → the Nether |
+| Ponder Guides | Repeatable buttons that play Create's animated explanations |
+
+The full list, with every objective and reward, is in
+[docs/usage/quest-book.md](docs/usage/quest-book.md) — generated from the
+questpack, so it cannot drift from what you actually see in game.
 
 ## How the pack is built
 
@@ -61,18 +66,21 @@ Publishing is automatic: bump `pack.version` in `tools/mods.json`, push to
 `master`, and CI builds, verifies, uploads to Modrinth and cuts a GitHub release.
 
 ```
-node tools/build.js          # resolve + write packs/tinker-and-create-<version>.mrpack
-node tools/gen-quests.js     # regenerate the Questlog quest tree
-node tools/jointest.js       # acceptance gate: real client joins a real server
+node tools/build.js                  # write packs/tinker-and-create-<version>.mrpack
+node tools/gen-quests-boundless.js   # regenerate the Boundless questpack
+node tools/gen-docs.js               # regenerate the generated docs and badges
+node tools/jointest.js <pack>        # acceptance gate: real client joins a real server
 ```
 
 `jointest.js` is the check that matters. Registry-sync and packet-decode failures
 only appear during login, so neither a server boot nor a client boot can catch
-them — it found nine crashes that static checks missed.
+them — it found nine crashes that static checks missed. It is also the only layer
+that catches this pack's real failure mode: config that parses, loads, renders,
+and silently does nothing.
 
-Quest editing does not need a restart. Questlog loads server-side and syncs to
-connected clients, so `tools/quests-push.sh <workdir>` copies the JSON in and
-issues `questlog reload`.
+Quest editing does not need a restart. Boundless loads server-side and syncs to
+connected clients, so copying the JSON in and running `boundless reload` is
+enough.
 
 ## Third-party content and licences
 
@@ -114,7 +122,23 @@ tools/          build, generators, and the client-joins-server test harness
 overrides/      configs shipped with the pack (quests, keybinds, mod fixes)
 external-mods/  the three non-Modrinth jars (gitignored; fetched on build)
 archive/        superseded pack builds
-MODS.md         the full mod list
-CATALOGUE.md    candidates considered, with adoption data from reference packs
-TODO.md         design notes and rejected approaches, with reasons
+docs/usage/     playing the pack — generated from the pack itself
+docs/dev/       changing the pack — contributing, architecture, testing
 ```
+
+## Documentation
+
+Start at [docs/](docs/README.md).
+
+Playing: [getting started](docs/usage/getting-started.md) ·
+[quest book](docs/usage/quest-book.md) ·
+[mod list](docs/usage/mods.md) ·
+[keybinds](docs/usage/keybinds.md)
+
+Changing it: [contributing](docs/dev/contributing.md) ·
+[architecture](docs/dev/architecture.md) ·
+[testing](docs/dev/testing.md)
+
+The three player-facing references are generated by `tools/gen-docs.js` from
+`tools/mods.json`, the built `.mrpack`, the questpack and the shipped keybinds,
+so they cannot drift from what actually ships.

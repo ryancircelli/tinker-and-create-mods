@@ -6,7 +6,7 @@
  * Libraries and performance mods are excluded: they are plumbing, mostly
  * auto-resolved as dependencies, and not decisions the pack owner makes.
  *
- *   node tools/mod-report.js > MODS.md
+ *   node tools/mod-report.js > docs/dev/mod-decisions.md
  */
 
 const fs = require('fs');
