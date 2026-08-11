@@ -2,7 +2,7 @@
 
 # Shipped jars
 
-Every jar in **1.8.11**, with the version each was resolved to at build time.
+Every jar in **1.0.0**, with the version each was resolved to at build time.
 
 This file is refreshed when the pack is built, so it tracks releases upstream. It is deliberately excluded from the docs-are-current check — the resolver takes the newest compatible build of each mod, so this changes on its own whenever any of them publishes, with nothing here having changed.
 
