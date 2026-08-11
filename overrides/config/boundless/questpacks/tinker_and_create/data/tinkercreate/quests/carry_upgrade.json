@@ -13,15 +13,14 @@
   "repeatable": false,
   "autoComplete": false,
   "completion": {
-    "targets": [
+    "complete": [
       {
-        "kind": "item",
-        "id": "sophisticatedbackpacks:copper_backpack",
+        "collect": "sophisticatedbackpacks:copper_backpack",
         "count": 1
       }
     ]
   },
-  "rewards": {
+  "reward": {
     "items": [
       {
         "item": "minecraft:copper_ingot",
@@ -29,7 +28,8 @@
       }
     ],
     "commands": [],
-    "expType": "points",
-    "expAmount": 40
+    "functions": [],
+    "exp": "points",
+    "count": 40
   }
 }

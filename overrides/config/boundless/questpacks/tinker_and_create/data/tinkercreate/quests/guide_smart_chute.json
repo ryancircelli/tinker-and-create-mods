@@ -11,18 +11,19 @@
   "repeatable": true,
   "autoComplete": false,
   "completion": {
-    "targets": []
+    "complete": []
   },
-  "rewards": {
+  "reward": {
     "items": [],
     "commands": [
       {
-        "command": "/ponder scene create:smart_chute",
+        "command": "/ponder create:smart_chute",
         "title": "Watch: Smart Chute",
         "icon": "create:smart_chute"
       }
     ],
-    "expType": "points",
-    "expAmount": 0
+    "functions": [],
+    "exp": "points",
+    "count": 0
   }
 }

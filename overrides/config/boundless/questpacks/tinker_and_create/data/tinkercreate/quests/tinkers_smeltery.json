@@ -13,20 +13,18 @@
   "repeatable": false,
   "autoComplete": false,
   "completion": {
-    "targets": [
+    "complete": [
       {
-        "kind": "item",
-        "id": "tconstruct:smeltery_controller",
+        "collect": "tconstruct:smeltery_controller",
         "count": 1
       },
       {
-        "kind": "item",
-        "id": "tconstruct:seared_bricks",
+        "collect": "tconstruct:seared_bricks",
         "count": 16
       }
     ]
   },
-  "rewards": {
+  "reward": {
     "items": [
       {
         "item": "minecraft:iron_ingot",
@@ -34,7 +32,8 @@
       }
     ],
     "commands": [],
-    "expType": "points",
-    "expAmount": 80
+    "functions": [],
+    "exp": "points",
+    "count": 80
   }
 }

@@ -11,18 +11,19 @@
   "repeatable": true,
   "autoComplete": false,
   "completion": {
-    "targets": []
+    "complete": []
   },
-  "rewards": {
+  "reward": {
     "items": [],
     "commands": [
       {
-        "command": "/ponder scene create:chain_conveyor",
+        "command": "/ponder create:chain_conveyor",
         "title": "Watch: Chain Conveyor",
         "icon": "create:chain_conveyor"
       }
     ],
-    "expType": "points",
-    "expAmount": 0
+    "functions": [],
+    "exp": "points",
+    "count": 0
   }
 }

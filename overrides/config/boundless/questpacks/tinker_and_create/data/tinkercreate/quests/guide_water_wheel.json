@@ -11,18 +11,19 @@
   "repeatable": true,
   "autoComplete": false,
   "completion": {
-    "targets": []
+    "complete": []
   },
-  "rewards": {
+  "reward": {
     "items": [],
     "commands": [
       {
-        "command": "/ponder scene create:water_wheel",
+        "command": "/ponder create:water_wheel",
         "title": "Watch: Water Wheel",
         "icon": "create:water_wheel"
       }
     ],
-    "expType": "points",
-    "expAmount": 0
+    "functions": [],
+    "exp": "points",
+    "count": 0
   }
 }

@@ -289,7 +289,9 @@ function installOverrides(packPath, destMods) {
   const gameArgs = (profile.arguments?.game || []).filter((a) => typeof a === 'string');
 
   const args = [
-    '-Xmx3G', ...jvmArgs,
+    // 339 mods will sit at 99% heap and thrash for 15+ min on 3G before the
+    // title screen ever appears. Match jointest.js.
+    '-Xmx5G', ...jvmArgs,
     '-cp', [...new Set(cp)].join(':'),
     profile.mainClass,
     ...gameArgs,

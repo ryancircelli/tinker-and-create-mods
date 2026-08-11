@@ -13,15 +13,14 @@
   "repeatable": false,
   "autoComplete": false,
   "completion": {
-    "targets": [
+    "complete": [
       {
-        "kind": "item",
-        "id": "tconstruct:pickaxe",
+        "collect": "tconstruct:pickaxe",
         "count": 1
       }
     ]
   },
-  "rewards": {
+  "reward": {
     "items": [
       {
         "item": "minecraft:iron_ingot",
@@ -29,7 +28,8 @@
       }
     ],
     "commands": [],
-    "expType": "points",
-    "expAmount": 50
+    "functions": [],
+    "exp": "points",
+    "count": 50
   }
 }

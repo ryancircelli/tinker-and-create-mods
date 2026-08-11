@@ -2,7 +2,7 @@
   "pack": {
     "name": "Tinker & Create",
     "summary": "Create + Tinkers for Minecraft 1.21.1 NeoForge",
-    "version": "1.8.7",
+    "version": "1.8.8",
     "minecraft": "1.21.1",
     "loader": "neoforge",
     "loaders": [
@@ -1757,6 +1757,11 @@
       "name": "Slime Time",
       "slug": "slime-time",
       "category": "Equipment"
+    },
+    {
+      "name": "Squat Grow",
+      "slug": "squat-grow",
+      "category": "QoL"
     },
     {
       "name": "Boundless: Quests",

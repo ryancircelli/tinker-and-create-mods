@@ -13,18 +13,18 @@
   "repeatable": false,
   "autoComplete": false,
   "completion": {
-    "targets": [
+    "complete": [
       {
-        "kind": "item",
-        "id": "bhc:red_heart_canister",
+        "collect": "bhc:red_heart_canister",
         "count": 1
       }
     ]
   },
-  "rewards": {
+  "reward": {
     "items": [],
     "commands": [],
-    "expType": "levels",
-    "expAmount": 5
+    "functions": [],
+    "exp": "levels",
+    "count": 5
   }
 }

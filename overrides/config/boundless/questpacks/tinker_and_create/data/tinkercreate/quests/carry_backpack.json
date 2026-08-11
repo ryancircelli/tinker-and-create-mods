@@ -11,15 +11,14 @@
   "repeatable": false,
   "autoComplete": false,
   "completion": {
-    "targets": [
+    "complete": [
       {
-        "kind": "item",
-        "id": "sophisticatedbackpacks:backpack",
+        "collect": "sophisticatedbackpacks:backpack",
         "count": 1
       }
     ]
   },
-  "rewards": {
+  "reward": {
     "items": [
       {
         "item": "minecraft:leather",
@@ -27,7 +26,8 @@
       }
     ],
     "commands": [],
-    "expType": "points",
-    "expAmount": 30
+    "functions": [],
+    "exp": "points",
+    "count": 30
   }
 }

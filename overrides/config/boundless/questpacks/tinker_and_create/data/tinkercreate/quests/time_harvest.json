@@ -13,15 +13,14 @@
   "repeatable": false,
   "autoComplete": false,
   "completion": {
-    "targets": [
+    "complete": [
       {
-        "kind": "item",
-        "id": "minecraft:wheat",
+        "collect": "minecraft:wheat",
         "count": 64
       }
     ]
   },
-  "rewards": {
+  "reward": {
     "items": [
       {
         "item": "minecraft:hay_block",
@@ -29,7 +28,8 @@
       }
     ],
     "commands": [],
-    "expType": "points",
-    "expAmount": 40
+    "functions": [],
+    "exp": "points",
+    "count": 40
   }
 }

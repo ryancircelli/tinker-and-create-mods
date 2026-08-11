@@ -56,34 +56,54 @@ function quest(id, {
     lockAfterDependency: false,
     hiddenUnderDependency: false,
     optional, repeatable, autoComplete,
-    completion: { targets },
-    rewards: {
+    // Boundless reads completion.complete[] and -- crucially -- "reward"
+    // SINGULAR. QuestData.parseQuest does exactly:
+    //     obj.has("reward") ? obj.get("reward") : null
+    // with no fallback to "rewards", so the plural key used previously was
+    // dropped whole: no items, no XP, and no Ponder commands ever fired.
+    // Inside it the XP keys are "exp" (points|levels) and "count" -- NOT
+    // expType/expAmount, which are the field names of the parsed record and
+    // what misled us into the wrong shape.
+    completion: { complete: targets },
+    reward: {
       items: rewards.items || [],
       commands: rewards.commands || [],
-      expType: rewards.expType || 'points',
-      expAmount: rewards.exp || 0,
+      functions: rewards.functions || [],
+      exp: rewards.expType || 'points',
+      count: rewards.exp || 0,
     },
   };
   quests.push({ id, body });
 }
 
 // ---- target + reward shorthands ---------------------------------------------
-const collect = (id, count = 1, hint) => ({ kind: 'item', id, count, ...(hint ? { hint } : {}) });
-const submit  = (id, count = 1, hint) => ({ kind: 'submit', id, count, ...(hint ? { hint } : {}) });
-const anyOf   = (ids, count = 1, hint) => ({ kind: 'item', id: ids[0], acceptedIds: ids, count, ...(hint ? { hint } : {}) });
-const kill    = (id, count = 1) => ({ kind: 'entity', id, count });
-const advance = (id) => ({ kind: 'advancement', id, count: 1 });
+// Targets are keyed by VERB, not by {kind,id}. QuestData.parseNewFormatTarget
+// tests o.has("collect") / "submit" / "kill" / "achieve" / "effect" / "stat" /
+// "xp" in turn and returns; there is no kind/id branch anywhere, so the
+// {kind,id,count} objects used before parsed to nothing and left every quest
+// with an empty objective list -- which is why they were all instantly
+// completable and showed no tasks in the detail panel.
+const collect = (id, count = 1) => ({ collect: id, count });
+const submit  = (id, count = 1) => ({ submit: id, count });
+// No any-of support: parseNewFormatTarget calls getAsString() on "collect", and
+// the array form in parseCompletion adds every entry as its own REQUIRED target
+// rather than alternatives. Use the primary item and list the alternatives in
+// the description instead of silently demanding all of them.
+const anyOf   = (ids, count = 1) => ({ collect: ids[0], count });
+const kill    = (id, count = 1) => ({ kill: id, count });
+const advance = (id) => ({ achieve: id });
 
 const give = (item, count = 1) => ({ item, count });
 
 /**
  * A "watch how it works" button on a quest.
  *
- * Ponder is Create's animated in-game guide, and `/ponder scene <id>` opens a
- * specific scene. It is a server command that pushes the scene to the player, so
- * a Boundless CommandReward can trigger it -- verified against the live server:
- * the console rejects it with "A player is required to run this command here",
- * which is precisely the context a reward runs in.
+ * Ponder is Create's animated in-game guide, and `/ponder scene <id> <targets>`
+ * opens a specific scene. It is a genuine server command -- Ponder registers it
+ * on RegisterCommandsEvent (NeoForgePonder$Events), not the client event -- so a
+ * Boundless CommandReward can trigger it. The targets argument is mandatory;
+ * omitting it silently did nothing, which is how the first version shipped
+ * broken.
  *
  * Scene ids are not item ids. These were taken from create.ponder.<id>.header
  * in Create's lang file -- 167 scenes exist, and goggles and item_vault are not
@@ -103,7 +123,15 @@ const give = (item, count = 1) => ({ item, count });
 const PONDER_HINT = '\n\nHover this item in your inventory or EMI and press W to watch it animated.';
 
 const ponder = (scene, title) => ({
-  command: `/ponder scene ${scene}`,
+  // There is NO "scene" literal. PonderCommand registers:
+  //     ponder -> <scene: ResourceLocation> [-> <targets: players>]
+  // so the correct form is `/ponder create:water_wheel`. The old
+  // `/ponder scene <id>` parsed "scene" AS the ResourceLocation (minecraft:scene)
+  // and left the real id as trailing data -- the server says
+  // "Expected whitespace to end one argument, but found trailing data".
+  // Boundless suppresses reward-command output, so that error was invisible and
+  // no scene ever opened. Verified working in game with this exact form.
+  command: `/ponder ${scene}`,
   title: title || 'Watch how it works',
   icon: scene,
 });
@@ -147,9 +175,13 @@ function guide(scene, name) {
 // ---- Getting Started ---------------------------------------------------------
 const BOOK_CMD = '/give @s written_book[written_book_content={title:"Tinker & Create",author:"Pack Guide",pages:['
   + [
-      'Tinker & Create\\\\n\\\\nPress [ to open your quest book, or use the button in your inventory.',
+      // Deliberately points at the inventory button, not a key. Boundless
+      // defaults its book to ] which Xaero already owns, so the key silently
+      // does nothing; the inventory button (beside the recipe book) always
+      // works and needs no keybind at all.
+      'Tinker & Create\\\\n\\\\nOpen your quest book with the button in your inventory, beside the recipe book.',
       'Seven categories. Nothing is locked behind another category -- follow whichever appeals to you.',
-      'Handy keys\\\\n\\\\nZ - zoom\\\\nM - map\\\\nB - backpack\\\\nJ - Tinkers helmet\\\\n[ - quest book',
+      'Handy keys\\\\n\\\\nZ - zoom\\\\nM - map\\\\nB - backpack\\\\nJ - Tinkers helmet\\\\n\\\\nQuest book: inventory button',
       'Two things worth doing early:\\\\n\\\\nApply Improvable to a Tinkers tool.\\\\n\\\\nCraft a sleeping bag: it skips the night without moving your spawn.',
     ].map((t) => `'{"text":"${t}"}'`).join(',') + ']}] 1';
 
@@ -157,7 +189,7 @@ quest('welcome', {
   category: 'getting_started', name: 'Welcome to Tinker & Create',
   icon: 'minecraft:crafting_table', autoComplete: true,
   desc: 'Build tools that grow with you, and machines that do your work for you.\n\n'
-      + 'Press [ to reopen this book at any time. Take the guide below and start wherever you like.',
+      + 'Reopen this book any time from the button in your inventory. Take the guide below and start wherever you like.',
   targets: [collect('#minecraft:logs', 1, 'Pick up any log to begin')],
   rewards: { exp: 20, commands: [cmd(BOOK_CMD, 'Quick Reference Book', 'minecraft:written_book')] },
 });

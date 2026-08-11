@@ -13,20 +13,14 @@
   "repeatable": false,
   "autoComplete": false,
   "completion": {
-    "targets": [
+    "complete": [
       {
-        "kind": "item",
-        "id": "minecraft:spyglass",
-        "acceptedIds": [
-          "minecraft:spyglass",
-          "minecraft:raw_copper"
-        ],
-        "count": 1,
-        "hint": "A spyglass, or some copper"
+        "collect": "minecraft:spyglass",
+        "count": 1
       }
     ]
   },
-  "rewards": {
+  "reward": {
     "items": [
       {
         "item": "minecraft:torch",
@@ -34,7 +28,8 @@
       }
     ],
     "commands": [],
-    "expType": "points",
-    "expAmount": 30
+    "functions": [],
+    "exp": "points",
+    "count": 30
   }
 }

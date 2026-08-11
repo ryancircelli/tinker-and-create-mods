@@ -13,21 +13,14 @@
   "repeatable": false,
   "autoComplete": false,
   "completion": {
-    "targets": [
+    "complete": [
       {
-        "kind": "item",
-        "id": "create:mechanical_piston",
-        "acceptedIds": [
-          "create:mechanical_piston",
-          "create:windmill_bearing",
-          "create:mechanical_bearing"
-        ],
-        "count": 1,
-        "hint": "Any bearing or piston"
+        "collect": "create:mechanical_piston",
+        "count": 1
       }
     ]
   },
-  "rewards": {
+  "reward": {
     "items": [
       {
         "item": "create:brass_ingot",
@@ -36,12 +29,13 @@
     ],
     "commands": [
       {
-        "command": "/ponder scene create:mechanical_piston",
+        "command": "/ponder create:mechanical_piston",
         "title": "Watch: Mechanical Piston",
         "icon": "create:mechanical_piston"
       }
     ],
-    "expType": "points",
-    "expAmount": 80
+    "functions": [],
+    "exp": "points",
+    "count": 80
   }
 }

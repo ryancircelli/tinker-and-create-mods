@@ -13,24 +13,18 @@
   "repeatable": false,
   "autoComplete": false,
   "completion": {
-    "targets": [
+    "complete": [
       {
-        "kind": "item",
-        "id": "travelertoolbelt:belt",
-        "acceptedIds": [
-          "travelertoolbelt:belt",
-          "bhc:red_heart_canister",
-          "minecraft:elytra"
-        ],
-        "count": 1,
-        "hint": "Any accessory"
+        "collect": "travelertoolbelt:belt",
+        "count": 1
       }
     ]
   },
-  "rewards": {
+  "reward": {
     "items": [],
     "commands": [],
-    "expType": "points",
-    "expAmount": 50
+    "functions": [],
+    "exp": "points",
+    "count": 50
   }
 }

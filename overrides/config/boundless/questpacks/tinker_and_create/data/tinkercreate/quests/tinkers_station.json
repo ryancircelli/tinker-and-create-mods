@@ -11,15 +11,14 @@
   "repeatable": false,
   "autoComplete": false,
   "completion": {
-    "targets": [
+    "complete": [
       {
-        "kind": "item",
-        "id": "tconstruct:tinker_station",
+        "collect": "tconstruct:tinker_station",
         "count": 1
       }
     ]
   },
-  "rewards": {
+  "reward": {
     "items": [
       {
         "item": "tconstruct:pattern",
@@ -27,7 +26,8 @@
       }
     ],
     "commands": [],
-    "expType": "points",
-    "expAmount": 30
+    "functions": [],
+    "exp": "points",
+    "count": 30
   }
 }

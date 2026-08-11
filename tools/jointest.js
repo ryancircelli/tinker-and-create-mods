@@ -360,7 +360,10 @@ function installOverrides(packPath, destMods) {
 
   const args = [
     // 3G was enough at ~220 mods; at 276 the client OOMs on world entry.
-    '-Xmx5G', ...jvmArgs,
+    // Override with CLIENT_MEM to check the pack still fits a target heap --
+    // friends on weak PCs allocate 4G, and the resource-reload spike is what
+    // decides whether they can play at all.
+    `-Xmx${process.env.CLIENT_MEM || '5G'}`, ...jvmArgs,
     '-cp', [...new Set(cp)].join(':'),
     profile.mainClass,
     ...gameArgs,
@@ -516,12 +519,12 @@ function installOverrides(packPath, destMods) {
         key('e');      await snap('ui-1-inventory', 3000); // slot overlays live here
         key('Escape');
 
-        // Grant the whole guide so every node renders with its real icon and
-        // title. Ungranted children draw greyed out and half of them are not
-        // visible at all, which would make the capture prove very little.
-        for (const tab of ['start', 'tinkers', 'create', 'carry', 'time', 'explore']) {
-          await con(`advancement grant JoinTestBot from tcguide:${tab}/root`, 1200);
-        }
+        // The pack guide used to be an advancement tree (tcguide:*), granted
+        // here so every node rendered with its real icon. That tree was retired
+        // when the guide moved to Boundless, so these grants only emitted six
+        // "Unknown advancement" lines per run. Unlock the questline instead --
+        // same intent, against the system the pack actually ships.
+        await con('boundless complete all JoinTestBot', 1200);
         // Advancement Plaques queues a popup per grant; capturing during that
         // gets a screenful of toast instead of the tree.
         await new Promise((r) => setTimeout(r, Number(process.env.TOAST_WAIT || 60000)));
@@ -571,13 +574,15 @@ function installOverrides(packPath, destMods) {
           await new Promise((r) => setTimeout(r, 3000));
         };
         await con('datapack list');
-        await con('advancement grant @a only tcguide:start/root');
+        // Probes the Boundless questpack rather than the retired tcguide
+        // advancement tree. "complete" on a known quest id is the cheapest
+        // proof the pack parsed: an unloaded pack makes the id unknown.
+        await con('boundless complete welcome @a');
         const out = sLog.slice(mark).join('');
         fs.writeFileSync(path.join(shots, 'datapack-probe.log'), out);
-        const listed = /tinker_create_guide|tcguide/i.test(out);
-        const unknown = /Unknown advancement|No advancement was found/i.test(out);
-        const granted = /Granted the advancement|criteri/i.test(out);
-        console.log(`DATAPACK PROBE: listed=${listed ? 'YES' : 'no'} grant=${unknown ? 'UNKNOWN-ID' : (granted ? 'OK' : '?')}`);
+        const listed = /tinker_and_create|tinkercreate/i.test(out);
+        const unknown = /Unknown|No quest|not found/i.test(out);
+        console.log(`QUESTPACK PROBE: listed=${listed ? 'YES' : 'no'} complete=${unknown ? 'UNKNOWN-ID' : 'OK'}`);
       }
 
       if (process.env.XP_TEST && !SP) {

@@ -11,18 +11,19 @@
   "repeatable": true,
   "autoComplete": false,
   "completion": {
-    "targets": []
+    "complete": []
   },
-  "rewards": {
+  "reward": {
     "items": [],
     "commands": [
       {
-        "command": "/ponder scene create:mechanical_piston",
+        "command": "/ponder create:mechanical_piston",
         "title": "Watch: Mechanical Piston",
         "icon": "create:mechanical_piston"
       }
     ],
-    "expType": "points",
-    "expAmount": 0
+    "functions": [],
+    "exp": "points",
+    "count": 0
   }
 }

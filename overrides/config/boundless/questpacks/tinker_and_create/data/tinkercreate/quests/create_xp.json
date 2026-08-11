@@ -13,15 +13,14 @@
   "repeatable": false,
   "autoComplete": false,
   "completion": {
-    "targets": [
+    "complete": [
       {
-        "kind": "item",
-        "id": "create_enchantment_industry:experience_hatch",
+        "collect": "create_enchantment_industry:experience_hatch",
         "count": 1
       }
     ]
   },
-  "rewards": {
+  "reward": {
     "items": [
       {
         "item": "minecraft:bucket",
@@ -29,7 +28,8 @@
       }
     ],
     "commands": [],
-    "expType": "points",
-    "expAmount": 200
+    "functions": [],
+    "exp": "points",
+    "count": 200
   }
 }

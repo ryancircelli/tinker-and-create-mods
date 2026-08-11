@@ -13,15 +13,13 @@
   "repeatable": false,
   "autoComplete": false,
   "completion": {
-    "targets": [
+    "complete": [
       {
-        "kind": "advancement",
-        "id": "minecraft:nether/root",
-        "count": 1
+        "achieve": "minecraft:nether/root"
       }
     ]
   },
-  "rewards": {
+  "reward": {
     "items": [
       {
         "item": "minecraft:obsidian",
@@ -29,7 +27,8 @@
       }
     ],
     "commands": [],
-    "expType": "levels",
-    "expAmount": 5
+    "functions": [],
+    "exp": "levels",
+    "count": 5
   }
 }

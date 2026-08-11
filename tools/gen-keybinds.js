@@ -46,9 +46,18 @@ const WINNER = {
   'key.keyboard.r': 'key_key.travelertoolbelt.open_toolbelt',
   'key.keyboard.u': 'key_gui.xaero_waypoints_key',
   'key.keyboard.v': 'key_key.voice_chat',                           // V = voice chat convention
-  'key.keyboard.y': 'key_gui.xaero_minimap_settings',
+  // VeinMiner's hold-to-vein-mine is used mid-swing and has no alternative;
+  // Xaero's minimap settings are reachable from the map screen itself.
+  'key.keyboard.y': 'key_key.veinminer_client.hold',
+  // Iris keeps o for shader selection (its upstream default); VeinMiner's
+  // config screen loses -- it is a settings menu, not a play action.
+  'key.keyboard.o': 'key_iris.keybind.shaderPackSelection',
   'key.mouse.middle': 'key_key.pickItem',                           // vanilla pick-block wins
-  'key.keyboard.right.bracket': 'key_gui.xaero_open_settings',
+  // The quest book must win ]. Xaero also defaults its world-map settings here
+  // and was silently taking it, which left the ENTIRE questline unreachable by
+  // keyboard -- confirmed in game, ] opened "Xaero's World Map Settings".
+  // Xaero's settings remain available from inside the map screen.
+  'key.keyboard.right.bracket': 'key_key.boundless.open_quest_book',
 };
 
 // A few high-value actions get moved to genuinely free keys instead of unbound.

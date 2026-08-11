@@ -11,18 +11,19 @@
   "repeatable": true,
   "autoComplete": false,
   "completion": {
-    "targets": []
+    "complete": []
   },
-  "rewards": {
+  "reward": {
     "items": [],
     "commands": [
       {
-        "command": "/ponder scene create:belt_connector",
+        "command": "/ponder create:belt_connector",
         "title": "Watch: Belts",
         "icon": "create:belt_connector"
       }
     ],
-    "expType": "points",
-    "expAmount": 0
+    "functions": [],
+    "exp": "points",
+    "count": 0
   }
 }

@@ -13,15 +13,14 @@
   "repeatable": false,
   "autoComplete": false,
   "completion": {
-    "targets": [
+    "complete": [
       {
-        "kind": "item",
-        "id": "create:water_wheel",
+        "collect": "create:water_wheel",
         "count": 1
       }
     ]
   },
-  "rewards": {
+  "reward": {
     "items": [
       {
         "item": "create:shaft",
@@ -34,12 +33,13 @@
     ],
     "commands": [
       {
-        "command": "/ponder scene create:water_wheel",
+        "command": "/ponder create:water_wheel",
         "title": "Watch: Water Wheel",
         "icon": "create:water_wheel"
       }
     ],
-    "expType": "points",
-    "expAmount": 40
+    "functions": [],
+    "exp": "points",
+    "count": 40
   }
 }

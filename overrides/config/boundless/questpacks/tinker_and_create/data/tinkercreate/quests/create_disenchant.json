@@ -13,19 +13,14 @@
   "repeatable": false,
   "autoComplete": false,
   "completion": {
-    "targets": [
+    "complete": [
       {
-        "kind": "item",
-        "id": "create_enchantment_industry:grindstone_drain",
-        "acceptedIds": [
-          "create_enchantment_industry:grindstone_drain",
-          "create_enchantment_industry:blaze_enchanter"
-        ],
+        "collect": "create_enchantment_industry:grindstone_drain",
         "count": 1
       }
     ]
   },
-  "rewards": {
+  "reward": {
     "items": [
       {
         "item": "minecraft:lapis_lazuli",
@@ -33,7 +28,8 @@
       }
     ],
     "commands": [],
-    "expType": "levels",
-    "expAmount": 5
+    "functions": [],
+    "exp": "levels",
+    "count": 5
   }
 }

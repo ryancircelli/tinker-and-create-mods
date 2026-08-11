@@ -13,15 +13,14 @@
   "repeatable": false,
   "autoComplete": false,
   "completion": {
-    "targets": [
+    "complete": [
       {
-        "kind": "item",
-        "id": "create:chain_conveyor",
+        "collect": "create:chain_conveyor",
         "count": 2
       }
     ]
   },
-  "rewards": {
+  "reward": {
     "items": [
       {
         "item": "create:brass_ingot",
@@ -30,12 +29,13 @@
     ],
     "commands": [
       {
-        "command": "/ponder scene create:chain_conveyor",
+        "command": "/ponder create:chain_conveyor",
         "title": "Watch: Chain Conveyor",
         "icon": "create:chain_conveyor"
       }
     ],
-    "expType": "points",
-    "expAmount": 80
+    "functions": [],
+    "exp": "points",
+    "count": 80
   }
 }

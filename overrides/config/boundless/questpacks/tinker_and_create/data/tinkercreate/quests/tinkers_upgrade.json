@@ -13,20 +13,14 @@
   "repeatable": false,
   "autoComplete": false,
   "completion": {
-    "targets": [
+    "complete": [
       {
-        "kind": "item",
-        "id": "minecraft:nether_star",
-        "acceptedIds": [
-          "minecraft:nether_star",
-          "tconstruct:silky_cloth"
-        ],
-        "count": 1,
-        "hint": "Nether Star or Silky Cloth"
+        "collect": "minecraft:nether_star",
+        "count": 1
       }
     ]
   },
-  "rewards": {
+  "reward": {
     "items": [
       {
         "item": "tconstruct:pattern",
@@ -34,7 +28,8 @@
       }
     ],
     "commands": [],
-    "expType": "points",
-    "expAmount": 100
+    "functions": [],
+    "exp": "points",
+    "count": 100
   }
 }

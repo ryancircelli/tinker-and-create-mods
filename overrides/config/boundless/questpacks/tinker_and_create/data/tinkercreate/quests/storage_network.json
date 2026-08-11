@@ -14,20 +14,18 @@
   "repeatable": false,
   "autoComplete": false,
   "completion": {
-    "targets": [
+    "complete": [
       {
-        "kind": "item",
-        "id": "toms_storage:inventory_connector",
+        "collect": "toms_storage:inventory_connector",
         "count": 1
       },
       {
-        "kind": "item",
-        "id": "toms_storage:storage_terminal",
+        "collect": "toms_storage:storage_terminal",
         "count": 1
       }
     ]
   },
-  "rewards": {
+  "reward": {
     "items": [
       {
         "item": "minecraft:ender_pearl",
@@ -35,7 +33,8 @@
       }
     ],
     "commands": [],
-    "expType": "points",
-    "expAmount": 100
+    "functions": [],
+    "exp": "points",
+    "count": 100
   }
 }

@@ -13,20 +13,14 @@
   "repeatable": false,
   "autoComplete": false,
   "completion": {
-    "targets": [
+    "complete": [
       {
-        "kind": "item",
-        "id": "sophisticatedstorage:barrel",
-        "acceptedIds": [
-          "sophisticatedstorage:barrel",
-          "sophisticatedstorage:chest"
-        ],
-        "count": 1,
-        "hint": "A Sophisticated barrel or chest"
+        "collect": "sophisticatedstorage:barrel",
+        "count": 1
       }
     ]
   },
-  "rewards": {
+  "reward": {
     "items": [
       {
         "item": "minecraft:iron_ingot",
@@ -34,7 +28,8 @@
       }
     ],
     "commands": [],
-    "expType": "points",
-    "expAmount": 50
+    "functions": [],
+    "exp": "points",
+    "count": 50
   }
 }

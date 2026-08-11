@@ -13,20 +13,14 @@
   "repeatable": false,
   "autoComplete": false,
   "completion": {
-    "targets": [
+    "complete": [
       {
-        "kind": "item",
-        "id": "minecraft:diamond",
-        "acceptedIds": [
-          "minecraft:diamond",
-          "minecraft:golden_apple"
-        ],
-        "count": 3,
-        "hint": "Loot worth bringing home"
+        "collect": "minecraft:diamond",
+        "count": 3
       }
     ]
   },
-  "rewards": {
+  "reward": {
     "items": [
       {
         "item": "minecraft:iron_ingot",
@@ -34,7 +28,8 @@
       }
     ],
     "commands": [],
-    "expType": "points",
-    "expAmount": 80
+    "functions": [],
+    "exp": "points",
+    "count": 80
   }
 }

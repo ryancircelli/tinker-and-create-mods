@@ -13,15 +13,14 @@
   "repeatable": false,
   "autoComplete": false,
   "completion": {
-    "targets": [
+    "complete": [
       {
-        "kind": "item",
-        "id": "storagedrawers:acacia_full_drawers_1",
+        "collect": "storagedrawers:acacia_full_drawers_1",
         "count": 4
       }
     ]
   },
-  "rewards": {
+  "reward": {
     "items": [
       {
         "item": "minecraft:oak_planks",
@@ -29,7 +28,8 @@
       }
     ],
     "commands": [],
-    "expType": "points",
-    "expAmount": 40
+    "functions": [],
+    "exp": "points",
+    "count": 40
   }
 }

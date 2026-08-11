@@ -13,20 +13,18 @@
   "repeatable": false,
   "autoComplete": false,
   "completion": {
-    "targets": [
+    "complete": [
       {
-        "kind": "item",
-        "id": "create:mechanical_press",
+        "collect": "create:mechanical_press",
         "count": 1
       },
       {
-        "kind": "item",
-        "id": "create:belt_connector",
+        "collect": "create:belt_connector",
         "count": 1
       }
     ]
   },
-  "rewards": {
+  "reward": {
     "items": [
       {
         "item": "create:andesite_alloy",
@@ -35,12 +33,13 @@
     ],
     "commands": [
       {
-        "command": "/ponder scene create:mechanical_press",
+        "command": "/ponder create:mechanical_press",
         "title": "Watch: Mechanical Press",
         "icon": "create:mechanical_press"
       }
     ],
-    "expType": "points",
-    "expAmount": 60
+    "functions": [],
+    "exp": "points",
+    "count": 60
   }
 }

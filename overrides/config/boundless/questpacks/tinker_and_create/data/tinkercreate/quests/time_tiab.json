@@ -11,15 +11,14 @@
   "repeatable": false,
   "autoComplete": false,
   "completion": {
-    "targets": [
+    "complete": [
       {
-        "kind": "item",
-        "id": "tiab:time_in_a_bottle",
+        "collect": "tiab:time_in_a_bottle",
         "count": 1
       }
     ]
   },
-  "rewards": {
+  "reward": {
     "items": [
       {
         "item": "minecraft:oak_sapling",
@@ -27,7 +26,8 @@
       }
     ],
     "commands": [],
-    "expType": "points",
-    "expAmount": 50
+    "functions": [],
+    "exp": "points",
+    "count": 50
   }
 }

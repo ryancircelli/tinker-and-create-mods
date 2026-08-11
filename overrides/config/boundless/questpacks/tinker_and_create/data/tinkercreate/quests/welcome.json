@@ -2,7 +2,7 @@
   "id": "welcome",
   "name": "Welcome to Tinker & Create",
   "icon": "minecraft:crafting_table",
-  "description": "Build tools that grow with you, and machines that do your work for you.\n\nPress [ to reopen this book at any time. Take the guide below and start wherever you like.",
+  "description": "Build tools that grow with you, and machines that do your work for you.\n\nReopen this book any time from the button in your inventory. Take the guide below and start wherever you like.",
   "category": "getting_started",
   "dependencies": [],
   "lockAfterDependency": false,
@@ -11,25 +11,24 @@
   "repeatable": false,
   "autoComplete": true,
   "completion": {
-    "targets": [
+    "complete": [
       {
-        "kind": "item",
-        "id": "#minecraft:logs",
-        "count": 1,
-        "hint": "Pick up any log to begin"
+        "collect": "#minecraft:logs",
+        "count": 1
       }
     ]
   },
-  "rewards": {
+  "reward": {
     "items": [],
     "commands": [
       {
-        "command": "/give @s written_book[written_book_content={title:\"Tinker & Create\",author:\"Pack Guide\",pages:['{\"text\":\"Tinker & Create\\\\n\\\\nPress [ to open your quest book, or use the button in your inventory.\"}','{\"text\":\"Seven categories. Nothing is locked behind another category -- follow whichever appeals to you.\"}','{\"text\":\"Handy keys\\\\n\\\\nZ - zoom\\\\nM - map\\\\nB - backpack\\\\nJ - Tinkers helmet\\\\n[ - quest book\"}','{\"text\":\"Two things worth doing early:\\\\n\\\\nApply Improvable to a Tinkers tool.\\\\n\\\\nCraft a sleeping bag: it skips the night without moving your spawn.\"}']}] 1",
+        "command": "/give @s written_book[written_book_content={title:\"Tinker & Create\",author:\"Pack Guide\",pages:['{\"text\":\"Tinker & Create\\\\n\\\\nOpen your quest book with the button in your inventory, beside the recipe book.\"}','{\"text\":\"Seven categories. Nothing is locked behind another category -- follow whichever appeals to you.\"}','{\"text\":\"Handy keys\\\\n\\\\nZ - zoom\\\\nM - map\\\\nB - backpack\\\\nJ - Tinkers helmet\\\\n\\\\nQuest book: inventory button\"}','{\"text\":\"Two things worth doing early:\\\\n\\\\nApply Improvable to a Tinkers tool.\\\\n\\\\nCraft a sleeping bag: it skips the night without moving your spawn.\"}']}] 1",
         "title": "Quick Reference Book",
         "icon": "minecraft:written_book"
       }
     ],
-    "expType": "points",
-    "expAmount": 20
+    "functions": [],
+    "exp": "points",
+    "count": 20
   }
 }

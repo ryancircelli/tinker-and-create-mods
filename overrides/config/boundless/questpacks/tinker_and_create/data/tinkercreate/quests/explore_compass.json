@@ -11,15 +11,14 @@
   "repeatable": false,
   "autoComplete": false,
   "completion": {
-    "targets": [
+    "complete": [
       {
-        "kind": "item",
-        "id": "naturescompass:naturescompass",
+        "collect": "naturescompass:naturescompass",
         "count": 1
       }
     ]
   },
-  "rewards": {
+  "reward": {
     "items": [
       {
         "item": "minecraft:map",
@@ -27,7 +26,8 @@
       }
     ],
     "commands": [],
-    "expType": "points",
-    "expAmount": 50
+    "functions": [],
+    "exp": "points",
+    "count": 50
   }
 }

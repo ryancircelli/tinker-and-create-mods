@@ -13,31 +13,22 @@
   "repeatable": false,
   "autoComplete": false,
   "completion": {
-    "targets": [
+    "complete": [
       {
-        "kind": "item",
-        "id": "#hangglider:hang_gliders",
-        "count": 1,
-        "hint": "Any hang glider"
+        "collect": "#hangglider:hang_gliders",
+        "count": 1
       },
       {
-        "kind": "item",
-        "id": "tconstruct:slime_boots",
-        "acceptedIds": [
-          "tconstruct:slime_boots",
-          "slime_time:slime_boots"
-        ],
-        "count": 1,
-        "hint": "Either mod’s slime boots"
+        "collect": "tconstruct:slime_boots",
+        "count": 1
       },
       {
-        "kind": "item",
-        "id": "slime_time:slime_sling",
+        "collect": "slime_time:slime_sling",
         "count": 1
       }
     ]
   },
-  "rewards": {
+  "reward": {
     "items": [
       {
         "item": "minecraft:slime_ball",
@@ -45,7 +36,8 @@
       }
     ],
     "commands": [],
-    "expType": "points",
-    "expAmount": 80
+    "functions": [],
+    "exp": "points",
+    "count": 80
   }
 }

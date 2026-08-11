@@ -13,15 +13,14 @@
   "repeatable": false,
   "autoComplete": false,
   "completion": {
-    "targets": [
+    "complete": [
       {
-        "kind": "item",
-        "id": "create:item_vault",
+        "collect": "create:item_vault",
         "count": 4
       }
     ]
   },
-  "rewards": {
+  "reward": {
     "items": [
       {
         "item": "create:andesite_alloy",
@@ -29,7 +28,8 @@
       }
     ],
     "commands": [],
-    "expType": "points",
-    "expAmount": 60
+    "functions": [],
+    "exp": "points",
+    "count": 60
   }
 }
