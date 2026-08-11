@@ -15,7 +15,10 @@
   "completion": {
     "complete": [
       {
-        "collect": "create_enchantment_industry:grindstone_drain",
+        "collect": [
+          "create_enchantment_industry:grindstone_drain",
+          "create_enchantment_industry:blaze_enchanter"
+        ],
         "count": 1
       }
     ]

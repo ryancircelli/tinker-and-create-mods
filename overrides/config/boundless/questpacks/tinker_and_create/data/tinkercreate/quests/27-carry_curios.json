@@ -15,7 +15,11 @@
   "completion": {
     "complete": [
       {
-        "collect": "travelertoolbelt:belt",
+        "collect": [
+          "travelertoolbelt:belt",
+          "bhc:red_heart_canister",
+          "minecraft:elytra"
+        ],
         "count": 1
       }
     ]

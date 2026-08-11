@@ -15,7 +15,10 @@
   "completion": {
     "complete": [
       {
-        "collect": "minecraft:spyglass",
+        "collect": [
+          "minecraft:spyglass",
+          "minecraft:raw_copper"
+        ],
         "count": 1
       }
     ]

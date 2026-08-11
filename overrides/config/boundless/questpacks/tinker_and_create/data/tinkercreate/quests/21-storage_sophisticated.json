@@ -15,7 +15,10 @@
   "completion": {
     "complete": [
       {
-        "collect": "sophisticatedstorage:barrel",
+        "collect": [
+          "sophisticatedstorage:barrel",
+          "sophisticatedstorage:chest"
+        ],
         "count": 1
       }
     ]

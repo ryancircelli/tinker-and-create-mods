@@ -15,7 +15,10 @@
   "completion": {
     "complete": [
       {
-        "collect": "minecraft:diamond",
+        "collect": [
+          "minecraft:diamond",
+          "minecraft:golden_apple"
+        ],
         "count": 3
       }
     ]
