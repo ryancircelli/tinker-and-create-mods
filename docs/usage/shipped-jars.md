@@ -2,7 +2,7 @@
 
 # Shipped jars
 
-Every jar in **1.0.0**, with the version each was resolved to at build time.
+Every jar in **1.0.1**, with the version each was resolved to at build time.
 
 This file is refreshed when the pack is built, so it tracks releases upstream. It is deliberately excluded from the docs-are-current check — the resolver takes the newest compatible build of each mod, so this changes on its own whenever any of them publishes, with nothing here having changed.
 
@@ -68,7 +68,7 @@ This file is refreshed when the pack is built, so it tracks releases upstream. I
 | `Create Quality of Life-1.21.1-1.6.3-fix1.jar` | required | required |
 | `create_bb-1.0.7-1.21.1-Neoforge.jar` | required | required |
 | `create_bic_bit-1.0.2C.jar` | required | required |
-| `create_compatible_storage-2.11.0-neoforge.jar` | required | required |
+| `create_compatible_storage-2.13.0-mc1.21.1-neoforge.jar` | required | required |
 | `create_compressed-2.2.0-neoforge-1.21.1.jar` | required | required |
 | `create_connected-1.3.2-mc1.21.1.jar` | required | required |
 | `create_copper_and_zinc-2.0.0-neoforge-1.21.1.jar` | required | required |
