@@ -20,6 +20,28 @@ two, not to pad a mod count.
 > moderation review. The pack itself is published and installable today via the
 > GitHub release below.
 
+## Playing the pack
+
+New here? Start with these.
+
+| | |
+|---|---|
+| 🚀 **[Getting started](docs/usage/getting-started.md)** | Install it, how much RAM to give it, and what to do first |
+| 📖 **[Quest book](docs/usage/quest-book.md)** | All 44 quests, what each asks for and what it pays out |
+| 🧱 **[Mod list](docs/usage/mods.md)** | Everything in the pack, by category, and why things were left out |
+| ⌨️ **[Keybinds](docs/usage/keybinds.md)** | The keys the pack sets, and which are deliberately unbound |
+| 📦 **[Shipped jars](docs/usage/shipped-jars.md)** | Exact version of every jar in the current release |
+
+On this page: [Install](#install) · [Requirements](#requirements) ·
+[Progression](#progression) · [How the pack is built](#how-the-pack-is-built) ·
+[Licences](#third-party-content-and-licences) ·
+[Repository layout](#repository-layout)
+
+Changing the pack rather than playing it?
+[Contributing](docs/dev/contributing.md) ·
+[Architecture](docs/dev/architecture.md) ·
+[Testing](docs/dev/testing.md)
+
 ## Install
 
 **Modrinth App** (once the project is approved) — search *Tinker & Create* and hit install.
@@ -30,6 +52,23 @@ and import it. Modrinth App, Prism and ATLauncher all accept `.mrpack` directly.
 
 The download is ~120 KB. It contains no mod jars — only a manifest of URLs and
 hashes — so your launcher fetches each mod from its own CDN.
+
+## Requirements
+
+**Give it 4 GB of RAM.** Less will not finish loading.
+
+That is measured, not guessed. At a 3 GB heap the client dies part-way through
+startup with `OutOfMemoryError: Java heap space` on a resource-reload thread,
+then a cascade of `Tried to lookup sprite, but atlas is not initialized`. It is
+not a leak — the heap sits at 40% *after* the crash. It is one large allocation
+while stitching the texture atlas for ~340 mods, so a slightly larger heap fixes
+it outright.
+
+4 GB is the **heap** (`-Xmx4G`). The whole process wants roughly 6 GB of system
+memory once the JVM's own overhead and your graphics driver are counted, so 8 GB
+total is the realistic floor. 6 GB of heap is more comfortable but not required.
+
+Java 21 is required, which every modern launcher installs for you.
 
 ## Progression
 
