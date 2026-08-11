@@ -69,6 +69,27 @@ jobs:
           fi
           echo "Docs match the pack."
 
+      # shipped-jars.md is excluded from the equality check above, because it
+      # records the versions the resolver chose and those move whenever any of
+      # ~340 mods releases upstream. That exclusion leaves a hole: CI cannot
+      # commit the file back to a protected branch, so nothing forces it to be
+      # rebuilt, and the mod-count badge reads its count from it. Bump the pack
+      # version without rebuilding and both quietly describe the previous
+      # release, while still agreeing with each other -- so the diff check sees
+      # nothing wrong.
+      #
+      # Check the STAMP instead of the contents. The pack version is
+      # deterministic; the jar versions are not.
+      - name: Check the jar manifest was rebuilt for this version
+        run: |
+          WANT=$(node -e 'console.log(require("./tools/mods.json").pack.version)')
+          GOT=$(sed -n 's/.*Every jar in \*\*\([0-9.]*\)\*\*.*/\1/p' docs/usage/shipped-jars.md | head -1)
+          echo "pack.version=$WANT  shipped-jars.md=$GOT"
+          if [ "$WANT" != "$GOT" ]; then
+            echo "::error::docs/usage/shipped-jars.md describes ${GOT:-nothing}, but this pack is ${WANT}. Run 'node tools/build.js && node tools/gen-docs.js' and commit the result."
+            exit 1
+          fi
+
       # A version that already exists on Modrinth cannot be published. Catching
       # it here means the merge does not fail halfway through publishing.
       - name: Warn if the version is already published
