@@ -51,7 +51,7 @@ disabledQuestPacks = []
 
 [Functionality]
 	#If true, quest pinning and pinned HUD are disabled.
-	disableQuestPinning = false
+	disableQuestPinning = true
 	#If true, quest rewards are automatically claimed when a quest becomes complete.
 	#Pinned deliberately: a completion toast fires (enableQuestToasts) but the
 	#reward waits in the book until claimed, which is the FTB Quests behaviour
