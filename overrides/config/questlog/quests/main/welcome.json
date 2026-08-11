@@ -19,6 +19,13 @@
   ],
   "rewards": [
     {
+      "type": "questlog:command",
+      "command": "/give @s written_book[written_book_content={title:\"Tinker & Create\",author:\"Pack Guide\",pages:['{\"text\":\"Tinker & Create\\\\n\\\\nPress the ` key (above Tab) to open your quest log.\\\\n\\\\nThere is also a book button in your inventory, next to the recipe book.\"}','{\"text\":\"The log has six chapters.\\\\n\\\\nGetting Started links into all of them. Nothing is locked -- every quest is visible from the start, so read ahead freely.\"}','{\"text\":\"Handy keys\\\\n\\\\nZ - zoom\\\\nM - map\\\\nB - backpack\\\\nJ - Tinkers helmet\\\\n\\\\nAll rebindable in Options, Controls.\"}','{\"text\":\"Two things worth doing early:\\\\n\\\\nApply Improvable to a Tinkers tool so it starts banking levels.\\\\n\\\\nCraft a sleeping bag: it skips the night without moving your spawn.\"}']}] 1",
+      "permission_level": 2,
+      "auto_claim": true,
+      "name": "Quick Reference Book"
+    },
+    {
       "type": "questlog:experience",
       "experience": 20,
       "levels": false,

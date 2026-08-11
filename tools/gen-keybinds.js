@@ -33,6 +33,10 @@ const IGNORE_KEYS = new Set([
 // key gets unbound. Choices follow each mod's own convention where one exists.
 const WINNER = {
   'key.keyboard.b': 'key_key.sophisticatedbackpacks.open_backpack', // B = backpack, near-universal
+  // z is the worst offender in practice: Quark's hotbar switcher, JustZoom,
+  // Tinkers' helmet action and Xaero's enlarge-map all claim it out of the box.
+  // Zoom wins because it is used constantly and has no alternative gesture.
+  'key.keyboard.z': 'key_justzoom.keybinds.keybind.zoom',
   'key.keyboard.c': 'key_key.sophisticatedbackpacks.inventory_interaction',
   'key.keyboard.g': 'key_key.guideme.guide',                        // G = the pack's guidebook
   'key.keyboard.h': 'key_key.hide_icons',
@@ -43,14 +47,14 @@ const WINNER = {
   'key.keyboard.u': 'key_gui.xaero_waypoints_key',
   'key.keyboard.v': 'key_key.voice_chat',                           // V = voice chat convention
   'key.keyboard.y': 'key_gui.xaero_minimap_settings',
-  'key.keyboard.z': 'key_key.tconstruct.helmet_interact',           // Tinkers convention
   'key.mouse.middle': 'key_key.pickItem',                           // vanilla pick-block wins
   'key.keyboard.right.bracket': 'key_gui.xaero_open_settings',
 };
 
 // A few high-value actions get moved to genuinely free keys instead of unbound.
 const REASSIGN = {
-  'key_justzoom.keybinds.keybind.zoom': 'key.keyboard.j',   // only free letter
+  // Displaced from z by zoom; j is the only free letter on a full keyboard.
+  'key_key.tconstruct.helmet_interact': 'key.keyboard.j',
   'key_key.curios.open.desc': 'key.keyboard.keypad.6',
   'key_key.corpse.death_history': 'key.keyboard.keypad.7',
   'key_key.toms_storage.open_terminal': 'key.keyboard.keypad.8',

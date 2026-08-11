@@ -101,6 +101,23 @@ const item = (id, count = 1, auto = true) => ({ type: 'questlog:item', item: id,
 const xp = (amount, levels = false) => ({ type: 'questlog:experience', experience: amount, levels, auto_claim: true });
 const pick = (n, ...choices) => ({ type: 'questlog:choice', pick_count: n, choices });
 
+
+// A written book handed out by the welcome quest. GuideME would be the nicer
+// home for this, but its guides are registered in Java, so a pack cannot add one
+// -- a written book is fully data-driven and needs no extra mod.
+//
+// Note the deliberate absence of apostrophes in the page text: pages are
+// single-quoted SNBT strings, and an apostrophe would terminate one early.
+// Syntax verified against the live server before being wired in.
+const BOOK_PAGES = [
+  'Tinker & Create\\\\n\\\\nPress the ` key (above Tab) to open your quest log.\\\\n\\\\nThere is also a book button in your inventory, next to the recipe book.',
+  'The log has six chapters.\\\\n\\\\nGetting Started links into all of them. Nothing is locked -- every quest is visible from the start, so read ahead freely.',
+  'Handy keys\\\\n\\\\nZ - zoom\\\\nM - map\\\\nB - backpack\\\\nJ - Tinkers helmet\\\\n\\\\nAll rebindable in Options, Controls.',
+  'Two things worth doing early:\\\\n\\\\nApply Improvable to a Tinkers tool so it starts banking levels.\\\\n\\\\nCraft a sleeping bag: it skips the night without moving your spawn.',
+];
+const BOOK_CMD = '/give @s written_book[written_book_content={title:"Tinker & Create",author:"Pack Guide",pages:['
+  + BOOK_PAGES.map((t) => `'{"text":"${t}"}'`).join(',') + ']}] 1';
+
 // A link the player can click straight to another quest, from the description.
 const link = (text, id) => `[${text}](quest:${qid(id)})`;
 
@@ -129,7 +146,11 @@ quest('main/welcome', {
       + "Press ` (grave) or the book button in your inventory to reopen this log at any time.",
   descDone: "You know where the log lives. Everything else is optional -- go build something.",
   objectives: [read('Read this entry')],
-  rewards: [xp(20)],
+  rewards: [
+    { type: 'questlog:command', command: BOOK_CMD, permission_level: 2,
+      auto_claim: true, name: 'Quick Reference Book' },
+    xp(20),
+  ],
 });
 
 quest('main/first_wood', {

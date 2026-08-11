@@ -98,11 +98,11 @@ key_key.sophisticatedcore.transfer_to_inventory:key.keyboard.unknown
 key_key.sophisticatedbackpacks.open_backpack:key.keyboard.b
 key_key.sophisticatedbackpacks.inventory_interaction:key.keyboard.c
 key_key.sophisticatedbackpacks.tool_swap:key.keyboard.unknown
+key_key.sophisticatedbackpacks.toggle_upgrade_5:key.keyboard.unknown
+key_key.sophisticatedbackpacks.toggle_upgrade_4:key.keyboard.unknown
 key_key.sophisticatedbackpacks.toggle_upgrade_3:key.keyboard.unknown
 key_key.sophisticatedbackpacks.toggle_upgrade_2:key.keyboard.x:ALT
 key_key.sophisticatedbackpacks.toggle_upgrade_1:key.keyboard.unknown
-key_key.sophisticatedbackpacks.toggle_upgrade_5:key.keyboard.unknown
-key_key.sophisticatedbackpacks.toggle_upgrade_4:key.keyboard.unknown
 key_key.carry.desc:key.keyboard.unknown
 key_key.travelertoolbelt.open_toolbelt:key.keyboard.r
 key_key.cataclysm.ability:key.keyboard.unknown
@@ -117,9 +117,10 @@ key_artifacts.key.charm_of_sinking.toggle:key.keyboard.unknown
 key_artifacts.key.night_vision_goggles.toggle:key.keyboard.unknown
 key_artifacts.key.scarf_of_invisibility.toggle:key.keyboard.unknown
 key_artifacts.key.universal_attractor.toggle:key.keyboard.unknown
+key_key.questlog.open:key.keyboard.grave.accent
 key_key.easy_villagers.pick_up:key.keyboard.unknown
 key_key.easy_villagers.cycle_trades:key.keyboard.keypad.9
-key_justzoom.keybinds.keybind.zoom:key.keyboard.j
+key_justzoom.keybinds.keybind.zoom:key.keyboard.z
 key_key.ponder.ponder:key.keyboard.w
 key_key.shetiphiancore.tool.next:key.keyboard.page.up
 key_key.shetiphiancore.tool.previous:key.keyboard.page.down
@@ -133,7 +134,7 @@ key_create_tweaked_controllers.keybind.controller_exit:key.keyboard.tab
 key_key.toggleVisualItemContents:key.keyboard.unknown
 key_key.toggleSelectedItemTooltips:key.keyboard.unknown
 key_key.toggleCarriedItemTooltips:key.keyboard.unknown
-key_key.tconstruct.helmet_interact:key.keyboard.z
+key_key.tconstruct.helmet_interact:key.keyboard.j
 key_key.tconstruct.leggings_interact:key.keyboard.i
 key_gui.xaero_minimap_settings:key.keyboard.y
 key_gui.xaero_minimap_server_profiles:key.keyboard.unknown
@@ -207,4 +208,3 @@ key_key.enderchests.open.pouch:key.keyboard.unknown
 key_gui.xaero_pac_key_open_menu:key.keyboard.apostrophe
 key_key.createrailwaysnavigator.route_overlay_options:key.keyboard.unknown
 key_key.entityculling.toggle:key.keyboard.unknown
-key_keybind.invmove.toggleMove:key.keyboard.unknown

@@ -918,6 +918,11 @@
       "category": "QoL"
     },
     {
+      "name": "VeinMiner Hotkey",
+      "slug": "veinminer-client",
+      "category": "QoL"
+    },
+    {
       "name": "Distant Horizons",
       "slug": "distanthorizons",
       "category": "Performance"
