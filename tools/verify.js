@@ -59,9 +59,19 @@ for (const f of manifest.files) {
   }
 
   for (const url of f.downloads || []) {
-    // Modrinth only permits its own CDN in mrpack downloads.
-    if (!/^https:\/\/cdn\.modrinth\.com\//.test(url)) {
-      errors.push(`${where}: download not on cdn.modrinth.com (${url})`);
+    // Modrinth's whitelist for .mrpack downloads is broader than its own CDN:
+    // cdn.modrinth.com, github.com, raw.githubusercontent.com and gitlab.com
+    // are all accepted at upload. Insisting on the CDN alone rejected every
+    // pack this project has ever built -- Tinkers' Construct, Mantle and the
+    // Levelling Addon have no Modrinth release for 1.21.1 and are served from
+    // this repository's own GitHub releases by design. It went unnoticed
+    // because publish.yml verifies inline and never called this tool; the
+    // first pull request to run it failed on all three.
+    //
+    // Note what is absent: CurseForge. A pack referencing it is rejected at
+    // upload, which is the failure this check exists to catch early.
+    if (!/^https:\/\/(cdn\.modrinth\.com|github\.com|raw\.githubusercontent\.com|gitlab\.com)\//.test(url)) {
+      errors.push(`${where}: download host not on Modrinth's whitelist (${url})`);
     }
   }
 }

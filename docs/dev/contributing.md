@@ -129,13 +129,30 @@ rather than misleading a reader.
 
 ## Publishing
 
+Publishing happens **on merge**, never on a proposal. `master` is protected:
+direct pushes are refused, and a pull request must pass its checks first.
+
 ```bash
-node tools/build.js          # writes packs/tinker-and-create-<version>.mrpack
-git commit && git push       # CI builds, publishes to Modrinth, tags a release
+git switch -c my-change
+# edit tools/mods.json, bump pack.version
+node tools/build.js
+node tools/gen-docs.js
+git commit -am "..." && git push -u origin my-change
+gh pr create --fill
 ```
 
-CI refuses to publish a version number that already exists, and will claim the
-next free one rather than silently creating a duplicate.
+On the pull request, `pr.yml` builds the pack, verifies every download URL,
+regenerates the docs and fails if they differ from what you committed, and warns
+if the version is already on Modrinth. Nothing is published.
+
+On merge, `publish.yml` builds again, uploads to Modrinth, cuts a GitHub release
+and attaches the exact jar manifest to it.
+
+It refuses to publish a version number that already exists and claims the next
+free one instead — Modrinth does not enforce uniqueness itself, and two runs
+once left two different files both called 1.7.3. If that backstop fires it
+cannot push the corrected number back to a protected branch, so it logs a
+warning: bump `tools/mods.json` to match in your next pull request.
 
 After publishing, verify the **published artifact** rather than your local
 build — download it and check the thing players receive:
