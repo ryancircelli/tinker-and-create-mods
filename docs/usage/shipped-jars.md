@@ -2,7 +2,7 @@
 
 # Shipped jars
 
-Every jar in **1.0.2**, with the version each was resolved to at build time.
+Every jar in **1.0.3**, with the version each was resolved to at build time.
 
 This file is refreshed when the pack is built, so it tracks releases upstream. It is deliberately excluded from the docs-are-current check — the resolver takes the newest compatible build of each mod, so this changes on its own whenever any of them publishes, with nothing here having changed.
 
@@ -34,7 +34,7 @@ This file is refreshed when the pack is built, so it tracks releases upstream. I
 | `BetterF3-11.0.3-NeoForge-1.21.1.jar` | required | unsupported |
 | `BetterThirdPerson-neoforge-1.9.0.jar` | required | unsupported |
 | `bigcontraptions-neoforge-1.0.jar` | required | unsupported |
-| `bits_n_bobs-2.2.2.jar` | required | required |
+| `bits_n_bobs-2.2.3.jar` | required | required |
 | `bookshelf-neoforge-1.21.1-21.1.81.jar` | required | required |
 | `boundless-1.21.1-neo-11.jar` | required | required |
 | `bountifulbaubles-1.2.5.jar` | required | required |

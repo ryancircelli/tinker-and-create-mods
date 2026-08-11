@@ -56,14 +56,6 @@ Assemble a pickaxe. Unlike a vanilla one it keeps its identity -- repairable for
 - **Objective:** Have `tconstruct:pickaxe`
 - **Reward:** `minecraft:iron_ingot` ×4, 50 points XP
 
-### More To Give
-
-Heart Canisters raise your maximum health permanently. With a Smeltery running you can afford the metal.
-
-- **Requires:** The Smeltery
-- **Objective:** Have `bhc:red_heart_canister`
-- **Reward:** 5 levels XP
-
 ### Getting Molten
 
 A Seared Melter turns ore and scrap into molten metal -- the small version of the Smeltery.
@@ -88,6 +80,14 @@ Tools here gain XP as you use them and level up on their own, each level grantin
 - **Objective:** Have `minecraft:nether_star`
 - **Reward:** `tconstruct:pattern` ×8, 100 points XP
 
+### More To Give
+
+Heart Canisters raise your maximum health permanently. With a Smeltery running you can afford the metal.
+
+- **Requires:** The Smeltery
+- **Objective:** Have `bhc:red_heart_canister`
+- **Reward:** 5 levels XP
+
 ## Create
 
 ### Read the Machine
@@ -96,6 +96,30 @@ Engineer's Goggles show stress, speed and contents. Almost every Create problem 
 
 - **Objective:** Have `create:goggles`
 - **Reward:** `create:andesite_alloy` ×8, 30 points XP
+
+### First Rotation
+
+Every Create machine runs on rotational force. A Water Wheel is the cheapest source and needs no fuel. Hover this item in your inventory or EMI and press W to watch it animated.
+
+- **Requires:** Read the Machine
+- **Objective:** Have `create:water_wheel`
+- **Reward:** `create:shaft` ×16, `create:cogwheel` ×8, 40 points XP, Ponder scene `create:water_wheel`
+
+### Pressing Matters
+
+A Mechanical Press over a Depot turns ingots into sheets -- the gateway component for most of Create. Hover this item in your inventory or EMI and press W to watch it animated.
+
+- **Requires:** First Rotation
+- **Objective:** Have `create:mechanical_press`; Have `create:belt_connector`
+- **Reward:** `create:andesite_alloy` ×16, 60 points XP, Ponder scene `create:mechanical_press`
+
+### It Moves
+
+Contraptions are the point of Create: a block assembly that moves as one. Hover this item in your inventory or EMI and press W to watch it animated.
+
+- **Requires:** Pressing Matters
+- **Objective:** Have `create:mechanical_piston`
+- **Reward:** `create:brass_ingot` ×8, 80 points XP, Ponder scene `create:mechanical_piston`
 
 ### Across the Base
 
@@ -113,13 +137,13 @@ Create has no vacuum block and does not need one: a Chute pulls in items dropped
 - **Objective:** Have `create:chute`
 - **Reward:** `create:andesite_alloy` ×8, 40 points XP, Ponder scene `create:chute`
 
-### It Moves
+### Experience, Bottled
 
-Contraptions are the point of Create: a block assembly that moves as one. Hover this item in your inventory or EMI and press W to watch it animated.
+Create can treat experience as a fluid. An Experience Hatch moves XP between you and a tank, so levels can be piped and spent by machines.
 
 - **Requires:** Pressing Matters
-- **Objective:** Have `create:mechanical_piston`
-- **Reward:** `create:brass_ingot` ×8, 80 points XP, Ponder scene `create:mechanical_piston`
+- **Objective:** Have `create_enchantment_industry:experience_hatch`
+- **Reward:** `minecraft:bucket`, 200 points XP
 
 ### Nothing Wasted
 
@@ -128,30 +152,6 @@ A normal grindstone throws away the experience it strips off. A Grindstone Drain
 - **Requires:** Experience, Bottled
 - **Objective:** Have `create_enchantment_industry:grindstone_drain`
 - **Reward:** `minecraft:lapis_lazuli` ×32, 5 levels XP
-
-### Pressing Matters
-
-A Mechanical Press over a Depot turns ingots into sheets -- the gateway component for most of Create. Hover this item in your inventory or EMI and press W to watch it animated.
-
-- **Requires:** First Rotation
-- **Objective:** Have `create:mechanical_press`; Have `create:belt_connector`
-- **Reward:** `create:andesite_alloy` ×16, 60 points XP, Ponder scene `create:mechanical_press`
-
-### First Rotation
-
-Every Create machine runs on rotational force. A Water Wheel is the cheapest source and needs no fuel. Hover this item in your inventory or EMI and press W to watch it animated.
-
-- **Requires:** Read the Machine
-- **Objective:** Have `create:water_wheel`
-- **Reward:** `create:shaft` ×16, `create:cogwheel` ×8, 40 points XP, Ponder scene `create:water_wheel`
-
-### Experience, Bottled
-
-Create can treat experience as a fluid. An Experience Hatch moves XP between you and a tank, so levels can be piped and spent by machines.
-
-- **Requires:** Pressing Matters
-- **Objective:** Have `create_enchantment_industry:experience_hatch`
-- **Reward:** `minecraft:bucket`, 200 points XP
 
 ## Storage & Logistics
 
@@ -170,14 +170,6 @@ Drawers hold enormous stacks of a single item and show you what is inside at a g
 - **Objective:** Have `storagedrawers:acacia_full_drawers_1` ×4
 - **Reward:** `minecraft:oak_planks` ×32, 40 points XP
 
-### Storage That Follows You
-
-An Ender Chest is the same inventory everywhere in the world. Pair it with a backpack and you never carry ore home again.
-
-- **Requires:** One Screen for Everything
-- **Objective:** Have `minecraft:ender_chest`
-- **Reward:** `minecraft:ender_pearl` ×4, 60 points XP
-
 ### Chests That Grow
 
 Sophisticated Storage barrels and chests take upgrades: filters, magnets, auto-smelting, compacting. One block that keeps improving.
@@ -193,6 +185,14 @@ An Item Vault is a multiblock bin that speaks Create natively -- belts, chutes a
 - **Requires:** A Wall of Drawers
 - **Objective:** Have `create:item_vault` ×4
 - **Reward:** `create:andesite_alloy` ×16, 60 points XP
+
+### Storage That Follows You
+
+An Ender Chest is the same inventory everywhere in the world. Pair it with a backpack and you never carry ore home again.
+
+- **Requires:** One Screen for Everything
+- **Objective:** Have `minecraft:ender_chest`
+- **Reward:** `minecraft:ender_pearl` ×4, 60 points XP
 
 ### One Screen for Everything
 
@@ -211,14 +211,6 @@ The single biggest early quality-of-life win here. Upgrades all the way to Nethe
 - **Objective:** Have `sophisticatedbackpacks:backpack`
 - **Reward:** `minecraft:leather` ×8, 30 points XP
 
-### Accessory Slots
-
-This pack adds accessory slots -- belts, rings, charms. Open your inventory and look for the extra slots on the left.
-
-- **Requires:** Pockets
-- **Objective:** Have `travelertoolbelt:belt`
-- **Reward:** 50 points XP
-
 ### Bigger Pockets
 
 Copper is the first tier. Each tier adds rows and upgrade slots, and upgrading keeps the contents.
@@ -226,6 +218,14 @@ Copper is the first tier. Each tier adds rows and upgrade slots, and upgrading k
 - **Requires:** Pockets
 - **Objective:** Have `sophisticatedbackpacks:copper_backpack`
 - **Reward:** `minecraft:copper_ingot` ×16, 40 points XP
+
+### Accessory Slots
+
+This pack adds accessory slots -- belts, rings, charms. Open your inventory and look for the extra slots on the left.
+
+- **Requires:** Pockets
+- **Objective:** Have `travelertoolbelt:belt`
+- **Reward:** 50 points XP
 
 ## Time & Growth
 
@@ -236,14 +236,6 @@ Point it at a sapling, a crop, a furnace or a Create machine and it fast-forward
 - **Objective:** Have `tiab:time_in_a_bottle`
 - **Reward:** `minecraft:oak_sapling` ×8, 50 points XP
 
-### Something Cooking
-
-Farmer's Delight turns that harvest into food worth eating. A Cooking Pot over a campfire is all you need.
-
-- **Requires:** Bring in the Crop
-- **Objective:** Have `farmersdelight:cooking_pot`
-- **Reward:** `farmersdelight:iron_knife`, 50 points XP
-
 ### Bring in the Crop
 
 With growth accelerated, farming stops being a waiting game.
@@ -251,6 +243,14 @@ With growth accelerated, farming stops being a waiting game.
 - **Requires:** Time in a Bottle
 - **Objective:** Have `minecraft:wheat` ×64
 - **Reward:** `minecraft:hay_block` ×8, 40 points XP
+
+### Something Cooking
+
+Farmer's Delight turns that harvest into food worth eating. A Cooking Pot over a campfire is all you need.
+
+- **Requires:** Bring in the Crop
+- **Objective:** Have `farmersdelight:cooking_pot`
+- **Reward:** `farmersdelight:iron_knife`, 50 points XP
 
 ## Exploration
 
@@ -261,13 +261,13 @@ Nature's Compass finds any biome by name. With this much added worldgen it turns
 - **Objective:** Have `naturescompass:naturescompass`
 - **Reward:** `minecraft:map`, 50 points XP
 
-### Somewhere Warmer
+### Getting Around Early
 
-Blaze rods, quartz and netherite all live through the portal. Tinkers alloys in particular want nether resources.
+Three cheap items make travel bearable long before an elytra, and they stack. Sling up, glide out, land in the boots. The gliders here are unbreakable.
 
-- **Requires:** Somebody Was Here First
-- **Objective:** Earn advancement `minecraft:nether/root`
-- **Reward:** `minecraft:obsidian` ×10, 5 levels XP
+- **Requires:** Point Me at It
+- **Objective:** Have `#hangglider:hang_gliders`; Have `tconstruct:slime_boots`; Have `slime_time:slime_sling`
+- **Reward:** `minecraft:slime_ball` ×16, 80 points XP
 
 ### Somebody Was Here First
 
@@ -277,57 +277,21 @@ Several structure mods layer over this world. Loot one -- the gear inside is wel
 - **Objective:** Have `minecraft:diamond` ×3
 - **Reward:** `minecraft:iron_ingot` ×8, 80 points XP
 
-### Getting Around Early
+### Somewhere Warmer
 
-Three cheap items make travel bearable long before an elytra, and they stack. Sling up, glide out, land in the boots. The gliders here are unbreakable.
+Blaze rods, quartz and netherite all live through the portal. Tinkers alloys in particular want nether resources.
 
-- **Requires:** Point Me at It
-- **Objective:** Have `#hangglider:hang_gliders`; Have `tconstruct:slime_boots`; Have `slime_time:slime_sling`
-- **Reward:** `minecraft:slime_ball` ×16, 80 points XP
+- **Requires:** Somebody Was Here First
+- **Objective:** Earn advancement `minecraft:nether/root`
+- **Reward:** `minecraft:obsidian` ×10, 5 levels XP
 
 ## Ponder Guides
 
-### Belts _(optional, repeatable)_
+### Water Wheel _(optional, repeatable)_
 
-Opens Create's animated explanation of the Belts. Claim it as often as you like -- this quest is repeatable, so the button never greys out.
+Opens Create's animated explanation of the Water Wheel. Claim it as often as you like -- this quest is repeatable, so the button never greys out.
 
-- **Reward:** Ponder scene `create:belt_connector`
-
-### Chain Conveyor _(optional, repeatable)_
-
-Opens Create's animated explanation of the Chain Conveyor. Claim it as often as you like -- this quest is repeatable, so the button never greys out.
-
-- **Reward:** Ponder scene `create:chain_conveyor`
-
-### Chute _(optional, repeatable)_
-
-Opens Create's animated explanation of the Chute. Claim it as often as you like -- this quest is repeatable, so the button never greys out.
-
-- **Reward:** Ponder scene `create:chute`
-
-### Deployer _(optional, repeatable)_
-
-Opens Create's animated explanation of the Deployer. Claim it as often as you like -- this quest is repeatable, so the button never greys out.
-
-- **Reward:** Ponder scene `create:deployer`
-
-### Mechanical Bearing _(optional, repeatable)_
-
-Opens Create's animated explanation of the Mechanical Bearing. Claim it as often as you like -- this quest is repeatable, so the button never greys out.
-
-- **Reward:** Ponder scene `create:mechanical_bearing`
-
-### Mechanical Mixer _(optional, repeatable)_
-
-Opens Create's animated explanation of the Mechanical Mixer. Claim it as often as you like -- this quest is repeatable, so the button never greys out.
-
-- **Reward:** Ponder scene `create:mechanical_mixer`
-
-### Mechanical Piston _(optional, repeatable)_
-
-Opens Create's animated explanation of the Mechanical Piston. Claim it as often as you like -- this quest is repeatable, so the button never greys out.
-
-- **Reward:** Ponder scene `create:mechanical_piston`
+- **Reward:** Ponder scene `create:water_wheel`
 
 ### Mechanical Press _(optional, repeatable)_
 
@@ -335,14 +299,50 @@ Opens Create's animated explanation of the Mechanical Press. Claim it as often a
 
 - **Reward:** Ponder scene `create:mechanical_press`
 
+### Mechanical Mixer _(optional, repeatable)_
+
+Opens Create's animated explanation of the Mechanical Mixer. Claim it as often as you like -- this quest is repeatable, so the button never greys out.
+
+- **Reward:** Ponder scene `create:mechanical_mixer`
+
+### Belts _(optional, repeatable)_
+
+Opens Create's animated explanation of the Belts. Claim it as often as you like -- this quest is repeatable, so the button never greys out.
+
+- **Reward:** Ponder scene `create:belt_connector`
+
+### Chute _(optional, repeatable)_
+
+Opens Create's animated explanation of the Chute. Claim it as often as you like -- this quest is repeatable, so the button never greys out.
+
+- **Reward:** Ponder scene `create:chute`
+
 ### Smart Chute _(optional, repeatable)_
 
 Opens Create's animated explanation of the Smart Chute. Claim it as often as you like -- this quest is repeatable, so the button never greys out.
 
 - **Reward:** Ponder scene `create:smart_chute`
 
-### Water Wheel _(optional, repeatable)_
+### Chain Conveyor _(optional, repeatable)_
 
-Opens Create's animated explanation of the Water Wheel. Claim it as often as you like -- this quest is repeatable, so the button never greys out.
+Opens Create's animated explanation of the Chain Conveyor. Claim it as often as you like -- this quest is repeatable, so the button never greys out.
 
-- **Reward:** Ponder scene `create:water_wheel`
+- **Reward:** Ponder scene `create:chain_conveyor`
+
+### Mechanical Piston _(optional, repeatable)_
+
+Opens Create's animated explanation of the Mechanical Piston. Claim it as often as you like -- this quest is repeatable, so the button never greys out.
+
+- **Reward:** Ponder scene `create:mechanical_piston`
+
+### Mechanical Bearing _(optional, repeatable)_
+
+Opens Create's animated explanation of the Mechanical Bearing. Claim it as often as you like -- this quest is repeatable, so the button never greys out.
+
+- **Reward:** Ponder scene `create:mechanical_bearing`
+
+### Deployer _(optional, repeatable)_
+
+Opens Create's animated explanation of the Deployer. Claim it as often as you like -- this quest is repeatable, so the button never greys out.
+
+- **Reward:** Ponder scene `create:deployer`

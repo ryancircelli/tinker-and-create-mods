@@ -275,6 +275,41 @@ function installOverrides(packPath, destMods) {
     } catch {}
   }
   if (ovc || ovs) console.log(`  overrides: ${ovc} client / ${ovs} server jar(s)`);
+
+  // MOD_OVERRIDE=<dir> forces jars into BOTH sides after install, replacing any
+  // existing jar with the same base name.
+  //
+  // For testing a build the pack cannot ship. A .mrpack may only reference
+  // Modrinth, GitHub and GitLab -- not CurseForge -- so a CurseForge-only or
+  // pre-release jar cannot go in the manifest, and there is otherwise no way to
+  // try it. Both sides get it because mod channel sets must match: Boundless
+  // neo-11 registers 31 non-optional payloads and 11.1 registers 32, so mixing
+  // them fails the handshake with "channel missing" exactly like a version
+  // mismatch.
+  const modOverride = process.env.MOD_OVERRIDE;
+  if (modOverride && fs.existsSync(modOverride)) {
+    const jars = fs.readdirSync(modOverride).filter((f) => f.endsWith('.jar'));
+    for (const [label, dest] of [['client', cdir], ['server', sdir]]) {
+      const mods = path.join(dest, 'mods');
+      if (!fs.existsSync(mods)) continue;
+      for (const jar of jars) {
+        // Strip the version tail so boundless-1.21.1-neo-11.1.jar displaces
+        // boundless-1.21.1-neo-11.jar. Two jars of one mod is a hard crash.
+        const base = jar.replace(/[-_]\d.*$/, '');
+        let removed = 0;
+        for (const existing of fs.readdirSync(mods)) {
+          if (existing !== jar && existing.endsWith('.jar')
+              && existing.replace(/[-_]\d.*$/, '') === base) {
+            fs.rmSync(path.join(mods, existing));
+            removed++;
+          }
+        }
+        fs.copyFileSync(path.join(modOverride, jar), path.join(mods, jar));
+        console.log(`  MOD_OVERRIDE -> ${label}: ${jar}${removed ? ` (replaced ${removed})` : ''}`);
+      }
+    }
+  }
+
   console.log('  ' + stats());
 
   // ---- server --------------------------------------------------------------
