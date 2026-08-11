@@ -210,19 +210,34 @@ jobs:
               --notes "Manifest-only modpack; all mods download from CDNs."
           fi
 
-      # Persist an auto-bump so the repository matches what is published. A push
-      # authenticated with GITHUB_TOKEN does not trigger workflows, so this
-      # cannot loop back into another publish.
-      - name: Commit the bumped version
+      # Regenerate the derived docs from THIS build. CI is the source of truth
+      # for anything that depends on the artifact: the jar list records the
+      # versions the resolver actually chose, and the resolver run that matters
+      # is the one whose output got published. A developer's local build is
+      # incidental and may be hours stale -- the first run of the docs workflow
+      # failed on exactly that, supplementaries 3.8.8 locally vs 3.8.9 here.
+      #
+      # docs/usage/{mods,quest-book,keybinds}.md are derived from files in the
+      # repository and so are identical either way; shipped-jars.md and the
+      # badges are the parts that need the artifact.
+      - name: Regenerate docs from the published artifact
+        run: node tools/gen-docs.js
+
+      # Persist the auto-bump and the regenerated docs so the repository matches
+      # what is published. A push authenticated with GITHUB_TOKEN does not
+      # trigger workflows, so this cannot loop back into another publish.
+      - name: Commit the bumped version and docs
         run: |
-          if git diff --quiet -- tools/mods.json; then
-            echo "version unchanged; nothing to commit"
+          PATHS="tools/mods.json docs/usage README.md modrinth-description.md"
+          if git diff --quiet -- $PATHS; then
+            echo "version and docs unchanged; nothing to commit"
             exit 0
           fi
           V="${{ steps.pack.outputs.version }}"
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add tools/mods.json
-          git commit -m "Bump pack version to ${V} (auto)" \
-                     -m "The previous number was already published on Modrinth; claimed the next free patch so this run had a coherent version to publish."
+          git add $PATHS
+          git commit -m "Publish ${V}: sync version and generated docs (auto)" \
+                     -m "Docs are regenerated from the artifact this run published, so the jar list and badges describe what players actually receive." \
+                     -m "If the version moved, the previous number was already published on Modrinth and the next free patch was claimed so this run had a coherent version."
           git push origin HEAD:master

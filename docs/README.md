@@ -8,7 +8,8 @@ Split by who you are: playing the pack, or changing it.
 |---|---|
 | [Getting started](usage/getting-started.md) | Installing, how much RAM to give it, joining a server |
 | [Quest book](usage/quest-book.md) | Every quest, its objective and its reward |
-| [Mod list](usage/mods.md) | Everything that ships, by category, plus exact jar versions |
+| [Mod list](usage/mods.md) | Everything that ships, by category, and why things were dropped |
+| [Shipped jars](usage/shipped-jars.md) | Exact jar versions in the current release |
 | [Keybinds](usage/keybinds.md) | The defaults the pack sets, and why some keys are unbound |
 
 ## Changing the pack
@@ -25,10 +26,9 @@ Split by who you are: playing the pack, or changing it.
 
 ## Generated docs
 
-`usage/mods.md`, `usage/quest-book.md` and `usage/keybinds.md` are produced by
-`tools/gen-docs.js` from the pack itself — `tools/mods.json`, the built
-`.mrpack`, the Boundless questpack and the shipped `keybindings.txt`. Do not
-edit them; run the generator:
+Everything in `usage/` is produced by `tools/gen-docs.js` from the pack itself —
+`tools/mods.json`, the built `.mrpack`, the Boundless questpack and the shipped
+`keybindings.txt`. Do not edit them; run the generator:
 
 ```bash
 node tools/gen-docs.js
@@ -38,6 +38,18 @@ They carry a `GENERATED` comment at the top as a reminder. The reason they are
 derived is not tidiness: the hand-written mod list they replaced still
 advertised Dramatic Doors weeks after it was removed, and had never heard of
 half the pack.
+
+**CI is the source of truth.** `publish.yml` regenerates these after building
+and commits the result, so they describe the artifact that was actually
+published rather than whatever a developer had built locally. Running the
+generator yourself is a convenience; on a pull request `docs.yml` checks your
+output matches, and names the source file if it does not.
+
+`shipped-jars.md` is the one file **not** equality-checked. It records the
+versions the resolver chose, and the resolver takes the newest compatible build
+of each mod — so it changes whenever any of ~340 mods publishes upstream, with
+nothing here having changed. Checking it would mean a red build for reasons
+outside this repository.
 
 Server deployment is deliberately **not** documented here — this repository is
 public, and the server's addresses and credentials live outside it.

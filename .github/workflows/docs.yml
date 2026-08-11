@@ -15,9 +15,18 @@ name: Docs are current
 #      overwrites the edit, so the diff fails the run and the contributor is
 #      told which source file to change instead.
 #
-# Deliberately a CHECK, not a commit-back: a workflow that pushes to the branch
-# it was triggered by needs write access on every pull request, including from
-# forks, and re-triggers itself. Failing loudly is cheaper and safer.
+# This is a CHECK, not a commit-back. The authoritative regeneration happens in
+# publish.yml, which runs after the build and commits the result -- CI owns the
+# derived docs, because CI's build is the one that gets published.
+#
+# The split is deliberate:
+#
+#   publish.yml (master, after build)  regenerates everything, commits it
+#   docs.yml    (pull requests)        only checks, never writes
+#
+# A pull request cannot be trusted with write access, and one from a fork cannot
+# push at all, so a commit-back here would either fail or be a security hole.
+# Failing loudly with the source file named is the useful behaviour for a PR.
 
 on:
   pull_request:
@@ -50,38 +59,35 @@ jobs:
         with:
           node-version: '20'
 
-      # The mod list quotes exact jar versions, which only exist in a built
-      # .mrpack, and packs/ is gitignored. Restoring the resolver cache keeps
-      # this to a handful of API calls instead of ~380.
-      - name: Restore resolver cache
-        uses: actions/cache@v4
-        with:
-          path: .cache
-          key: modrinth-cache-${{ hashFiles('tools/mods.json') }}
-          restore-keys: modrinth-cache-
-
-      - name: Build the pack
-        env:
-          MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
-        run: node tools/build.js
-
+      # No build step, deliberately. The checked docs are derived only from
+      # files in the repository -- tools/mods.json, the questpack, the shipped
+      # keybindings -- so this needs no network, no token, and no resolver
+      # cache, and it gives the same answer every time.
+      #
+      # docs/usage/shipped-jars.md is the exception and is NOT checked: it
+      # records the versions the resolver chose at build time, so it changes
+      # whenever any of ~340 mods publishes upstream. The first run of this
+      # workflow failed on exactly that (supplementaries 3.8.8 vs 3.8.9) with
+      # nothing in the repository having changed. It is refreshed on build
+      # instead.
       - name: Regenerate docs
         run: node tools/gen-docs.js
 
       - name: Fail if anything was out of date
         run: |
-          if ! git diff --quiet -- docs/ README.md modrinth-description.md; then
+          if ! git diff --quiet -- docs/usage/mods.md docs/usage/quest-book.md \
+                                   docs/usage/keybinds.md README.md modrinth-description.md; then
             echo "::error::Generated docs are out of date. Run 'node tools/gen-docs.js' and commit the result."
             echo
             echo "Files that differ:"
-            git diff --name-only -- docs/ README.md modrinth-description.md | sed 's/^/  /'
+            git diff --name-only -- docs/usage/mods.md docs/usage/quest-book.md docs/usage/keybinds.md README.md modrinth-description.md | sed 's/^/  /'
             echo
             echo "If you edited one of these by hand, edit its source instead:"
             echo "  docs/usage/mods.md        <- tools/mods.json"
             echo "  docs/usage/quest-book.md  <- tools/gen-quests-boundless.js"
             echo "  docs/usage/keybinds.md    <- tools/gen-keybinds.js"
             echo
-            git --no-pager diff -- docs/ README.md modrinth-description.md
+            git --no-pager diff -- docs/usage/mods.md docs/usage/quest-book.md docs/usage/keybinds.md README.md modrinth-description.md
             exit 1
           fi
           echo "Docs match the pack."
