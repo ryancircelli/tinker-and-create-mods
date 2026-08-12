@@ -2,7 +2,7 @@
 
 # Shipped jars
 
-Every jar in **1.1.1**, with the version each was resolved to at build time.
+Every jar in **1.1.2**, with the version each was resolved to at build time.
 
 This file is refreshed when the pack is built, so it tracks releases upstream. It is deliberately excluded from the docs-are-current check — the resolver takes the newest compatible build of each mod, so this changes on its own whenever any of them publishes, with nothing here having changed.
 
@@ -20,7 +20,7 @@ This file is refreshed when the pack is built, so it tracks releases upstream. I
 | `architectury-13.0.11-neoforge.jar` | required | required |
 | `ArmorPoser-neoforge-1.21.1-6.2.4.jar` | required | required |
 | `artifacts-neoforge-13.2.1.jar` | required | required |
-| `AsyncParticles-21.1.4.0-beta.1+1.21.1.jar` | required | unsupported |
+| `AsyncParticles-21.1.4.0-beta.2+1.21.1.jar` | required | unsupported |
 | `attributefix-neoforge-1.21.1-21.1.3.jar` | required | required |
 | `azimuth-1.4.5.jar` | required | required |
 | `BadOptimizations-2.4.1-1.21.1.jar` | required | unsupported |
@@ -98,7 +98,7 @@ This file is refreshed when the pack is built, so it tracks releases upstream. I
 | `createcobblestone-1.4.12+neoforge-1.21.1-144.jar` | required | required |
 | `createcontraptionterminals-1.21-1.4.0.jar` | required | required |
 | `createdeco-2.1.3.jar` | required | required |
-| `CreateDragonsPlus-1.11.7.jar` | required | required |
+| `CreateDragonsPlus-1.11.7b.jar` | required | required |
 | `createenchantablemachinery-3.6.0+mc1.21.1-neoforge.jar` | required | required |
 | `createendertransmission-2.1.1-1.21.1.jar` | required | required |
 | `createfood-neoforge-1.21.1-2.7.1.jar` | required | required |
@@ -290,7 +290,7 @@ This file is refreshed when the pack is built, so it tracks releases upstream. I
 | `sophisticatedbackpacks-1.21.1-3.25.76.2067.jar` | required | required |
 | `sophisticatedbackpackscreateintegration-1.21.1-0.1.8.134.jar` | required | required |
 | `sophisticatedcore-1.21.1-1.4.85.2251.jar` | required | required |
-| `sophisticatedstorage-1.21.1-1.5.85.2071.jar` | required | required |
+| `sophisticatedstorage-1.21.1-1.5.85.2077.jar` | required | required |
 | `sophisticatedstoragecreateintegration-1.21.1-0.1.21.209.jar` | required | required |
 | `sophisticatedstorageinmotion-1.21.1-0.10.33.324.jar` | required | required |
 | `sound-physics-remastered-neoforge-1.21.1-1.4.10.jar` | required | required |
