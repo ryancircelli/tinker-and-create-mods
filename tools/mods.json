@@ -2,7 +2,7 @@
   "pack": {
     "name": "Tinker & Create",
     "summary": "Create + Tinkers for Minecraft 1.21.1 NeoForge",
-    "version": "1.1.2",
+    "version": "1.2.0",
     "minecraft": "1.21.1",
     "loader": "neoforge",
     "loaders": [
@@ -1062,6 +1062,11 @@
       "name": "Falling Leaves",
       "slug": "fallingleavesforge",
       "category": "Pretty"
+    },
+    {
+      "name": "Leaves Be Gone",
+      "slug": "leaves-be-gone",
+      "category": "QoL"
     },
     {
       "name": "Yeetus Experimentus",

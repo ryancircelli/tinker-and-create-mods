@@ -2,9 +2,9 @@
 
 # Mod list
 
-**Tinker & Create 1.1.2** — Minecraft 1.21.1, neoforge 21.1.248.
+**Tinker & Create 1.2.0** — Minecraft 1.21.1, neoforge 21.1.248.
 
-339 jars ship in the pack: 303 are declared in `tools/mods.json`, the rest are dependencies the build resolves automatically. Mod menus report a higher number still — Create alone bundles Flywheel, Ponder and Registrate inside its own jar, and those nested libraries count as mods once loaded.
+339 jars ship in the pack: 304 are declared in `tools/mods.json`, the rest are dependencies the build resolves automatically. Mod menus report a higher number still — Create alone bundles Flywheel, Ponder and Registrate inside its own jar, and those nested libraries count as mods once loaded.
 
 ## By category
 
@@ -291,6 +291,7 @@
 - [Item Highlighter](https://modrinth.com/mod/item-highlighter)
 - [Jade](https://modrinth.com/mod/jade)
 - [Jade Addons](https://modrinth.com/mod/jade-addons-forge)
+- [Leaves Be Gone](https://modrinth.com/mod/leaves-be-gone)
 - [Legendary Tooltips](https://modrinth.com/mod/legendary-tooltips)
 - [Lootr](https://modrinth.com/mod/lootr)
 - [Mouse Tweaks](https://modrinth.com/mod/mouse-tweaks)
