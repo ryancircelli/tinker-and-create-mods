@@ -85,11 +85,18 @@ function quest(id, {
 // completable and showed no tasks in the detail panel.
 const collect = (id, count = 1) => ({ collect: id, count });
 const submit  = (id, count = 1) => ({ submit: id, count });
-// No any-of support: parseNewFormatTarget calls getAsString() on "collect", and
-// the array form in parseCompletion adds every entry as its own REQUIRED target
-// rather than alternatives. Use the primary item and list the alternatives in
-// the description instead of silently demanding all of them.
-const anyOf   = (ids, count = 1) => ({ collect: ids[0], count });
+// Any-of IS supported: parseNewFormatTarget calls
+//     readAcceptedIds(o, "acceptedItems", "collect")
+// which accepts an ARRAY on collect itself and folds the entries into a single
+// Target with several acceptedIds -- so this is "any one of", not "all of".
+// Verified present in the shipped neo-11 jar as well as 11.1 (both have
+// readAcceptedIds and Target.acceptedIds as List<String>).
+//
+// An earlier version of this file collapsed anyOf to ids[0] because the source
+// on the repository's main branch does exactly that -- but main is stale v10
+// and does not correspond to any jar the pack has ever shipped. Read the
+// 1.21.1-neoforge branch, or the jar itself, not main.
+const anyOf   = (ids, count = 1) => ({ collect: ids, count });
 const kill    = (id, count = 1) => ({ kill: id, count });
 const advance = (id) => ({ achieve: id });
 

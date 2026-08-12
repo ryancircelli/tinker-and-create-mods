@@ -151,11 +151,21 @@ function questBook() {
   const nameById = Object.fromEntries(quests.map((q) => [q.id, q.name]));
 
   // Boundless keys targets by verb, so read the verb rather than a kind field.
+  // collect/submit/kill may be a single id OR an array of accepted ids -- the
+  // any-of form Boundless folds into one Target via readAcceptedIds. Rendering
+  // an array straight into a template gives "a,b,c" inside one code span, which
+  // reads as a single weird item id, so join them explicitly as alternatives.
+  const ids = (v) => (Array.isArray(v) ? v : [v]).map((x) => `\`${x}\``);
+  const oneOf = (v) => {
+    const l = ids(v);
+    return l.length > 1 ? `any of ${l.join(' / ')}` : l[0];
+  };
+
   const objective = (t) => {
     const n = t.count && t.count > 1 ? ` ×${t.count}` : '';
-    if (t.collect) return `Have \`${t.collect}\`${n}`;
-    if (t.submit) return `Hand in \`${t.submit}\`${n}`;
-    if (t.kill) return `Kill \`${t.kill}\`${n}`;
+    if (t.collect) return `Have ${oneOf(t.collect)}${n}`;
+    if (t.submit) return `Hand in ${oneOf(t.submit)}${n}`;
+    if (t.kill) return `Kill ${oneOf(t.kill)}${n}`;
     if (t.achieve) return `Earn advancement \`${t.achieve}\``;
     if (t.effect) return `Gain effect \`${t.effect}\``;
     if (t.stat) return `Reach stat \`${t.stat}\`${n}`;

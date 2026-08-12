@@ -15,7 +15,10 @@
   "completion": {
     "complete": [
       {
-        "collect": "minecraft:nether_star",
+        "collect": [
+          "minecraft:nether_star",
+          "tconstruct:silky_cloth"
+        ],
         "count": 1
       }
     ]

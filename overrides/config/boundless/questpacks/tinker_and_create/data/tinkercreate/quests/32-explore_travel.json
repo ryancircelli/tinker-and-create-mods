@@ -19,7 +19,10 @@
         "count": 1
       },
       {
-        "collect": "tconstruct:slime_boots",
+        "collect": [
+          "tconstruct:slime_boots",
+          "slime_time:slime_boots"
+        ],
         "count": 1
       },
       {

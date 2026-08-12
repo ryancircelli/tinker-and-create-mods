@@ -15,7 +15,11 @@
   "completion": {
     "complete": [
       {
-        "collect": "create:mechanical_piston",
+        "collect": [
+          "create:mechanical_piston",
+          "create:windmill_bearing",
+          "create:mechanical_bearing"
+        ],
         "count": 1
       }
     ]

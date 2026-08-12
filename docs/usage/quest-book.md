@@ -28,7 +28,7 @@ Every line in this pack starts with wood. Tinkers needs it for a Crafting Statio
 The world generation here is heavily expanded. Get your bearings before you dig in.
 
 - **Requires:** Punch Some Wood
-- **Objective:** Have `minecraft:spyglass`
+- **Objective:** Have any of `minecraft:spyglass` / `minecraft:raw_copper`
 - **Reward:** `minecraft:torch` ×32, 30 points XP
 
 ### Skip the Night, Keep Your Spawn
@@ -77,7 +77,7 @@ The real thing: doubles ore output and alloys metals you cannot make any other w
 Tools here gain XP as you use them and level up on their own, each level granting a modifier slot. Apply Improvable to start that clock.
 
 - **Requires:** Your First Tool
-- **Objective:** Have `minecraft:nether_star`
+- **Objective:** Have any of `minecraft:nether_star` / `tconstruct:silky_cloth`
 - **Reward:** `tconstruct:pattern` ×8, 100 points XP
 
 ### More To Give
@@ -118,7 +118,7 @@ A Mechanical Press over a Depot turns ingots into sheets -- the gateway componen
 Contraptions are the point of Create: a block assembly that moves as one. Hover this item in your inventory or EMI and press W to watch it animated.
 
 - **Requires:** Pressing Matters
-- **Objective:** Have `create:mechanical_piston`
+- **Objective:** Have any of `create:mechanical_piston` / `create:windmill_bearing` / `create:mechanical_bearing`
 - **Reward:** `create:brass_ingot` ×8, 80 points XP, Ponder scene `create:mechanical_piston`
 
 ### Across the Base
@@ -150,7 +150,7 @@ Create can treat experience as a fluid. An Experience Hatch moves XP between you
 A normal grindstone throws away the experience it strips off. A Grindstone Drain captures it as Liquid Experience for the Blaze Enchanter.
 
 - **Requires:** Experience, Bottled
-- **Objective:** Have `create_enchantment_industry:grindstone_drain`
+- **Objective:** Have any of `create_enchantment_industry:grindstone_drain` / `create_enchantment_industry:blaze_enchanter`
 - **Reward:** `minecraft:lapis_lazuli` ×32, 5 levels XP
 
 ## Storage & Logistics
@@ -175,7 +175,7 @@ Drawers hold enormous stacks of a single item and show you what is inside at a g
 Sophisticated Storage barrels and chests take upgrades: filters, magnets, auto-smelting, compacting. One block that keeps improving.
 
 - **Requires:** Somewhere to Put It
-- **Objective:** Have `sophisticatedstorage:barrel`
+- **Objective:** Have any of `sophisticatedstorage:barrel` / `sophisticatedstorage:chest`
 - **Reward:** `minecraft:iron_ingot` ×8, 50 points XP
 
 ### Bulk, the Create Way
@@ -224,7 +224,7 @@ Copper is the first tier. Each tier adds rows and upgrade slots, and upgrading k
 This pack adds accessory slots -- belts, rings, charms. Open your inventory and look for the extra slots on the left.
 
 - **Requires:** Pockets
-- **Objective:** Have `travelertoolbelt:belt`
+- **Objective:** Have any of `travelertoolbelt:belt` / `bhc:red_heart_canister` / `minecraft:elytra`
 - **Reward:** 50 points XP
 
 ## Time & Growth
@@ -266,7 +266,7 @@ Nature's Compass finds any biome by name. With this much added worldgen it turns
 Three cheap items make travel bearable long before an elytra, and they stack. Sling up, glide out, land in the boots. The gliders here are unbreakable.
 
 - **Requires:** Point Me at It
-- **Objective:** Have `#hangglider:hang_gliders`; Have `tconstruct:slime_boots`; Have `slime_time:slime_sling`
+- **Objective:** Have `#hangglider:hang_gliders`; Have any of `tconstruct:slime_boots` / `slime_time:slime_boots`; Have `slime_time:slime_sling`
 - **Reward:** `minecraft:slime_ball` ×16, 80 points XP
 
 ### Somebody Was Here First
@@ -274,7 +274,7 @@ Three cheap items make travel bearable long before an elytra, and they stack. Sl
 Several structure mods layer over this world. Loot one -- the gear inside is well ahead of what you can craft.
 
 - **Requires:** Point Me at It
-- **Objective:** Have `minecraft:diamond` ×3
+- **Objective:** Have any of `minecraft:diamond` / `minecraft:golden_apple` ×3
 - **Reward:** `minecraft:iron_ingot` ×8, 80 points XP
 
 ### Somewhere Warmer
