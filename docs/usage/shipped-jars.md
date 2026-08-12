@@ -2,7 +2,7 @@
 
 # Shipped jars
 
-Every jar in **1.0.4**, with the version each was resolved to at build time.
+Every jar in **1.1.0**, with the version each was resolved to at build time.
 
 This file is refreshed when the pack is built, so it tracks releases upstream. It is deliberately excluded from the docs-are-current check — the resolver takes the newest compatible build of each mod, so this changes on its own whenever any of them publishes, with nothing here having changed.
 
@@ -36,7 +36,7 @@ This file is refreshed when the pack is built, so it tracks releases upstream. I
 | `bigcontraptions-neoforge-1.0.jar` | required | unsupported |
 | `bits_n_bobs-2.2.3.jar` | required | required |
 | `bookshelf-neoforge-1.21.1-21.1.81.jar` | required | required |
-| `boundless-1.21.1-neo-11.jar` | required | required |
+| `boundless-1.21.1-neo-11.1.jar` | required | required |
 | `bountifulbaubles-1.2.5.jar` | required | required |
 | `bwncr-neoforge-1.21.1-3.20.4.jar` | required | unsupported |
 | `c2me-neoforge-mc1.21.1-0.4.0-alpha.0.116.jar` | required | required |
@@ -96,7 +96,7 @@ This file is refreshed when the pack is built, so it tracks releases upstream. I
 | `create-stuff-additions1.21.1_v2.1.4a.jar` | required | required |
 | `createadditionallogistics-1.21.1-1.4.5.jar` | required | required |
 | `createcobblestone-1.4.12+neoforge-1.21.1-144.jar` | required | required |
-| `createcontraptionterminals-1.21-1.3.0.jar` | required | required |
+| `createcontraptionterminals-1.21-1.4.0.jar` | required | required |
 | `createdeco-2.1.3.jar` | required | required |
 | `CreateDragonsPlus-1.11.7.jar` | required | required |
 | `createenchantablemachinery-3.6.0+mc1.21.1-neoforge.jar` | required | required |
@@ -194,7 +194,7 @@ This file is refreshed when the pack is built, so it tracks releases upstream. I
 | `inventoryessentials-neoforge-1.21.1-21.1.17.jar` | required | required |
 | `InventoryProfilesNext-neoforge-1.21.1-2.2.5.jar` | required | unsupported |
 | `iris-neoforge-1.8.14-beta.1+mc1.21.1.jar` | required | unsupported |
-| `Ixeris-4.6.2+1.21.1-neoforge.jar` | required | unsupported |
+| `Ixeris-4.6.3+1.21.1-neoforge.jar` | required | unsupported |
 | `Jade-1.21.1-NeoForge-15.10.6.jar` | required | required |
 | `JadeAddons-1.21.1-NeoForge-6.0.1.jar` | required | required |
 | `jamlib-neoforge-1.3.6+1.21.1.jar` | required | required |
@@ -287,9 +287,9 @@ This file is refreshed when the pack is built, so it tracks releases upstream. I
 | `sodium-extra-neoforge-0.9.3+mc1.21.1.jar` | required | unsupported |
 | `sodium-neoforge-0.8.13-beta.2+mc1.21.1.jar` | required | unsupported |
 | `sodium-shadowy-path-blocks-neoforge-4.1.0.jar` | required | unsupported |
-| `sophisticatedbackpacks-1.21.1-3.25.74.2056.jar` | required | required |
+| `sophisticatedbackpacks-1.21.1-3.25.76.2067.jar` | required | required |
 | `sophisticatedbackpackscreateintegration-1.21.1-0.1.8.134.jar` | required | required |
-| `sophisticatedcore-1.21.1-1.4.84.2248.jar` | required | required |
+| `sophisticatedcore-1.21.1-1.4.85.2251.jar` | required | required |
 | `sophisticatedstorage-1.21.1-1.5.85.2071.jar` | required | required |
 | `sophisticatedstoragecreateintegration-1.21.1-0.1.21.209.jar` | required | required |
 | `sophisticatedstorageinmotion-1.21.1-0.10.33.324.jar` | required | required |
