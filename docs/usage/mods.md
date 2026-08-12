@@ -4,7 +4,7 @@
 
 **Tinker & Create 1.2.0** — Minecraft 1.21.1, neoforge 21.1.248.
 
-339 jars ship in the pack: 304 are declared in `tools/mods.json`, the rest are dependencies the build resolves automatically. Mod menus report a higher number still — Create alone bundles Flywheel, Ponder and Registrate inside its own jar, and those nested libraries count as mods once loaded.
+340 jars ship in the pack: 304 are declared in `tools/mods.json`, the rest are dependencies the build resolves automatically. Mod menus report a higher number still — Create alone bundles Flywheel, Ponder and Registrate inside its own jar, and those nested libraries count as mods once loaded.
 
 ## By category
 
