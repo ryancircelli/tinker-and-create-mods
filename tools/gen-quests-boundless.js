@@ -261,6 +261,17 @@ quest('tinkers_heart', {
   rewards: { expType: 'levels', exp: 5 },
 });
 
+quest('tinkers_slime_sling', {
+  category: 'tinkers', name: 'Reinforced Slime Sling', icon: 'slime_time:slime_sling',
+  after: ['tinkers_melter', 'create_press'],
+  desc: 'Five slime balls make a sling that flings you where you are NOT looking. '
+      + 'Melt slime down in the melter, then hold the sling under a Spout and give it '
+      + 'a bucket of liquid slime: the reinforced one launches you four times as high.'
+      + '\n\nAny slime works -- earth, sky, ichor or ender.',
+  targets: [collect('slime_time:slime_sling'), collect('create:spout')],
+  rewards: { items: [give('minecraft:slime_ball', 16)], exp: 150 },
+});
+
 // ---- Create ------------------------------------------------------------------
 quest('create_goggles', {
   category: 'create', name: 'Read the Machine', icon: 'create:goggles',
