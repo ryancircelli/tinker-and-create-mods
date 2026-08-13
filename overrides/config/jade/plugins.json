@@ -1,0 +1,6 @@
+{
+  "minecraft": {
+    "entity_health": true,
+    "entity_health.show_fractions": true
+  }
+}

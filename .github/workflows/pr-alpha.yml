@@ -1,0 +1,123 @@
+name: PR alpha build
+
+# Publishes each pull request as an ALPHA version on Modrinth, so a change can
+# be installed and played before it becomes a release, and deletes those alphas
+# again when the pull request closes.
+#
+# Cleanup runs on `closed`, not on merge, so a pull request that is abandoned
+# rather than merged still has its builds removed. Without that, every rejected
+# experiment would sit on the project page forever.
+#
+# Versions are named <pack version>-pr<number>+<short sha>. Two things depend on
+# that shape, so do not change it casually:
+#   * the server refuses to deploy anything matching -pr<number> (start.sh)
+#   * cleanup finds this PR's builds by the -pr<number>+ substring
+#
+# Alphas are published featured: false. Launchers offer featured/release builds
+# by default, so nobody is prompted to install a PR build by accident.
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+    paths:
+      - 'tools/**'
+      - 'overrides/**'
+
+jobs:
+  alpha:
+    # Build only while the pull request is open; a closing run goes to cleanup.
+    if: github.event.action != 'closed'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - uses: actions/cache@v4
+        with:
+          path: .cache
+          key: modrinth-cache-${{ hashFiles('tools/mods.json') }}
+          restore-keys: modrinth-cache-
+
+      - name: Build
+        env:
+          MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
+        run: node tools/build.js
+
+      - name: Publish as alpha
+        env:
+          TOKEN: ${{ secrets.MODRINTH_TOKEN }}
+          PROJECT: ${{ secrets.MODRINTH_PROJECT_ID }}
+          PR: ${{ github.event.pull_request.number }}
+          SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          V=$(node -p "require('./tools/mods.json').pack.version")
+          MC=$(node -p "require('./tools/mods.json').pack.minecraft")
+          LOADER=$(node -p "require('./tools/mods.json').pack.loader")
+          PACK="packs/tinker-and-create-${V}.mrpack"
+          ALPHA="${V}-pr${PR}+${SHA:0:7}"
+
+          ID=$(curl -sS -H "Authorization: $TOKEN" "https://api.modrinth.com/v2/project/$PROJECT" \
+            | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{const j=JSON.parse(s);
+                if(!j.id){console.error(s.slice(0,200));process.exit(1);} console.log(j.id);})')
+
+          DATA=$(node -e '
+            const [id,ver,mc,loader,pr]=process.argv.slice(1);
+            process.stdout.write(JSON.stringify({
+              name: `Tinker & Create ${ver}`,
+              version_number: ver,
+              project_id: id,
+              file_parts: ["file"],
+              // alpha + not featured: launchers offer release/featured builds by
+              // default, so this cannot be installed by accident.
+              version_type: "alpha",
+              featured: false,
+              game_versions: [mc],
+              loaders: [loader],
+              dependencies: [],
+              changelog: `Automated build of pull request #${pr}. Not a release.`
+            }));' "$ID" "$ALPHA" "$MC" "$LOADER" "$PR")
+
+          CODE=$(curl -sS -o /tmp/resp.json -w '%{http_code}' -X POST \
+            "https://api.modrinth.com/v2/version" \
+            -H "Authorization: $TOKEN" \
+            -F "data=$DATA;type=application/json" \
+            -F "file=@${PACK};type=application/octet-stream")
+          echo "HTTP $CODE"
+          case "$CODE" in
+            200|201) echo "published alpha $ALPHA" ;;
+            *) cat /tmp/resp.json; echo "::error::alpha publish failed"; exit 1 ;;
+          esac
+
+  cleanup:
+    if: github.event.action == 'closed'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Delete this pull request's alpha builds
+        env:
+          TOKEN: ${{ secrets.MODRINTH_TOKEN }}
+          PROJECT: ${{ secrets.MODRINTH_PROJECT_ID }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          ID=$(curl -sS -H "Authorization: $TOKEN" "https://api.modrinth.com/v2/project/$PROJECT" \
+            | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{const j=JSON.parse(s);console.log(j.id)})')
+
+          # Match on -pr<number>+ exactly, so pr1 never sweeps up pr12's builds.
+          IDS=$(curl -sS -H "Authorization: $TOKEN" "https://api.modrinth.com/v2/project/$ID/version" \
+            | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{
+                const v=JSON.parse(s), pr=process.argv[1];
+                const hit=v.filter(x=>x.version_type==="alpha" && x.version_number.includes(`-pr${pr}+`));
+                console.log(hit.map(x=>x.id+" "+x.version_number).join("\n"));})' "$PR")
+
+          if [ -z "$IDS" ]; then echo "no alpha builds for PR #${PR}"; exit 0; fi
+          echo "$IDS" | while read -r vid vname; do
+            [ -n "$vid" ] || continue
+            C=$(curl -sS -o /dev/null -w '%{http_code}' -X DELETE \
+              "https://api.modrinth.com/v2/version/$vid" -H "Authorization: $TOKEN")
+            echo "deleted $vname ($vid) -> HTTP $C"
+          done

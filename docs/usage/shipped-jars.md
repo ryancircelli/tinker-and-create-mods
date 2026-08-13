@@ -2,7 +2,7 @@
 
 # Shipped jars
 
-Every jar in **1.1.2**, with the version each was resolved to at build time.
+Every jar in **1.2.0**, with the version each was resolved to at build time.
 
 This file is refreshed when the pack is built, so it tracks releases upstream. It is deliberately excluded from the docs-are-current check — the resolver takes the newest compatible build of each mod, so this changes on its own whenever any of them publishes, with nothing here having changed.
 
@@ -62,7 +62,7 @@ This file is refreshed when the pack is built, so it tracks releases upstream. I
 | `copycats-3.0.4+mc.1.21.1-neoforge.jar` | required | required |
 | `corpse-neoforge-1.21.1-1.1.13.jar` | required | required |
 | `corpsecurioscompat-1.21.1-NeoForge-3.1.3.jar` | required | required |
-| `CrashAssistant-neoforge-1.20.6-1.21.4-1.11.11.jar` | required | unsupported |
+| `CrashAssistant-neoforge-1.20.6-1.21.4-1.11.12.jar` | required | unsupported |
 | `cratedelight-26.07.01-1.21-neoforge.jar` | required | required |
 | `Create Encased-1.21.1-1.9.0-ht3.jar` | required | required |
 | `Create Quality of Life-1.21.1-1.6.3-fix1.jar` | required | required |
@@ -205,6 +205,7 @@ This file is refreshed when the pack is built, so it tracks releases upstream. I
 | `Ksyxis-1.4.3.jar` | required | required |
 | `L_Ender's Cataclysm 1.21.1-3.32.jar` | required | required |
 | `lambdynamiclights-4.8.10+1.21.1.jar` | required | unsupported |
+| `LeavesBeGone-v21.1.1-1.21.1-NeoForge.jar` | required | required |
 | `LegendaryTooltips-1.21.1-neoforge-1.5.5.jar` | required | unsupported |
 | `letmedespawn-1.21.x-neoforge-1.5.0.jar` | required | required |
 | `letsdo-farm_and_charm-neoforge-1.1.23.jar` | required | required |

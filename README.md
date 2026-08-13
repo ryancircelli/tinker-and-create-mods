@@ -4,7 +4,7 @@
 [![release](https://img.shields.io/github/v/release/ryancircelli/tinker-and-create-mods?label=pack)](https://github.com/ryancircelli/tinker-and-create-mods/releases/latest)
 [![Minecraft](https://img.shields.io/badge/Minecraft-1.21.1-brightgreen)](https://modrinth.com/modpack/tinker-create)
 [![NeoForge](https://img.shields.io/badge/NeoForge-21.1.248-orange)](https://neoforged.net/)
-[![mods](https://img.shields.io/badge/mods-339-blue)](docs/usage/mods.md)
+[![mods](https://img.shields.io/badge/mods-340-blue)](docs/usage/mods.md)
 [![Modrinth](https://img.shields.io/modrinth/dt/LmXb0Vdc?label=modrinth%20downloads)](https://modrinth.com/modpack/tinker-create)
 [![Modrinth version](https://img.shields.io/modrinth/v/LmXb0Vdc?label=modrinth)](https://modrinth.com/modpack/tinker-create/versions)
 

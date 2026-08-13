@@ -10,7 +10,7 @@
 
 [![Minecraft](https://img.shields.io/badge/Minecraft-1.21.1-brightgreen)](https://modrinth.com/modpack/tinker-create)
 [![NeoForge](https://img.shields.io/badge/NeoForge-21.1.248-orange)](https://neoforged.net/)
-[![mods](https://img.shields.io/badge/mods-339-blue)](https://github.com/ryancircelli/tinker-and-create-mods/blob/master/docs/usage/mods.md)
+[![mods](https://img.shields.io/badge/mods-340-blue)](https://github.com/ryancircelli/tinker-and-create-mods/blob/master/docs/usage/mods.md)
 [![quests](https://img.shields.io/badge/quests-44-purple)](https://github.com/ryancircelli/tinker-and-create-mods/blob/master/docs/usage/quest-book.md)
 [![downloads](https://img.shields.io/modrinth/dt/LmXb0Vdc?label=downloads)](https://modrinth.com/modpack/tinker-create)
 [![source](https://img.shields.io/badge/source-GitHub-181717?logo=github)](https://github.com/ryancircelli/tinker-and-create-mods)
