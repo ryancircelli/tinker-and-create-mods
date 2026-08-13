@@ -599,7 +599,7 @@
 		#Slingshot range multiplier. Affect the initial projectile speed
 		# Default: 1.0
 		# Range: 0.0 ~ 5.0
-		range_multiplier = 4.0
+		range_multiplier = 5.0
 		#Time in ticks to fully charge a slingshot
 		# Default: 20
 		# Range: 0 ~ 100
