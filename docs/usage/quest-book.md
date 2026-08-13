@@ -93,7 +93,7 @@ Heart Canisters raise your maximum health permanently. With a Smeltery running y
 Five slime balls make a sling that flings you where you are NOT looking. Melt slime down in the melter, then hold the sling under a Spout and give it a bucket of liquid slime: the reinforced one launches you twice as high again. Any slime works -- earth, sky, ichor or ender.
 
 - **Requires:** Getting Molten, Pressing Matters
-- **Objective:** Have `slime_time:slime_sling`; Have `create:spout`
+- **Objective:** Have `slime_time:slime_sling[minecraft:enchantment_glint_override=true]`
 - **Reward:** `minecraft:slime_ball` ×16, 150 points XP
 
 ## Create

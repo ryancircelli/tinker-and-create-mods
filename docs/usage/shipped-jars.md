@@ -2,7 +2,7 @@
 
 # Shipped jars
 
-Every jar in **1.2.4**, with the version each was resolved to at build time.
+Every jar in **1.2.5**, with the version each was resolved to at build time.
 
 This file is refreshed when the pack is built, so it tracks releases upstream. It is deliberately excluded from the docs-are-current check — the resolver takes the newest compatible build of each mod, so this changes on its own whenever any of them publishes, with nothing here having changed.
 
@@ -39,7 +39,7 @@ This file is refreshed when the pack is built, so it tracks releases upstream. I
 | `boundless-1.21.1-neo-11.1.jar` | required | required |
 | `bountifulbaubles-1.2.5.jar` | required | required |
 | `bwncr-neoforge-1.21.1-3.20.4.jar` | required | unsupported |
-| `c2me-neoforge-mc1.21.1-0.4.0-alpha.0.117.jar` | required | required |
+| `c2me-neoforge-mc1.21.1-0.4.0-alpha.0.118.jar` | required | required |
 | `caelus-neoforge-7.0.1+1.21.1.jar` | required | required |
 | `carryon-neoforge-1.21.1-2.2.6.13.jar` | required | required |
 | `cerulean-neoforge-1.0.0-1.21.1.jar` | required | required |

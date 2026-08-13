@@ -268,7 +268,15 @@ quest('tinkers_slime_sling', {
       + 'Melt slime down in the melter, then hold the sling under a Spout and give it '
       + 'a bucket of liquid slime: the reinforced one launches you twice as high again.'
       + '\n\nAny slime works -- earth, sky, ichor or ender.',
-  targets: [collect('slime_time:slime_sling'), collect('create:spout')],
+  // Boundless CAN discriminate on components: QuestTracker.getCountInInventory
+  // parses each target through QuestItemSpec.parse and calls spec.matches(stack,
+  // registries), which compares the id AND the serialized component string. The
+  // comparison is substring containment on a lowercased, space-stripped form, so
+  // the expected text has to be a contiguous run of the real thing -- one whole
+  // component is the safe unit. The glint is the stable single token that only the
+  // reinforced sling carries; matching on the force values instead would depend on
+  // the codec emitting both fields in a fixed order.
+  targets: [collect('slime_time:slime_sling[minecraft:enchantment_glint_override=true]')],
   rewards: { items: [give('minecraft:slime_ball', 16)], exp: 150 },
 });
 

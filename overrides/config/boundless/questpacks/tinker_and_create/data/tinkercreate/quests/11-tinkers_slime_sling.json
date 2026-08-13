@@ -16,11 +16,7 @@
   "completion": {
     "complete": [
       {
-        "collect": "slime_time:slime_sling",
-        "count": 1
-      },
-      {
-        "collect": "create:spout",
+        "collect": "slime_time:slime_sling[minecraft:enchantment_glint_override=true]",
         "count": 1
       }
     ]
