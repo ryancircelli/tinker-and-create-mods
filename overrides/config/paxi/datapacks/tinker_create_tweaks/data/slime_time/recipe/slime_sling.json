@@ -16,7 +16,7 @@
     "components": {
       "slime_time:force": {
         "horizontal_force": 4.5,
-        "vertical_force": 1.2
+        "vertical_force": 2.03
       }
     }
   }
