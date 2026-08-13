@@ -15,8 +15,8 @@
     "id": "slime_time:slime_sling",
     "components": {
       "slime_time:force": {
-        "horizontal_force": 4.5,
-        "vertical_force": 2.03
+        "horizontal_force": 7.5,
+        "vertical_force": 3.0
       }
     }
   }
