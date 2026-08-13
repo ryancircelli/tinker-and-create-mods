@@ -52,7 +52,7 @@
 	#Default Value: 0.08
 	# Default: 0.08
 	# Range: 0.0 ~ 100.0
-	fast_forward_movement = 0.09
+	fast_forward_movement = 0.11
 	#The amount of blocks a player falls (per-tick) while gliding normally.
 	#Default Value: 0.55
 	# Default: 0.55
@@ -81,7 +81,7 @@
 	#Default Value: 0.675
 	# Default: 0.675
 	# Range: 0.0 ~ 100.0
-	fast_fall_movement = 0.675
+	fast_fall_movement = 0.575
 
 [hang_glider]
 	#A quality-of-life option to quickly change the overall power of the wind effect for this glider. Default is an overall relatively weak wind, with moderate gusts that occur semi-commonly.
@@ -94,7 +94,7 @@
 	#Default Value: 0.05
 	# Default: 0.05
 	# Range: 0.0 ~ 100.0
-	fast_forward_movement = 0.075
+	fast_forward_movement = 0.08
 	#The amount of blocks a player falls (per-tick) while gliding normally.
 	#Default Value: 0.55
 	# Default: 0.55
@@ -123,4 +123,4 @@
 	#Default Value: 0.675
 	# Default: 0.675
 	# Range: 0.0 ~ 100.0
-	fast_fall_movement = 0.675
+	fast_fall_movement = 0.595
