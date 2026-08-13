@@ -2,7 +2,7 @@
 
 # Quest book
 
-44 quests across 8 categories, as they appear in game. Open it from the button in your inventory, above the offhand slot, or press `]`.
+45 quests across 8 categories, as they appear in game. Open it from the button in your inventory, above the offhand slot, or press `]`.
 
 Rewards are **not** claimed automatically — a quest completes, then you claim it. Nothing here is a spoiler you could not read in the book itself.
 
@@ -87,6 +87,14 @@ Heart Canisters raise your maximum health permanently. With a Smeltery running y
 - **Requires:** The Smeltery
 - **Objective:** Have `bhc:red_heart_canister`
 - **Reward:** 5 levels XP
+
+### Reinforced Slime Sling
+
+Five slime balls make a sling that flings you where you are NOT looking. Melt slime down in the melter, then hold the sling under a Spout and give it a bucket of liquid slime: the reinforced one launches you four times as high. Any slime works -- earth, sky, ichor or ender.
+
+- **Requires:** Getting Molten, Pressing Matters
+- **Objective:** Have `slime_time:slime_sling`; Have `create:spout`
+- **Reward:** `minecraft:slime_ball` ×16, 150 points XP
 
 ## Create
 
