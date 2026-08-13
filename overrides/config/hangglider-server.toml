@@ -89,17 +89,17 @@
 	#Default Value: 1.4
 	# Default: 1.4
 	# Range: 0.001 ~ 10.0
-	overall_wind_power = 1.4
+	overall_wind_power = 0.75
 	#The amount of blocks to move forwards (per-tick) while gliding fast (pressing 'Shift').
 	#Default Value: 0.05
 	# Default: 0.05
 	# Range: 0.0 ~ 100.0
-	fast_forward_movement = 0.12
+	fast_forward_movement = 0.165
 	#The amount of blocks a player falls (per-tick) while gliding normally.
 	#Default Value: 0.55
 	# Default: 0.55
 	# Range: 0.0 ~ 100.0
-	normal_fall_movement = 0.42
+	normal_fall_movement = 0.40
 	#Enables durability usage of the hang glider when gliding.
 	#Default Value: true
 	consume_durability = false
@@ -113,14 +113,14 @@
 	#Default Value: 0.985
 	# Default: 0.985
 	# Range: 0.0 ~ 1.0
-	air_resistance = 0.985
+	air_resistance = 0.992
 	#The amount of blocks to move forwards (per-tick) while gliding normally.
 	#Default Value: 0.025
 	# Default: 0.025
 	# Range: 0.0 ~ 100.0
-	normal_forward_movement = 0.06
+	normal_forward_movement = 0.0825
 	#The amount of blocks to fall (per-tick) while gliding fast (pressing 'Shift').
 	#Default Value: 0.675
 	# Default: 0.675
 	# Range: 0.0 ~ 100.0
-	fast_fall_movement = 0.595
+	fast_fall_movement = 0.575
