@@ -15,8 +15,8 @@
       "id": "slime_time:slime_sling",
       "components": {
         "slime_time:force": {
-          "horizontal_force": 9.0,
-          "vertical_force": 4.8
+          "horizontal_force": 6.0,
+          "vertical_force": 4.0
         },
         "minecraft:enchantment_glint_override": true,
         "minecraft:item_name": "Reinforced Slime Sling"
