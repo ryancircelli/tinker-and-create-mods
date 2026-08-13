@@ -1,7 +1,9 @@
 {
   "type": "create:filling",
   "ingredients": [
-    { "item": "slime_time:slime_sling" },
+    {
+      "item": "slime_time:slime_sling"
+    },
     {
       "type": "neoforge:tag",
       "amount": 1000,
@@ -13,8 +15,8 @@
       "id": "slime_time:slime_sling",
       "components": {
         "slime_time:force": {
-          "horizontal_force": 4.5,
-          "vertical_force": 2.67
+          "horizontal_force": 6.0,
+          "vertical_force": 4.0
         },
         "minecraft:enchantment_glint_override": true,
         "minecraft:item_name": "Reinforced Slime Sling"

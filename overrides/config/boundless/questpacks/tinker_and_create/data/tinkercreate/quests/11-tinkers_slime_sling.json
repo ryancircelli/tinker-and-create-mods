@@ -2,7 +2,7 @@
   "id": "tinkers_slime_sling",
   "name": "Reinforced Slime Sling",
   "icon": "slime_time:slime_sling",
-  "description": "Five slime balls make a sling that flings you where you are NOT looking. Melt slime down in the melter, then hold the sling under a Spout and give it a bucket of liquid slime: the reinforced one launches you four times as high.\n\nAny slime works -- earth, sky, ichor or ender.",
+  "description": "Five slime balls make a sling that flings you where you are NOT looking. Melt slime down in the melter, then hold the sling under a Spout and give it a bucket of liquid slime: the reinforced one launches you twice as high again.\n\nAny slime works -- earth, sky, ichor or ender.",
   "category": "tinkers",
   "dependencies": [
     "tinkers_melter",

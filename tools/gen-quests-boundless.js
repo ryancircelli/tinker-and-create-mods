@@ -266,7 +266,7 @@ quest('tinkers_slime_sling', {
   after: ['tinkers_melter', 'create_press'],
   desc: 'Five slime balls make a sling that flings you where you are NOT looking. '
       + 'Melt slime down in the melter, then hold the sling under a Spout and give it '
-      + 'a bucket of liquid slime: the reinforced one launches you four times as high.'
+      + 'a bucket of liquid slime: the reinforced one launches you twice as high again.'
       + '\n\nAny slime works -- earth, sky, ichor or ender.',
   targets: [collect('slime_time:slime_sling'), collect('create:spout')],
   rewards: { items: [give('minecraft:slime_ball', 16)], exp: 150 },
