@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "l": {
+      "tag": "c:slime_balls"
+    }
+  },
+  "pattern": [
+    "l l",
+    "lll"
+  ],
+  "result": {
+    "count": 1,
+    "id": "slime_time:slime_sling",
+    "components": {
+      "slime_time:force": {
+        "horizontal_force": 4.5,
+        "vertical_force": 1.2
+      }
+    }
+  }
+}
