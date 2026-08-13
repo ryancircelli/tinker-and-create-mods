@@ -51,7 +51,7 @@ _version = 4
 				# 
 				# Lowest Quality: HEIGHT_MAP
 				# Highest Quality: PIXEL_ART
-				verticalQuality = "MEDIUM"
+				verticalQuality = "HIGH"
 				#
 				# If true DH will try to use the camera position when 
 				# determining LOD quality drop-off. 
