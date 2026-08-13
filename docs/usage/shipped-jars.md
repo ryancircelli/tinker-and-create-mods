@@ -62,7 +62,7 @@ This file is refreshed when the pack is built, so it tracks releases upstream. I
 | `copycats-3.0.4+mc.1.21.1-neoforge.jar` | required | required |
 | `corpse-neoforge-1.21.1-1.1.13.jar` | required | required |
 | `corpsecurioscompat-1.21.1-NeoForge-3.1.3.jar` | required | required |
-| `CrashAssistant-neoforge-1.20.6-1.21.4-1.11.11.jar` | required | unsupported |
+| `CrashAssistant-neoforge-1.20.6-1.21.4-1.11.12.jar` | required | unsupported |
 | `cratedelight-26.07.01-1.21-neoforge.jar` | required | required |
 | `Create Encased-1.21.1-1.9.0-ht3.jar` | required | required |
 | `Create Quality of Life-1.21.1-1.6.3-fix1.jar` | required | required |
