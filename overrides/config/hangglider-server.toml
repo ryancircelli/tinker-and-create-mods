@@ -52,7 +52,7 @@
 	#Default Value: 0.08
 	# Default: 0.08
 	# Range: 0.0 ~ 100.0
-	fast_forward_movement = 0.11
+	fast_forward_movement = 0.165
 	#The amount of blocks a player falls (per-tick) while gliding normally.
 	#Default Value: 0.55
 	# Default: 0.55
@@ -76,7 +76,7 @@
 	#Default Value: 0.04
 	# Default: 0.04
 	# Range: 0.0 ~ 100.0
-	normal_forward_movement = 0.055
+	normal_forward_movement = 0.0825
 	#The amount of blocks to fall (per-tick) while gliding fast (pressing 'Shift').
 	#Default Value: 0.675
 	# Default: 0.675
@@ -94,7 +94,7 @@
 	#Default Value: 0.05
 	# Default: 0.05
 	# Range: 0.0 ~ 100.0
-	fast_forward_movement = 0.08
+	fast_forward_movement = 0.12
 	#The amount of blocks a player falls (per-tick) while gliding normally.
 	#Default Value: 0.55
 	# Default: 0.55
@@ -118,7 +118,7 @@
 	#Default Value: 0.025
 	# Default: 0.025
 	# Range: 0.0 ~ 100.0
-	normal_forward_movement = 0.04
+	normal_forward_movement = 0.06
 	#The amount of blocks to fall (per-tick) while gliding fast (pressing 'Shift').
 	#Default Value: 0.675
 	# Default: 0.675
