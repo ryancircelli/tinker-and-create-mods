@@ -2,7 +2,7 @@
 
 # Shipped jars
 
-Every jar in **1.2.5**, with the version each was resolved to at build time.
+Every jar in **1.3.0**, with the version each was resolved to at build time.
 
 This file is refreshed when the pack is built, so it tracks releases upstream. It is deliberately excluded from the docs-are-current check — the resolver takes the newest compatible build of each mod, so this changes on its own whenever any of them publishes, with nothing here having changed.
 
@@ -22,10 +22,10 @@ This file is refreshed when the pack is built, so it tracks releases upstream. I
 | `artifacts-neoforge-13.2.1.jar` | required | required |
 | `AsyncParticles-21.1.4.0-beta.3+1.21.1.jar` | required | unsupported |
 | `attributefix-neoforge-1.21.1-21.1.3.jar` | required | required |
-| `azimuth-1.4.5.jar` | required | required |
+| `azimuth-1.4.6.jar` | required | required |
 | `BadOptimizations-2.4.1-1.21.1.jar` | required | unsupported |
 | `baguettelib-1.21.1-NeoForge-2.0.3.jar` | required | required |
-| `balm-neoforge-1.21.1-21.0.64.jar` | required | required |
+| `balm-neoforge-1.21.1-21.0.65.jar` | required | required |
 | `baubley-heart-canisters-1.21.1-1.4.1.jar` | required | required |
 | `bellsandwhistles-0.4.7-1.21.1.jar` | required | required |
 | `better_smithing_table-2.1.0+1.21-neoforge.jar` | required | unsupported |
@@ -34,17 +34,17 @@ This file is refreshed when the pack is built, so it tracks releases upstream. I
 | `BetterF3-11.0.3-NeoForge-1.21.1.jar` | required | unsupported |
 | `BetterThirdPerson-neoforge-1.9.0.jar` | required | unsupported |
 | `bigcontraptions-neoforge-1.0.jar` | required | unsupported |
-| `bits_n_bobs-2.2.3.jar` | required | required |
+| `bits_n_bobs-2.2.4.jar` | required | required |
 | `bookshelf-neoforge-1.21.1-21.1.81.jar` | required | required |
 | `boundless-1.21.1-neo-11.1.jar` | required | required |
 | `bountifulbaubles-1.2.5.jar` | required | required |
 | `bwncr-neoforge-1.21.1-3.20.4.jar` | required | unsupported |
-| `c2me-neoforge-mc1.21.1-0.4.0-alpha.0.118.jar` | required | required |
+| `c2me-neoforge-mc1.21.1-0.4.0-alpha.0.120.jar` | required | required |
 | `caelus-neoforge-7.0.1+1.21.1.jar` | required | required |
 | `carryon-neoforge-1.21.1-2.2.6.13.jar` | required | required |
 | `cerulean-neoforge-1.0.0-1.21.1.jar` | required | required |
 | `charmofundying-neoforge-9.1.0+1.21.1.jar` | required | required |
-| `chat_heads-0.15.6-neoforge-1.21.jar` | required | unsupported |
+| `chat_heads-0.15.7-neoforge-1.21.jar` | required | unsupported |
 | `cherishedworlds-neoforge-10.1.1+1.21.1.jar` | required | unsupported |
 | `chloride-NEOFORGE-mc1.21.1-v1.8.1.jar` | required | unsupported |
 | `chunksfadein-neoforge-3.0.26-1.21.jar` | required | unsupported |
@@ -111,12 +111,12 @@ This file is refreshed when the pack is built, so it tracks releases upstream. I
 | `createoreexcavation-1.21-1.6.8.jar` | required | required |
 | `createprism-1.2.2.jar` | required | required |
 | `createrailwaysnavigator-neoforge-1.21.1-beta-0.9.1-C6.jar` | required | required |
-| `createschematicchecker-2.27.42-6.0-neoforge-1.21.1.jar` | required | required |
+| `createschematicchecker-2.27.43-6.0-neoforge-1.21.1.jar` | required | required |
 | `createsifter-1.21.1-2.3.0.jar` | required | required |
 | `createthreadedtrains-neoforge-1.21.1-1.0.0.jar` | required | required |
-| `CreativeCore_NEOFORGE_v2.13.42_mc1.21.1.jar` | required | required |
+| `CreativeCore_NEOFORGE_v2.13.43_mc1.21.1.jar` | required | required |
 | `cristellib-neoforge-1.21.1-3.1.7.jar` | required | required |
-| `ctl-neoforge-1.1.1.jar` | required | required |
+| `ctl-neoforge-1.2.0.jar` | required | required |
 | `cullleaves-neoforge-4.1.1+1.21.1.jar` | required | unsupported |
 | `curios-neoforge-9.5.1+1.21.1.jar` | required | required |
 | `CutThrough-v21.1.0-1.21.1-NeoForge.jar` | required | unsupported |
@@ -194,7 +194,7 @@ This file is refreshed when the pack is built, so it tracks releases upstream. I
 | `inventoryessentials-neoforge-1.21.1-21.1.17.jar` | required | required |
 | `InventoryProfilesNext-neoforge-1.21.1-2.2.5.jar` | required | unsupported |
 | `iris-neoforge-1.8.14-beta.1+mc1.21.1.jar` | required | unsupported |
-| `Ixeris-4.6.3+1.21.1-neoforge.jar` | required | unsupported |
+| `Ixeris-4.6.4+1.21.1-neoforge.jar` | required | unsupported |
 | `Jade-1.21.1-NeoForge-15.10.6.jar` | required | required |
 | `JadeAddons-1.21.1-NeoForge-6.0.1.jar` | required | required |
 | `jamlib-neoforge-1.3.6+1.21.1.jar` | required | required |
@@ -216,7 +216,7 @@ This file is refreshed when the pack is built, so it tracks releases upstream. I
 | `lithium-neoforge-0.15.4+mc1.21.1.jar` | required | required |
 | `lithostitched-1.7.13-neoforge-21.1.jar` | required | required |
 | `lootr-neoforge-1.21.1-1.11.38.123.jar` | required | required |
-| `Mantle-1.21.1-1.12.1.jar` | required | required |
+| `Mantle-1.21.1-1.11.DEV.b92d2931.jar` | required | required |
 | `mcw-bridges-3.1.2-mc1.21.1neoforge.jar` | required | required |
 | `mcw-doors-1.1.5-mc1.21.1neoforge.jar` | required | required |
 | `mcw-furniture-3.4.1-mc1.21.1neoforge.jar` | required | required |
@@ -288,9 +288,9 @@ This file is refreshed when the pack is built, so it tracks releases upstream. I
 | `sodium-extra-neoforge-0.9.3+mc1.21.1.jar` | required | unsupported |
 | `sodium-neoforge-0.8.13-beta.2+mc1.21.1.jar` | required | unsupported |
 | `sodium-shadowy-path-blocks-neoforge-4.1.0.jar` | required | unsupported |
-| `sophisticatedbackpacks-1.21.1-3.25.76.2067.jar` | required | required |
+| `sophisticatedbackpacks-1.21.1-3.25.77.2074.jar` | required | required |
 | `sophisticatedbackpackscreateintegration-1.21.1-0.1.8.134.jar` | required | required |
-| `sophisticatedcore-1.21.1-1.4.85.2251.jar` | required | required |
+| `sophisticatedcore-1.21.1-1.4.86.2259.jar` | required | required |
 | `sophisticatedstorage-1.21.1-1.5.85.2077.jar` | required | required |
 | `sophisticatedstoragecreateintegration-1.21.1-0.1.21.209.jar` | required | required |
 | `sophisticatedstorageinmotion-1.21.1-0.10.33.324.jar` | required | required |
@@ -312,8 +312,8 @@ This file is refreshed when the pack is built, so it tracks releases upstream. I
 | `Terralith_1.21.1_v2.6.2_Neoforge.jar` | required | required |
 | `tiab-neoforge-6.5.4.jar` | required | required |
 | `TinkersBouncePad-neoforge-1.21-1.6.0.jar` | required | required |
-| `TinkersConstruct-1.21.1-3.12.2.jar` | required | required |
-| `TinkersLevellingAddon-1.21.1-1.5.0.jar` | required | required |
+| `TinkersConstruct-1.21.1-3.11.2.DEV.f3cfaef7ed.jar` | required | required |
+| `TinkersLevellingAddon-1.21.1-1.4.3.jar` | required | required |
 | `toms_storage-1.21-2.4.1.jar` | required | required |
 | `trading_floor-3.0.16.jar` | required | required |
 | `TradingPost-v21.1.1-1.21.1-NeoForge.jar` | required | required |

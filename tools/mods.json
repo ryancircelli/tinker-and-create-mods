@@ -2,7 +2,7 @@
   "pack": {
     "name": "Tinker & Create",
     "summary": "Create + Tinkers for Minecraft 1.21.1 NeoForge",
-    "version": "1.2.5",
+    "version": "1.3.0",
     "minecraft": "1.21.1",
     "loader": "neoforge",
     "loaders": [
@@ -10,7 +10,7 @@
     ],
     "loaderVersion": "21.1.248"
   },
-  "//tinkers": "Tinkers' Construct 3.12.2 and Mantle 1.12.1 for 1.21.1 are shipped via overrides/mods/ because neither the port nor Mantle exists on Modrinth for 1.21.1 — a .mrpack can only reference cdn.modrinth.com URLs. Source: zhuchuovo/TinkersConstruct-1.21.1 and zhuchuovo/Mantle-1.21.1, forked to ryancircelli/. Verified booting with Create via tools/isolate.js --jar.",
+  "//tinkers": "Tinkers' Construct, Mantle and the Levelling Addon for 1.21.1 ship as GitHub release assets because none has a Modrinth release for this loader. Since v1.21.1-2 these are OUR OWN clean-room port on the ryancircelli/* forks of the SlimeKnights originals -- not the third-party zhuchuovo GPL-3.0 port that v1.21.1-1 carried, from which no line derives. Upstream bases are TConstruct 3.11.2 and Mantle 1.11, a deliberate step back from 3.12.2/1.12.1 in exchange for provenance we control. Nothing else in the pack constrains those versions: a scan of all 340 jars found dependency ranges on tconstruct/mantle only inside the trio itself, and they agree (tconstruct needs mantle [1.11,), levelling needs tconstruct [3.11,)).",
   "//loader": "1.21.1 NeoForge has 809 Create modpacks; 1.21.1 Forge has ZERO. NeoForge is the only viable 1.21 target.",
   "aliases": {},
   "exclusiveGroups": [
@@ -1796,24 +1796,24 @@
   "//external": "Mods with no Modrinth release for 1.21.1/NeoForge. Hosted as GitHub release assets (a whitelisted .mrpack download domain) so they reach players over a CDN as ordinary files[] entries instead of being embedded in overrides/. Assets are immutable: the manifest pins sha1+sha512, so a new jar build needs a NEW release tag, never a replaced asset.",
   "external": [
     {
-      "file": "TinkersConstruct-1.21.1-3.12.2.jar",
-      "url": "https://github.com/ryancircelli/tinker-and-create-mods/releases/download/v1.21.1-1/TinkersConstruct-1.21.1-3.12.2.jar",
+      "file": "TinkersConstruct-1.21.1-3.11.2.DEV.f3cfaef7ed.jar",
+      "url": "https://github.com/ryancircelli/tinker-and-create-mods/releases/download/v1.21.1-2/TinkersConstruct-1.21.1-3.11.2.DEV.f3cfaef7ed.jar",
       "env": {
         "client": "required",
         "server": "required"
       }
     },
     {
-      "file": "Mantle-1.21.1-1.12.1.jar",
-      "url": "https://github.com/ryancircelli/tinker-and-create-mods/releases/download/v1.21.1-1/Mantle-1.21.1-1.12.1.jar",
+      "file": "Mantle-1.21.1-1.11.DEV.b92d2931.jar",
+      "url": "https://github.com/ryancircelli/tinker-and-create-mods/releases/download/v1.21.1-2/Mantle-1.21.1-1.11.DEV.b92d2931.jar",
       "env": {
         "client": "required",
         "server": "required"
       }
     },
     {
-      "file": "TinkersLevellingAddon-1.21.1-1.5.0.jar",
-      "url": "https://github.com/ryancircelli/tinker-and-create-mods/releases/download/v1.21.1-1/TinkersLevellingAddon-1.21.1-1.5.0.jar",
+      "file": "TinkersLevellingAddon-1.21.1-1.4.3.jar",
+      "url": "https://github.com/ryancircelli/tinker-and-create-mods/releases/download/v1.21.1-2/TinkersLevellingAddon-1.21.1-1.4.3.jar",
       "env": {
         "client": "required",
         "server": "required"

@@ -615,7 +615,8 @@ function installOverrides(packPath, destMods) {
         await con('boundless complete welcome @a');
         const out = sLog.slice(mark).join('');
         fs.writeFileSync(path.join(shots, 'datapack-probe.log'), out);
-        const listed = /tinker_and_create|tinkercreate/i.test(out);
+        // paxi mounts the questpack as tinker_create_tweaks since the CI move
+        const listed = /tinker_and_create|tinkercreate|tinker_create_tweaks/i.test(out);
         const unknown = /Unknown|No quest|not found/i.test(out);
         console.log(`QUESTPACK PROBE: listed=${listed ? 'YES' : 'no'} complete=${unknown ? 'UNKNOWN-ID' : 'OK'}`);
       }
@@ -631,15 +632,14 @@ function installOverrides(packPath, destMods) {
         // -- normally applied at a Tinker Station with a nether star. Apply it
         // directly instead so the XP path itself is what gets exercised.
         await con('gamemode creative JoinTestBot');
-        await con('item replace entity JoinTestBot weapon.mainhand with tconstruct:pickaxe');
-        // Build the stack with `improvable` already on it. Note tic_UPGRADES,
-        // not tic_modifiers: the latter is derived (material traits recompute
-        // into it), so a modifier written there is silently discarded.
-        const TOOL = 'tconstruct:pickaxe[minecraft:custom_data={'
-          + 'tic_materials:["tconstruct:bone","tconstruct:flint","tconstruct:chorus"],'
-          + 'tic_upgrades:[{level:1,name:"tinkerslevellingaddon:improvable"}],'
-          + 'tic_volatile_data:{abilities:1,upgrades:3}}]';
+        // 1.21: tool data lives in the tconstruct:tool component, not the raw
+        // tag -- custom_data is invisible to the mod. Give a bare tool with
+        // real materials, then let Tinkers' own command apply `improvable`,
+        // which exercises the same path a Tinker Station would.
+        const TOOL = 'tconstruct:pickaxe[tconstruct:tool={'
+          + 'materials:["tconstruct:iron","tconstruct:iron","tconstruct:iron"]}]';
         await con(`item replace entity JoinTestBot weapon.mainhand with ${TOOL}`);
+        await con('tconstruct modifiers JoinTestBot add tinkerslevellingaddon:improvable 1');
         await con('tinkerslevellingaddon xp JoinTestBot add 5000');
         await con('tinkerslevellingaddon levels JoinTestBot add 1');
         // Objective proof the level actually persisted onto the itemstack.

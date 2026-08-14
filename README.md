@@ -124,31 +124,41 @@ enough.
 ## Third-party content and licences
 
 Three mods are not on Modrinth and are referenced by URL from this repository's
-releases. All are redistributed under permissive licences, unmodified:
+releases. Since pack 1.3.0 these are **our own clean-room port** to NeoForge
+1.21.1, carried out on forks of the SlimeKnights originals:
 
-| Mod | Upstream source | Licence |
-| --- | --- | --- |
-| Tinkers' Construct (1.21.1 port) | [zhuchuovo/TinkersConstruct-1.21.1](https://github.com/zhuchuovo/TinkersConstruct-1.21.1) — a port of [SlimeKnights/TinkersConstruct](https://github.com/SlimeKnights/TinkersConstruct) (MIT) | GPL-3.0 |
-| Mantle (1.21.1 port) | [zhuchuovo/Mantle-1.21.1](https://github.com/zhuchuovo/Mantle-1.21.1) — a port of [SlimeKnights/Mantle](https://github.com/SlimeKnights/Mantle) (MIT) | MIT |
-| Tinkers' Levelling Addon | original mod by **Pyre540**; 1.21.1 / NeoForge port | MIT |
+| Mod | Source | Upstream base | Licence |
+| --- | --- | --- | --- |
+| Tinkers' Construct | [ryancircelli/TinkersConstruct](https://github.com/ryancircelli/TinkersConstruct) @ `f3cfaef7ed` — fork of [SlimeKnights/TinkersConstruct](https://github.com/SlimeKnights/TinkersConstruct) | 3.11.2 | MIT |
+| Mantle | [ryancircelli/Mantle](https://github.com/ryancircelli/Mantle) @ `b92d2931` — fork of [SlimeKnights/Mantle](https://github.com/SlimeKnights/Mantle) | 1.11 | MIT |
+| Tinkers' Levelling Addon | original mod by **Pyre540**, ported against the two above | 1.4.3 | MIT |
 
-**Nothing is modified.** The forks used to host these jars carry zero commits of
-their own — `ryancircelli/TinkersConstruct-1.21.1` is `ahead_by=0` against its
-parent and `ryancircelli/Mantle-1.21.1` is byte-identical. The jars themselves
-are the upstream authors' own builds:
+| Jar | sha1 |
+| --- | --- |
+| `TinkersConstruct-1.21.1-3.11.2.DEV.f3cfaef7ed.jar` | `97781de28c9de2a59936dffdc15ac2e6ee53be83` |
+| `Mantle-1.21.1-1.11.DEV.b92d2931.jar` | `208b32b536ae142cc4f7c320c985b9b05b2e9836` |
+| `TinkersLevellingAddon-1.21.1-1.4.3.jar` | `08e3d70830350d4985f57e3d3110146e9ba6d8b9` |
 
-| Jar | sha1 | Matches |
-| --- | --- | --- |
-| `TinkersConstruct-1.21.1-3.12.2.jar` | `4138e16a32443c8cf2c46c8ac006737d264cc4ff` | upstream release `v3.12.2` |
-| `Mantle-1.21.1-1.12.1.jar` | `f6acb51a65c2e1f4dc9a36d40f8914c6fadc256e` | upstream release `1.12.2` |
+### Provenance
 
-Anyone can verify by downloading from the upstream links above and comparing
-hashes. Source for the GPL-3.0 component is public at the fork and at its parent,
-satisfying GPL-3.0 §6(d).
+Earlier releases (`v1.21.1-1`) shipped a third-party GPL-3.0 port by *zhuchuovo*.
+**No line of the current jars derives from it.** The port was written against the
+upstream 1.20 sources and vanilla/NeoForge artifacts only; the branch that did
+derive from that work is quarantined and was never published.
 
-Note that the Tinkers' Construct jar's own metadata declares `license="MIT"`,
-inherited from SlimeKnights' original, while the port's repository is GPL-3.0.
-The stricter of the two is assumed here.
+Because the work is a port of the SlimeKnights originals and carries nothing
+from the GPL-3.0 port, the whole trio is MIT, matching upstream — the earlier
+GPL-3.0 obligation no longer applies.
+
+The port is 32 stacked fork PRs on Tinkers' Construct and 25 on Mantle. Gates:
+764 JUnit tests, 22/22 gametests, a server boot with zero ERROR lines and a
+client login plus render matrix on Tinkers'; 377 JUnit tests and a rendered
+`mantle:test` book on Mantle.
+
+This is a deliberate step back in upstream version — 3.11.2/1.11 against the
+3.12.2/1.12.1 jars shipped before — in exchange for provenance under our own
+control. Nothing else in the pack constrains those versions: dependency ranges
+on `tconstruct`/`mantle` exist only inside the trio, and they agree.
 
 Everything else in the pack is fetched from Modrinth's CDN by the launcher and is
 governed by each mod's own licence. The tooling and configuration in this
