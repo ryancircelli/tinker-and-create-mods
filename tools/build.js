@@ -232,6 +232,27 @@ async function getVersion(slugOrId, pin = null) {
   // addon (storageinmotion) stayed in, leaving a dependent with no parent.
   // Filter them out here so channel policy falls through to a real build.
   versions = versions.filter((v) => Array.isArray(v.files) && v.files.length > 0);
+
+  // Modrinth's loader tags are author-supplied and can be wrong. Boundless
+  // tagged its FABRIC 1.21.1 build loaders=["fabric","neoforge"], so the API
+  // returned it for a neoforge query and, being published later than the real
+  // neo build, it sorted first and won. The result passed verify.js -- the URL
+  // resolves and the hash matches -- and only died at server boot with "is not
+  // a valid mod file". Trust the artifact over the tag.
+  //
+  // A fabric/quilt marker in the FILENAME disqualifies a file, unless the name
+  // also says neoforge: multi-loader jars are real and legitimate here
+  // (DistantHorizons ships "...-1.21.1-fabric-neoforge.jar"). "neo" alone, as in
+  // "boundless-1.21.1-neo-11.1.jar", needs no marker because it carries no
+  // foreign one to begin with.
+  if ((pack.loaders || [pack.loader]).includes('neoforge')) {
+    const foreign = /(?:^|[-_.])(fabric|quilt)(?:[-_.]|$)/i;
+    const ours = /neoforge/i;
+    versions = versions
+      .map((v) => ({ ...v, files: v.files.filter((f) => !foreign.test(f.filename) || ours.test(f.filename)) }))
+      .filter((v) => v.files.length > 0);
+    if (versions.length === 0) return null;
+  }
   if (versions.length === 0) return null;
 
   // An explicit pin in mods.json overrides channel policy entirely. Used when
