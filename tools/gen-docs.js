@@ -60,13 +60,19 @@ function modList(jarCount) {
   for (const m of data.mods || []) (byCat[m.category] = byCat[m.category] || []).push(m);
   const cats = Object.keys(byCat).sort();
 
+  const count = jars.length || jarCount;
   let s = STAMP('tools/mods.json and the built .mrpack');
   s += `# Mod list\n\n`;
   s += `**Tinker & Create ${VERSION}** — Minecraft ${data.pack.minecraft}, ${data.pack.loader} ${data.pack.loaderVersion}.\n\n`;
-  // Read the count back from the committed jar list rather than from this
-  // build. Otherwise the sentence says 339 on a machine that has built the pack
-  // and 0 on a clean checkout, and the docs check fails on the difference.
-  s += `${jarCount} jars ship in the pack: ${data.mods.length} are declared in \`tools/mods.json\`, `;
+  // Prefer this build's own jar list, and fall back to the committed one only
+  // on a clean checkout with no pack built. Reading the committed file here
+  // instead was a read-before-write bug: committedJarCount() counts rows in
+  // shipped-jars.md, which THIS run rewrites further down, so on any run where
+  // the jar count changed the sentence got the stale number while syncBadges()
+  // -- called after the rewrite -- got the fresh one. One run then produced
+  // mods.md and the badges disagreeing, the docs check failed, and running it a
+  // second time appeared to fix it.
+  s += `${count} jars ship in the pack: ${data.mods.length} are declared in \`tools/mods.json\`, `;
   s += `the rest are dependencies the build resolves automatically. Mod menus report a higher number `;
   s += `still — Create alone bundles Flywheel, Ponder and Registrate inside its own jar, and those `;
   s += `nested libraries count as mods once loaded.\n\n`;
@@ -295,4 +301,4 @@ if (kb) write('keybinds.md', kb);
 // Only rewrite the jar list when a built pack is actually present. Without this
 // guard a docs run on a clean checkout would blank the committed file.
 if (mods.jars.length) write('shipped-jars.md', shippedJars(mods.jars));
-syncBadges(committedJarCount(), qb.questCount);
+syncBadges(mods.jars.length || committedJarCount(), qb.questCount);
