@@ -2,7 +2,7 @@
   "pack": {
     "name": "Tinker & Create",
     "summary": "Create + Tinkers for Minecraft 1.21.1 NeoForge",
-    "version": "1.3.0",
+    "version": "1.3.1",
     "minecraft": "1.21.1",
     "loader": "neoforge",
     "loaders": [
@@ -609,6 +609,12 @@
       "name": "Spark",
       "slug": "spark",
       "category": "Utility"
+    },
+    {
+      "name": "Auth Me",
+      "slug": "auth-me",
+      "category": "Utility",
+      "//": "Re-validates an expired Minecraft session from inside the game. Without it an invalidated session means a full restart, losing the world load. Client-only (server_side unsupported), so it changes nothing server-side. Resourceful Config is embedded in the jar, so it needs no entry of its own."
     },
     {
       "name": "Simple Voice Chat",
