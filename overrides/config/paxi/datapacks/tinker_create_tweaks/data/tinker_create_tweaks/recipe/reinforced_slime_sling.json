@@ -19,7 +19,7 @@
           "vertical_force": 3.0
         },
         "minecraft:enchantment_glint_override": true,
-        "minecraft:item_name": "Reinforced Slime Sling"
+        "minecraft:item_name": "{\"text\":\"Reinforced Slime Sling\"}"
       }
     }
   ]
