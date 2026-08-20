@@ -1,0 +1,20 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spread_type": "linear",
+    "salt": 51363271,
+    "spacing": 64,
+    "separation": 32,
+    "frequency": 0.8,
+    "exclusion_zone": {
+      "other_set": "minecraft:villages",
+      "chunk_count": 12
+    }
+  },
+  "structures": [
+    {
+      "structure": "explorify:campsite",
+      "weight": 1
+    }
+  ]
+}

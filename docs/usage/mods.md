@@ -2,9 +2,9 @@
 
 # Mod list
 
-**Tinker & Create 1.3.0** — Minecraft 1.21.1, neoforge 21.1.248.
+**Tinker & Create 1.3.1** — Minecraft 1.21.1, neoforge 21.1.248.
 
-340 jars ship in the pack: 304 are declared in `tools/mods.json`, the rest are dependencies the build resolves automatically. Mod menus report a higher number still — Create alone bundles Flywheel, Ponder and Registrate inside its own jar, and those nested libraries count as mods once loaded.
+341 jars ship in the pack: 305 are declared in `tools/mods.json`, the rest are dependencies the build resolves automatically. Mod menus report a higher number still — Create alone bundles Flywheel, Ponder and Registrate inside its own jar, and those nested libraries count as mods once loaded.
 
 ## By category
 
@@ -333,6 +333,7 @@
 ### Utility
 
 - [AttributeFix](https://modrinth.com/mod/attributefix)
+- [Auth Me](https://modrinth.com/mod/auth-me)
 - [Easy Villagers](https://modrinth.com/mod/easy-villagers)
 - [Simple Voice Chat](https://modrinth.com/mod/simple-voice-chat)
 - [Spark](https://modrinth.com/mod/spark)
