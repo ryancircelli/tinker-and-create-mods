@@ -1,9 +1,15 @@
 {
-  "structures": [],
+  "structures": [
+    {
+      "structure": "create_structures_arise:createairdrop",
+      "weight": 1
+    }
+  ],
   "placement": {
     "type": "minecraft:random_spread",
     "spacing": 90,
     "separation": 30,
-    "salt": 920596172
+    "salt": 920596172,
+    "frequency": 0
   }
 }

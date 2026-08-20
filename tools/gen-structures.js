@@ -87,7 +87,20 @@ for (const jar of jars) {
 
     let changed = false;
     if (DROP_SETS.has(id)) {
-      data.structures = [];
+      // Disable by frequency, NOT by emptying structures[].
+      //
+      // An empty list is the trick most "remove a structure" datapacks use, and
+      // it boots fine -- but only because placement is computed lazily, per
+      // chunk. The first time this pack generated FRESH chunks the server hung
+      // on "Preparing level" with the world thread producing nothing for 25
+      // minutes: random_spread had to select from a zero-length weighted list.
+      //
+      // frequency is a documented field on structure placement and is checked
+      // before any selection happens, so 0 means the placement never fires and
+      // the list is never consulted. The structures stay listed, which also
+      // keeps the set readable.
+      data.placement = data.placement || {};
+      data.placement.frequency = 0.0;
       dropped++; changed = true;
     } else {
       const before = (data.structures || []).length;
