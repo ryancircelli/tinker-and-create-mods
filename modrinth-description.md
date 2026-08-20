@@ -28,7 +28,7 @@ picked to support those two, not to pad a mod count.
 
 ## Where you start
 
-The pack opens with a guided walkthrough: **44 quests across 8 categories**, in a
+The pack opens with a guided walkthrough: **45 quests across 8 categories**, in a
 readable book rather than a spreadsheet. Open it from the button in your
 inventory, above the offhand slot, or press `]`.
 
@@ -46,8 +46,8 @@ a toast, and you claim it when you want to.
 ## What playing it feels like
 
 **Your tools level up.** Tinkers tools earn XP as you use them and gain a modifier
-slot each level. Apply *Improvable* early and it starts banking progress
-immediately.
+slot each level. *Improvable* is built into every tool from the start here, so
+they bank progress from the first swing without spending a slot on it.
 
 **Reach across your whole base.** Chain conveyors run to 128 blocks here instead
 of the default 32, so logistics can actually span a base rather than a room.
@@ -67,9 +67,11 @@ Recommended: **6 GB** allocated. For a smoother experience add
 `-XX:+UseZGC -XX:+ZGenerational` to your Java arguments — the pack cannot set
 these for you, as the `.mrpack` format has no field for JVM options.
 
-Every mod downloads from its own CDN; the pack file itself is about 120 KB.
+Every mod downloads from its own CDN; the pack file itself is only a few hundred kilobytes.
 
-Three mods are not on Modrinth and are fetched from GitHub, unmodified and under
-permissive licences (Tinkers' Construct and Mantle 1.21.1 ports, and Tinkers'
-Levelling Addon). Full attribution, upstream links and jar checksums are in the
+Three mods have no Modrinth release for this loader and are fetched from this
+project's GitHub releases: **Tinkers' Construct**, **Mantle** and the **Tinkers'
+Levelling Addon**. These are our own clean-room port to 1.21.1, built on forks of
+the SlimeKnights originals and MIT-licensed as they are. Full attribution,
+upstream links and jar checksums are in the
 [repository README](https://github.com/ryancircelli/tinker-and-create-mods#third-party-content-and-licences).
