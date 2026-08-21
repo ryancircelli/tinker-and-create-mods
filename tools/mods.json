@@ -2,7 +2,7 @@
   "pack": {
     "name": "Tinker & Create",
     "summary": "Create + Tinkers for Minecraft 1.21.1 NeoForge",
-    "version": "1.3.3",
+    "version": "1.3.4",
     "minecraft": "1.21.1",
     "loader": "neoforge",
     "loaders": [
@@ -1418,6 +1418,13 @@
       "name": "L_Ender's Cataclysm",
       "slug": "l_enders-cataclysm",
       "category": "Adventure"
+    },
+    {
+      "name": "YUNG's API",
+      "slug": "yungs-api",
+      "category": "Libraries",
+      "version": "1.21.1-NeoForge-5.1.6",
+      "//": "PINNED. 5.1.7 hangs world CREATION outright: the server reaches 'Preparing level', writes a couple of region files and then sits at ~1% CPU forever, because chunk generation blocks on lighting that never completes. Existing worlds are unaffected -- their chunks already carry light data -- which is why this shipped in 1.3.1, 1.3.2 and 1.3.3 without anyone noticing until a new world was needed. Proven by single-variable bisect: the 1.3.0 mod set with ONLY this jar raised to 5.1.7 hangs, while the same set with the other seven updates of that window applied reaches Done in 79s. Normally resolved as a dependency rather than declared, which is how it moved version unnoticed; declaring it here is what makes the pin possible."
     },
     {
       "name": "YUNG's Better Dungeons",

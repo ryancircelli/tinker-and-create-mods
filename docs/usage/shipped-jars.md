@@ -2,7 +2,7 @@
 
 # Shipped jars
 
-Every jar in **1.3.3**, with the version each was resolved to at build time.
+Every jar in **1.3.4**, with the version each was resolved to at build time.
 
 This file is refreshed when the pack is built, so it tracks releases upstream. It is deliberately excluded from the docs-are-current check — the resolver takes the newest compatible build of each mod, so this changes on its own whenever any of them publishes, with nothing here having changed.
 
@@ -216,7 +216,7 @@ This file is refreshed when the pack is built, so it tracks releases upstream. I
 | `lionfishapi-3.1.jar` | required | required |
 | `lithium-neoforge-0.15.4+mc1.21.1.jar` | required | required |
 | `lithostitched-1.8.0+beta4-neoforge-21.1.jar` | required | required |
-| `lootr-neoforge-1.21.1-1.11.38.123.jar` | required | required |
+| `lootr-neoforge-1.21.1-1.11.38.124.jar` | required | required |
 | `Mantle-1.21.1-1.11.DEV.b92d2931.jar` | required | required |
 | `mcw-bridges-3.1.2-mc1.21.1neoforge.jar` | required | required |
 | `mcw-doors-1.1.5-mc1.21.1neoforge.jar` | required | required |
@@ -335,7 +335,7 @@ This file is refreshed when the pack is built, so it tracks releases upstream. I
 | `xaeroworldmap-neoforge-1.21.1-1.44.2.jar` | required | required |
 | `yeetusexperimentus-neoforge-87.0.0.jar` | required | unsupported |
 | `yet_another_config_lib_v3-3.8.2+1.21.1-neoforge.jar` | required | required |
-| `YungsApi-1.21.1-NeoForge-5.1.7.jar` | required | required |
+| `YungsApi-1.21.1-NeoForge-5.1.6.jar` | required | required |
 | `YungsBetterDesertTemples-1.21.1-NeoForge-4.1.5.jar` | required | required |
 | `YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar` | required | required |
 | `YungsBetterEndIsland-1.21.1-NeoForge-3.1.2.jar` | required | required |
