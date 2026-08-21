@@ -2,9 +2,9 @@
 
 # Mod list
 
-**Tinker & Create 1.3.3** — Minecraft 1.21.1, neoforge 21.1.248.
+**Tinker & Create 1.3.4** — Minecraft 1.21.1, neoforge 21.1.248.
 
-341 jars ship in the pack: 305 are declared in `tools/mods.json`, the rest are dependencies the build resolves automatically. Mod menus report a higher number still — Create alone bundles Flywheel, Ponder and Registrate inside its own jar, and those nested libraries count as mods once loaded.
+341 jars ship in the pack: 306 are declared in `tools/mods.json`, the rest are dependencies the build resolves automatically. Mod menus report a higher number still — Create alone bundles Flywheel, Ponder and Registrate inside its own jar, and those nested libraries count as mods once loaded.
 
 ## By category
 
@@ -181,6 +181,7 @@
 - [SuperMartijn642's Config Lib](https://modrinth.com/mod/supermartijn642s-config-lib)
 - [SuperMartijn642's Core Lib](https://modrinth.com/mod/supermartijn642s-core-lib)
 - [YetAnotherConfigLib](https://modrinth.com/mod/yacl)
+- [YUNG's API](https://modrinth.com/mod/yungs-api)
 
 ### Miscellaneous
 
